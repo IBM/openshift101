@@ -1,6 +1,6 @@
 language: node_js
-node: 
-  - 10.16
+node_js: 
+  - 10
 script:
   - npm install
   - gitbook install
