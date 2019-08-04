@@ -161,4 +161,4 @@ You should see a success message.
 
     This is the working directory for the workshop. You will use the `.yaml` files that are located in the `workshop/plans` directory in the following exercises.
 
-### [Continue to Exercise 2 - Using Openshift](../exercise-2/README.md)
+### [Continue to Exercise 2 - Create a Sample Node.js Application](../exercise-2/README.md)
