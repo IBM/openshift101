@@ -135,13 +135,13 @@ You should see a success message.
     a.  View nodes in the cluster.
 
     ```shell
-    kubectl get node
+    oc get node
     ```
 
     b.  View services, deployments, and pods.
 
     ```shell
-    kubectl get svc,deploy,po --all-namespaces
+    oc get svc,deploy,po --all-namespaces
     ```
 
     c. View all OpenShift projects
