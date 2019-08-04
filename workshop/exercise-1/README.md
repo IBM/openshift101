@@ -56,7 +56,81 @@ Learn how to set the context to work with your cluster by using the `kubectl` CL
     ibmcloud ks worker-get <worker_ID>
     ```
 
-3.  Validate access to your cluster.
+
+## Install OpenShift cli tools
+
+1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location.
+
+    a. Download tarball of the tools
+
+    ```shell
+    wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+    ```
+
+    b. Unpack
+
+    ```shell
+    tar -xvzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+    ```
+
+    c. Rename for ease of use
+
+    ```shell
+    mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit ${HOME}/oc-cli
+    ```
+
+    d. Set Path. Note that if you restart your cloud shell, you may need to re-run this command.
+
+    ```shell
+    export PATH=${PATH}:${HOME}/oc-cli
+    ```
+
+    e. Verify the utility is available by using `which` and the help
+
+
+    ```shell
+    which oc
+    ```
+
+    ```shell
+    oc help
+    ```
+
+
+## Access the OpenShift Web UI
+
+1. Connect to the OpenShift Web UI where you can manage your hosted OpenShift cluster as well as authenticate your cli tooling.
+
+
+    a. Get the Master URL for your cluster from the `ibmcloud` utility
+
+    ```shell
+    ibmcloud ks cluster get $MYCLUSTER  | grep 'Master URL'
+    ```
+
+    It will look something like `https://c100-e.us-east.containers.cloud.ibm.com:39813`  
+
+
+2. Construct the console url by appending '/console' to the Master URL.
+
+    a. If your Master URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813`, then your console URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813/console`.
+
+3. Connect to the console with a web browser.
+
+4. Select your name/id in the upper right, click. Scroll down to 'Copy Login Command' and click it.
+
+## Access your cluster using OpenShift client utils
+
+1.  Paste the login command you copied from the Web UI.
+
+```shell
+oc login https://c100-e.us-east.containers.cloud.ibm.com:39813 --token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+You should see a success message.
+
+
+2.  Validate access to your cluster.
 
     a.  View nodes in the cluster.
 
@@ -68,6 +142,12 @@ Learn how to set the context to work with your cluster by using the `kubectl` CL
 
     ```shell
     kubectl get svc,deploy,po --all-namespaces
+    ```
+
+    c. View all OpenShift projects
+
+    ```shell
+    oc get projects
     ```
 
 ## Clone the lab repo
