@@ -8,10 +8,14 @@ Red Hat OpenShift represents a common platform, based on the industry-standard K
 
 In this lab we'll cover using the OpenShift platform on the IBM Cloud and the common developer loop around cloud native applications including:
 
+- Kubernetes Basics
+- Using OpenShift
 - Deploying an application
 - Scaling the application
 - Reading logs and monitoring the appliction
 - Rolling out v2 of the application
+- Security and Role Based Access control in OpenShift and Kubernetes
+- Runtime Security for containers
 
 - Date: TBD 
 - Time: TBD 
