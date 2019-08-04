@@ -9,3 +9,12 @@ This is the repository for the OpenShift 101 workshop presented by IBM
 ## License and Attribution
 
 2019 IBM
+
+## Other IBM Workshops
+
+Many people and groups worked on the following workshops and classes, parts of which have ended up here.
+
+* https://github.com/beemarie/kube-code-camp
+* https://gitlab.com/ibm/kube101
+* https://github.com/ibm/kube101
+* https://github.com/ibm/istio101
