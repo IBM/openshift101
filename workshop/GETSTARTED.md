@@ -3,9 +3,9 @@ In this section, you will login to your own IBM Cloud account, and then get acce
 
 1. You should already have a federated IBM Cloud account using your company email address, confirm by logging in to https://cloud.ibm.com
 
-1. If you do not have an account, you could create your own [IBM Cloud account](https://ibm.biz/Bdzybn).
+1. If you do not have an account, you could create your own [IBM Cloud account][vcpi_code].
 
-1. Go to [Grant Cluster](http://grant-cluster-iks.mybluemix.net) web page and enter your IBM ID (the email you used to sign up), the lab key from the instructor, and select the `Frankfurt (EU-Central / eu-de)` region.
+1. Go to [Grant Cluster][grant_cluster] web page and enter your IBM ID (the email you used to sign up), the lab key from the instructor, and select the `Frankfurt (EU-Central / eu-de)` region.
 
     ![](README_images/get-clusters.png)
 
@@ -26,3 +26,7 @@ In this section, you will login to your own IBM Cloud account, and then get acce
 1. Launch the **Kubernetes Dashboard** and have a look around! You can come back to this dashboard throughout your lab.
 
 ### [Continue to Exercise 1](/workshop/exercise-1/README.md)
+
+
+[vcpi_code]: https://cloud.ibm.com <!-- put the vcpi URL here -->
+[grant_cluster]: http://grant-cluster-iks.mybluemix.net <!-- put the grant cluster URL here -->
