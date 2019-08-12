@@ -11,6 +11,7 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 
 3. Using the account drop down, choose the **IBM** account.
 
+
    ![](./images/cloudshell.png)
    
 4. Click on the Terminal icon to launch your web shell.
@@ -67,7 +68,7 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
     ibmcloud ks cluster get $MYCLUSTER  | grep 'Master URL'
     ```
 
-    It will look something like `https://c100-e.us-east.containers.cloud.ibm.com:39813`  
+    It will look something like `https://c100-e.us-east.containers.cloud.ibm.com:39813`
 
 
 2. Construct the console url by appending '/console' to the Master URL.
