@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "gitbook-cli": "^2.3.2",
-    "gitbook-plugin-hints": "^1.0.2"
+    "gitbook-plugin-hints": "^1.0.2",
+    "markdownlint-cli": "^0.17.0"
   },
   "devDependencies": {},
   "scripts": {
+    "test": "markdownlint --config .markdownlint.json workshop",
     "start": "gitbook install && gitbook serve",
     "build": "gitbook install && gitbook build"
   },
