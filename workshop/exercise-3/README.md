@@ -6,7 +6,7 @@ In this exercise, we'll explore the out-of-the-box logging and monitoring capabi
 
 First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
 
-```
+```shell
 while sleep 1; do curl -s <your_app_route>/info; done
 ```
 
@@ -14,7 +14,7 @@ while sleep 1; do curl -s <your_app_route>/info; done
 
 ## OpenShift Logging
 
-Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods`. You'll see two pods here, one for the build (that's already completed), and one for the pod that is running your application. 
+Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods`. You'll see two pods here, one for the build (that's already completed), and one for the pod that is running your application.
 
 ![create project](./images/pods.png)
 
@@ -22,14 +22,13 @@ Click into the `Running` pod and navigate to the `Logs` tab. You should see the 
 
 ![create project](./images/logs.png)
 
-
 ## OpenShift Terminal
 
 One of the great things about Kuberentes is the ability to quickly deubg your application pods with SSH terminals. This is great for development, but generally is not recommended in production environments. OpenShift makes it even easier by allowing you to launch a terminal directly in the dashboard.
 
 Switch to the `Terminal` tab, and run the following commands.
 
-```
+```shell
 # See the project files
 $ ls
 # See the running processes

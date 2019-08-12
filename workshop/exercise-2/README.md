@@ -1,6 +1,6 @@
 # Exercise 2 - Create a Sample Node.js Application
 
-In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: https://github.com/IBM/node-s2i-openshift
+In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
 ## Deploy Example Health
 

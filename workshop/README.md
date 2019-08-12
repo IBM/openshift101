@@ -1,6 +1,6 @@
 # Welcome
 
-## This will be an overview of OpenShift on the IBM Cloud. Learn how to build, deploy, and secure cloud native applications on the world's leading open container platform.
+## This will be an overview of OpenShift on the IBM Cloud. Learn how to build, deploy, and secure cloud native applications on the world's leading open container platform
 
 A recent [study][study] by McKinsey & Company reveals that only 20 percent of enterprise applications have moved to the cloud. We believe that a hybrid cloud approach, built on open source and a vibrant open ecosystem, is the best way to move the remaining 80 percent.
 
@@ -28,5 +28,4 @@ In this lab we'll cover using the OpenShift platform on the IBM Cloud and the co
 - name, title
 - name, title
 
-
-[study][https://www.mckinsey.com/industries/high-tech/our-insights/it-as-a-service-from-build-to-consume]
+[study]: https://www.mckinsey.com/industries/high-tech/our-insights/it-as-a-service-from-build-to-consume
