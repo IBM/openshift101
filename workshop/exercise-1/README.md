@@ -11,51 +11,9 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 
 3. Using the account drop down, choose the **IBM** account.
 
-   ![](../README_images/cloudshell.png)
+   ![](./images/cloudshell.png)
    
 4. Click on the Terminal icon to launch your web shell.
-
-## Access your cluster
-Learn how to set the context to work with your cluster by using the `kubectl` CLI, access the Kubernetes dashboard, and gather basic information about your cluster.
-
-1.  Set the context for your cluster in your CLI. Every time you log in to the IBM Cloud Kubernetes Service CLI to work with the cluster, you must run these commands to set the path to the cluster's configuration file as a session variable. The Kubernetes CLI uses this variable to find a local configuration file and certificates that are necessary to connect with the cluster in IBM Cloud.
-
-    a. List the available clusters. You should see the cluster you were assigned.
-
-    ```shell
-    ibmcloud ks clusters
-    ```
-
-    b. Set an environment variable for your cluster name:
-
-    ```shell
-    export MYCLUSTER=<your_cluster_name>
-    ```
-
-    c. Download the configuration file and certificates for your cluster using the `cluster-config` command.
-
-    ```shell
-    ibmcloud ks cluster-config $MYCLUSTER
-    ```
-
-    c. *Copy and paste the output export command* from the output of previous step. This will set the `KUBECONFIG` environment variable and configure your `kubectl` CLI to run commands against your cluster. Example:
-    `export KUBECONFIG=/Users...`
-
-2.  Get basic information about your cluster and its worker nodes. This information can help you manage your cluster and troubleshoot issues.
-
-    a.  View details of your cluster.
-
-    ```shell
-    ibmcloud ks cluster-get $MYCLUSTER
-    ```
-
-    b.  Verify the worker nodes in the cluster.
-
-    ```shell
-    ibmcloud ks workers $MYCLUSTER
-    ibmcloud ks worker-get <worker_ID>
-    ```
-
 
 ## Install OpenShift cli tools
 
@@ -96,6 +54,7 @@ Learn how to set the context to work with your cluster by using the `kubectl` CL
     oc help
     ```
 
+# Access your cluster
 
 ## Access the OpenShift Web UI
 
@@ -117,7 +76,11 @@ Learn how to set the context to work with your cluster by using the `kubectl` CL
 
 3. Connect to the console with a web browser.
 
+![](./images/openshift-console.png)
+
 4. Select your name/id in the upper right, click. Scroll down to 'Copy Login Command' and click it.
+
+![](./images/copy-login.png)
 
 ## Access your cluster using OpenShift client utils
 
@@ -131,24 +94,31 @@ You should see a success message.
 
 
 2.  Validate access to your cluster.
+    a. Get the current status of your cluster
 
-    a.  View nodes in the cluster.
+    ```shell
+    oc status
+    ```
+
+    b.  View nodes in the cluster.
 
     ```shell
     oc get node
     ```
 
-    b.  View services, deployments, and pods.
+    c.  View services, deployments, and pods.
 
     ```shell
     oc get svc,deploy,po --all-namespaces
     ```
 
-    c. View all OpenShift projects
+    d. View all OpenShift projects
 
     ```shell
     oc get projects
     ```
+
+# Access to the Workshop 
 
 ## Clone the lab repo
 
