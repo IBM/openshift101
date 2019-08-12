@@ -3,6 +3,7 @@
 You must already have an IBM account, with a cluster created or assigned to you as documented in [previous step](../GETSTARTED.md).
 
 ## Connect to your cluster using the lab web shell (Cloud Shell)
+
 For this lab, a web shell is provided for you with all the necessary tools. Use this web shell to perform the tasks in this lab. If you are having problems with this web shell, you can use a local docker container and follow the instructions [here](https://github.com/rvennam/istio101/blob/docker-env/workshop/exercise-1/README.md) instead.
 
 1. Using Chrome or Firefox, go to the [Cloud Shell](https://cloudshell-console-ikslab.us-south.cf.cloud.ibm.com/) and login using the Login button.
@@ -11,9 +12,8 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 
 3. Using the account drop down, choose the **IBM** account.
 
+   ![The Cloud Shell](./images/cloudshell.png)
 
-   ![](./images/cloudshell.png)
-   
 4. Click on the Terminal icon to launch your web shell.
 
 ## Install OpenShift cli tools
@@ -46,7 +46,6 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 
     e. Verify the utility is available by using `which` and the help
 
-
     ```shell
     which oc
     ```
@@ -55,12 +54,9 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
     oc help
     ```
 
-# Access your cluster
-
 ## Access the OpenShift Web UI
 
 1. Connect to the OpenShift Web UI where you can manage your hosted OpenShift cluster as well as authenticate your cli tooling.
-
 
     a. Get the Master URL for your cluster from the `ibmcloud` utility
 
@@ -70,31 +66,29 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 
     It will look something like `https://c100-e.us-east.containers.cloud.ibm.com:39813`
 
-
 2. Construct the console url by appending '/console' to the Master URL.
 
     a. If your Master URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813`, then your console URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813/console`.
 
 3. Connect to the console with a web browser.
 
-![](./images/openshift-console.png)
+    ![The OpenShift Web UI](./images/openshift-console.png)
 
 4. Select your name/id in the upper right, click. Scroll down to 'Copy Login Command' and click it.
 
-![](./images/copy-login.png)
+    ![The login command](./images/copy-login.png)
 
 ## Access your cluster using OpenShift client utils
 
-1.  Paste the login command you copied from the Web UI.
+1. Paste the login command you copied from the Web UI.
 
-```shell
-oc login https://c100-e.us-east.containers.cloud.ibm.com:39813 --token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+    ```shell
+    oc login https://c100-e.us-east.containers.cloud.ibm.com:39813 --token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```
 
-You should see a success message.
+    You should see a success message.
 
-
-2.  Validate access to your cluster.
+2. Validate access to your cluster.
     a. Get the current status of your cluster
 
     ```shell
@@ -118,8 +112,6 @@ You should see a success message.
     ```shell
     oc get projects
     ```
-
-# Access to the Workshop 
 
 ## Clone the lab repo
 
