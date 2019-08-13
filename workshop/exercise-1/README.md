@@ -16,6 +16,20 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
    
    ![](./README_images/cloudshell.png)
 
+1. List the available clusters.
+
+    ```shell
+    ibmcloud ks clusters
+    ```
+
+    > Note: If no clusters are shown, make sure you are targeting the IBM account in the top right corner. 
+
+2. For convenience, export your cluster name as an environment variable.  
+
+    ```shell
+    export MYCLUSTER=<your_cluster_name>
+    ```
+    
 ## Install OpenShift cli tools
 
 1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location.
