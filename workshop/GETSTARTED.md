@@ -2,7 +2,7 @@
 
 In this section, you will login to your own IBM Cloud account, and then get access to a IBM Cloud Lab account which contains pre-provisioned clusters. Each lab attendee will be granted access to one cluster.
 
-1. Create a new or login with an existing account on https://cloud.ibm.com
+1. Create a new or login with an existing account on <https://cloud.ibm.com>
 
 2. If you do not have an account, you could create your own [IBM Cloud account][vcpi_code].
 

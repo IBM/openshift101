@@ -4,7 +4,7 @@ You must already have an IBM Cloud account, with a cluster created or assigned t
 
 ## Connect to your cluster using the lab web shell (Cloud Shell)
 
-For this lab, a web shell is provided for you with all the necessary tools. Use this web shell to perform the tasks in this lab. 
+For this lab, a web shell is provided for you with all the necessary tools. Use this web shell to perform the tasks in this lab.
 
 1. Using Chrome or Firefox, go to the [Cloud Shell](cloudshell-url) and login using the Login button.
 
@@ -13,8 +13,10 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
 3. Using the account drop down, choose the **IBM** account.
 
 4. Click on the Terminal icon to launch your web shell.
-   
-   ![](./README_images/cloudshell.png)
+
+   ![Cloud Shell](./README_images/cloudshell.png)
+
+## Inspect your cluster on the command line
 
 1. List the available clusters.
 
@@ -22,14 +24,14 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
     ibmcloud ks clusters
     ```
 
-    > Note: If no clusters are shown, make sure you are targeting the IBM account in the top right corner. 
+    > Note: If no clusters are shown, make sure you are targeting the IBM account in the top right corner.
 
 2. For convenience, export your cluster name as an environment variable.  
 
     ```shell
     export MYCLUSTER=<your_cluster_name>
     ```
-    
+
 ## Install OpenShift cli tools
 
 1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location.
@@ -139,7 +141,6 @@ For this lab, a web shell is provided for you with all the necessary tools. Use 
     This is the working directory for the workshop. You will use the `.yaml` files that are located in the `workshop/plans` directory in the following exercises.
 
 ### [Continue to Exercise 2 - Create a Sample Node.js Application](../exercise-2/README.md)
-
 
 <!-- put the vcpi URL here -->
 [cloudshell-url]: https://cloudshell-console-ikslab.us-south.cf.cloud.ibm.com/
