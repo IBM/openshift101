@@ -8,7 +8,7 @@ In this section, you will login to your own IBM Cloud account, and then get acce
 
 3. [Click here to go to the Grant Cluster](grant_cluster) web page and enter your IBM ID (the email you used to sign up), the lab key from the instructor, and select the `US South (us-south)` region.
 
-    ![Get Clusters App](README_images/get-clusters.png)
+    ![Get Clusters App](.gitbook/assets/get-clusters.png)
 
 4. You will be added to the IBM Lab account and granted access to a cluster. Note the name of your cluster. It will be something like: `myclusterXXX`.
 
@@ -16,17 +16,17 @@ In this section, you will login to your own IBM Cloud account, and then get acce
 
 6. Switch to the **183569-IBM** account by clicking on the account selection drop down in the top nav bar.
 
-   ![IBM Account](README_images/ibmaccount.png)
+   ![IBM Account](.gitbook/assets/ibmaccount.png)
 
 7. Click on **Kubernetes Clusters** in the Resource Summary tile.
 
-    ![IBM Dashboard](README_images/dashboard.png)
+    ![IBM Dashboard](.gitbook/assets/dashboard.png)
 
 8. Under **Kubernetes Clusters**, click on the cluster that has been assigned to you.
 
 9. Launch the **OpenShift web console** and have a look around! You can come back to this dashboard throughout your lab.
 
-## [Continue to Exercise 1](/workshop/exercise-1/README.md)
+## [Continue to Exercise 1](exercise-1/README.md)
 
 <!-- put the vcpi URL here -->
 [vcpi_code]: https://cloud.ibm.com

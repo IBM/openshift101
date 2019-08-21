@@ -1,146 +1,45 @@
-# Exercise 1 - Accessing your Kubernetes Cluster
+# Exercise 1: Using OpenShift
 
-You must already have an IBM Cloud account, with a cluster created or assigned to you as documented in [previous step](../GETSTARTED.md).
+In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
-## Connect to your cluster using the lab web shell (Cloud Shell)
+## Deploy Example Health
 
-For this lab, a web shell is provided for you with all the necessary tools. Use this web shell to perform the tasks in this lab.
+Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right.
 
-1. Using Chrome or Firefox, go to the [Cloud Shell](cloudshell-url) and login using the Login button.
+Create a project:
 
-2. Passcode will be provided by lab instructors.
+![](../.gitbook/assets/createproject.png)
 
-3. Using the account drop down, choose the **IBM** account.
+Click on your new project. You should see a view that looks like this:
 
-4. Click on the Terminal icon to launch your web shell.
+![](../.gitbook/assets/projectview.png)
 
-   ![Cloud Shell](./README_images/cloudshell.png)
+Click on the browse catalog button to see the images available to build with and scroll down to the Node image. Click on the 'Node.js' icon.
 
-## Inspect your cluster on the command line
+![](../.gitbook/assets/node.png)
 
-1. List the available clusters.
+Click through to the second step for configuration, and choose advanced options \( a hyperlink on the bottom line \)
 
-    ```shell
-    ibmcloud ks clusters
-    ```
+![](../.gitbook/assets/advanced.png)
 
-    > Note: If no clusters are shown, make sure you are targeting the IBM account in the top right corner.
+You'll see and advanced form like this:
 
-2. For convenience, export your cluster name as an environment variable.  
+![](../.gitbook/assets/node-advanced-form.png)
 
-    ```shell
-    export MYCLUSTER=<your_cluster_name>
-    ```
+Enter the repository: `https://github.com/IBM/node-s2i-openshift` and `/site` for the Context Dir. Click 'Create' at the bottom of the window to build and deploy the application.
 
-## Install OpenShift cli tools
+Scroll through to watch the build deploying:
 
-1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location.
+![](../.gitbook/assets/build.png)
 
-    a. Download tarball of the tools
+When the build has deployed, click the External Traffic Route, and you should see the login screen:
 
-    ```shell
-    wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
-    ```
+![](../.gitbook/assets/login.png)
 
-    b. Unpack
+You can enter any strings for username and password, for instance \`test:test\` because the app is running in demo mode.
 
-    ```shell
-    tar -xvzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
-    ```
+Congrats! You've deployed a Node.js app to Kubernetes using OpenShift S2I.
 
-    c. Rename for ease of use
+## Understanding What Happened
 
-    ```shell
-    mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit ${HOME}/oc-cli
-    ```
-
-    d. Set Path. Note that if you restart your cloud shell, you may need to re-run this command.
-
-    ```shell
-    export PATH=${PATH}:${HOME}/oc-cli
-    ```
-
-    e. Verify the utility is available by using `which` and the help
-
-    ```shell
-    which oc
-    ```
-
-    ```shell
-    oc help
-    ```
-
-## Access the OpenShift Web UI
-
-1. Connect to the OpenShift Web UI where you can manage your hosted OpenShift cluster as well as authenticate your cli tooling.
-
-    a. Get the Master URL for your cluster from the `ibmcloud` utility
-
-    ```shell
-    ibmcloud ks cluster get $MYCLUSTER  | grep 'Master URL'
-    ```
-
-    It will look something like `https://c100-e.us-east.containers.cloud.ibm.com:39813`
-
-2. Construct the console url by appending '/console' to the Master URL.
-
-    a. If your Master URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813`, then your console URL is `https://c100-e.us-east.containers.cloud.ibm.com:39813/console`.
-
-3. Connect to the console with a web browser.
-
-    ![The OpenShift Web UI](./images/openshift-console.png)
-
-4. Select your name/id in the upper right, click. Scroll down to 'Copy Login Command' and click it.
-
-    ![The login command](./images/copy-login.png)
-
-## Access your cluster using OpenShift client utils
-
-1. Paste the login command you copied from the Web UI.
-
-    ```shell
-    oc login https://c100-e.us-east.containers.cloud.ibm.com:39813 --token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    ```
-
-    You should see a success message.
-
-2. Validate access to your cluster.
-    a. Get the current status of your cluster
-
-    ```shell
-    oc status
-    ```
-
-    b.  View nodes in the cluster.
-
-    ```shell
-    oc get node
-    ```
-
-    c.  View services, deployments, and pods.
-
-    ```shell
-    oc get svc,deploy,po --all-namespaces
-    ```
-
-    d. View all OpenShift projects
-
-    ```shell
-    oc get projects
-    ```
-
-## Clone the lab repo
-
-1. From your command line, run:
-
-    ```shell
-    git clone https://github.com/IBM/openshift101
-    cd openshift101/workshop
-    ```
-
-    This is the working directory for the workshop. You will use the `.yaml` files that are located in the `workshop/plans` directory in the following exercises.
-
-### [Continue to Exercise 2 - Create a Sample Node.js Application](../exercise-2/README.md)
-
-<!-- put the vcpi URL here -->
-[cloudshell-url]: https://cloudshell-console-ikslab.us-south.cf.cloud.ibm.com/
+[Source-to-Image \(S2I\)](https://docs.openshift.com/container-platform/3.6/architecture/core_concepts/builds_and_image_streams.html#source-build) is a framework that creates container images from source code, then runs the assembled images as a containers. It allows developers to build reproducible images easily, letting them spend time on what matters most - developing!

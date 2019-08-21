@@ -1,59 +1,52 @@
-# Exercise 2 - Create a Sample Node.js Application
+# Exercise 2: Logging and Monitoring
 
-In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
+In this exercise, we'll explore the out-of-the-box logging and monitoring capabilities that are offered in OpenShift.
 
-## Deploy Example Health
+## Simulate Load on the Application
 
-1. Open the Web Console
+First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
 
-    Connect to the OpenShift web console. You can find the URL in two ways:
+```text
+while sleep 1; do curl -s <your_app_route>/info; done
+```
 
-    a. Get the Master URL for your cluster from the `ibmcloud` utility and append `/console` to the URL.
+{% hint style="info" %}
+Note: Retrieve the external URL from the OpenShift console, or from the URL of your Example Health application. Note that there may be an `/index.html` at the end that you need to replace with `/info`. We're hitting the /info endpoint which will trigger some logs from our app. For example: 
 
-    ```shell
-    ibmcloud ks cluster get $MYCLUSTER  | grep 'Master URL'
-    ```
+[`http://patientui-health-example.myopenshift-xxx.us-east.containers.appdomain.cloud/info`](http://patientui-health-example.myopenshift-341665-66631af3eb2bd8030c5bb56d415b8851-0001.us-east.containers.appdomain.cloud/jee.html)
+{% endhint %}
 
-    b. Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right.
+## OpenShift Logging
 
-1. Create an OpenShift Project
+Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods`. You'll see two pods here, one for the build \(that's already completed\), and one for the pod that is running your application.
 
-    Go to the Web Console for your OpenShift cluster and create a project:
+![](../.gitbook/assets/pods.png)
 
-    ![create project](./images/createproject.png)
+Click into the `Running` pod and navigate to the `Logs` tab. You should see the Node.js application start-up logs, as well as periodic logs from your curl loop.
 
-    Click on your new project. You should see a view that looks like this:
+![](../.gitbook/assets/logs.png)
 
-    ![project](./images/projectview.png)
+## OpenShift Terminal
 
-    Click on the browse catalog button to see the images available to build with and scroll down to the Node image. Click on the 'Node.js' icon.
+One of the great things about Kuberentes is the ability to quickly debug your application pods with SSH terminals. This is great for development, but generally is not recommended in production environments. OpenShift makes it even easier by allowing you to launch a terminal directly in the dashboard.
 
-    ![node](./images/node.png)
+Switch to the `Terminal` tab, and run the following commands.
 
-    Click through to the second step for configuration, and choose advanced options ( a hyperlink on the bottom line )
+```text
+# See the project files
+$ ls
+# See the running processes
+$ ps aux
+```
 
-    ![config](./images/advanced.png)
+![](../.gitbook/assets/terminal.png)
 
-    You'll see and advanced form like this:
+## OpenShift Monitoring
 
-    ![form](./images/node-advanced-form.png)
+When deploying new apps, making configuration changes, or simply inspecting the state of your cluster, the OpenShift monitoring dashboard gives you an overview of your running assets. Access the Dashboard now by going to the `Monitoring` tab.
 
-    Enter the repository: `https://github.com/IBM/node-s2i-openshift` and `/site` for the Context Dir. Click 'Create' at the bottom of the window to build and deploy the application.
+You can also dive in a bit deeper - the `Events` view is very useful for identifying the timeline of events and finding potential error messages. Hit the "View Details" button on the top right.
 
-    Scroll through to watch the build deploying:
+![](../.gitbook/assets/viewdetails.png)
 
-    ![build](./images/build.png)
-
-    When the build has deployed, click the External Traffic Route, and you should see the login screen:
-
-    ![login](./images/login.png)
-
-    You can enter any strings for username and password, for instance test/test ... because the app is just running in demo mode.
-
-    And you've deployed a node app to kubernetes using OpenShift S2I.
-
-## Understanding What Happened
-
-TODO: Explain OpenShift S2I
-
-### [Continue to Exercise 3 - Scaling the App](../exercise-3/README.md)
+You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.
