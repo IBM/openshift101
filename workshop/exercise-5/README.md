@@ -1,10 +1,18 @@
 # Exercise 5: Liveness and Readiness Probes
 
-In Kubernetes, liveness and readiness probes are essential for smoothly running applications. A probe is generally a REST `GET` call, but there are other types of probes available. Liveness probes are used to determine when to restart a container. For example, an application that is unhealthy and no-longer responding to to an API call would be restarted by OpenShift. Readiness probes determine when a container is ready to start receiving traffic. If a readiness probe fails, then the load balancer would deregister that service.
+In Kubernetes, liveness and readiness probes are essential for smoothly running applications.
+A probe is generally a REST `GET` call, but there are other types of probes available.
+Liveness probes are used to determine when to restart a container. For example, an
+application that is unhealthy and no longer responding to an API call would be
+restarted by OpenShift. Readiness probes determine when a container is ready to
+start receiving traffic. If a readiness probe fails, then the load balancer
+would deregister that service.
 
 ## Create Readiness and Liveness Probes
 
-The `/info` endpoint on the Example Health application is a great way to check whether the application is running and responding to API calls -- it responds with a simple JSON payload.
+The `/info` endpoint on the Example Health application is a great way to check
+whether the application is running and responding to API calls -- it responds
+with a simple JSON payload.
 
 Navigate to your deployment and choose `Actions > Edit Health Checks`.
 
@@ -18,7 +26,7 @@ Add a liveness probe:
 
 ![](../.gitbook/assets/screen-shot-2019-08-13-at-11.16.22-pm.png)
 
-Hit Save.
+Click Save.
 
 If all works, everything should be the same. Let's check that the probes are really working though.
 
@@ -36,4 +44,4 @@ Using health checks gives your OpenShift service layer better reliability and he
 
 ## You're done! What's next?
 
-Congratulations on completing the lab! To learn more, check out the optional courses and certifications we have available.
+Congratulations on completing the lab!

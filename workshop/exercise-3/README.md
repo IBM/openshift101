@@ -1,12 +1,10 @@
 # Exercise 3: Metrics and Dashboards
 
-In this exercise, we'll explore the third-party monitoring and metrics dashboards that are installed.
+In this exercise, we'll explore the third-party monitoring and metrics dashboards that are installed for free with OpenShift!
 
 ## Grafana
 
-Red Hat OpenShift on IBM Cloud comes with Grafana preinstalled. Get started by switching to the `Cluster Console` view:
-
-
+Red Hat OpenShift on IBM Cloud comes with [Grafana](https://grafana.com/) preinstalled. Get started by switching to the `Cluster Console` view:
 
 ![create project](../.gitbook/assets/clusterconsole.png)
 
@@ -28,12 +26,17 @@ You should be able to see the CPU and Memory usage for your application. In prod
 
 Navigating back to the cluster console, you can also launch:
 
-* **Prometheus** - a monitoring system with an efficient time series database
-* **Alertmanager** - an extension of Prometheus focused on managing alerts
+* **[Prometheus](https://prometheus.io/)** - a monitoring system with an efficient time series database
+* **[Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)** - an extension of Prometheus focused on managing alerts
 
 ![Metrics, Alerts and Dashboards](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.57-pm.png)
 
+## Prometheus
+
 ![Prometheus](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.08-pm.png)
+
+## Alertmanager
 
 ![Alert Manager](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.23-pm.png)
 
+## [Continue to Exercise 4](exercise-4/README.md)

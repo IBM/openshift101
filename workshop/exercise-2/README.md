@@ -6,19 +6,19 @@ In this exercise, we'll explore the out-of-the-box logging and monitoring capabi
 
 First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
 
-```text
+```bash
 while sleep 1; do curl -s <your_app_route>/info; done
 ```
 
 {% hint style="info" %}
-Note: Retrieve the external URL from the OpenShift console, or from the URL of your Example Health application. Note that there may be an `/index.html` at the end that you need to replace with `/info`. We're hitting the /info endpoint which will trigger some logs from our app. For example: 
+Note: Retrieve the external URL from the OpenShift console, or from the URL of your Example Health application. Note that there may be an `/index.html` at the end that you need to replace with `/info`. We're hitting the /info endpoint which will trigger some logs from our app. For example:
 
 [`http://patientui-health-example.myopenshift-xxx.us-east.containers.appdomain.cloud/info`](http://patientui-health-example.myopenshift-341665-66631af3eb2bd8030c5bb56d415b8851-0001.us-east.containers.appdomain.cloud/jee.html)
 {% endhint %}
 
 ## OpenShift Logging
 
-Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods`. You'll see two pods here, one for the build \(that's already completed\), and one for the pod that is running your application.
+Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods` menu on the left on the console. You'll see two pods here, one for the build \(that's already :heavy_check_mark: Completed\), and one for the pod that is running your application.
 
 ![](../.gitbook/assets/pods.png)
 
@@ -32,10 +32,10 @@ One of the great things about Kuberentes is the ability to quickly debug your ap
 
 Switch to the `Terminal` tab, and run the following commands.
 
-```text
-# See the project files
+```bash
+# This command shows you the the project files.
 $ ls
-# See the running processes
+# This command shows you the running processes.
 $ ps aux
 ```
 
@@ -43,10 +43,12 @@ $ ps aux
 
 ## OpenShift Monitoring
 
-When deploying new apps, making configuration changes, or simply inspecting the state of your cluster, the OpenShift monitoring dashboard gives you an overview of your running assets. Access the Dashboard now by going to the `Monitoring` tab.
+When deploying new apps, making configuration changes, or simply inspecting the state of your cluster, the OpenShift monitoring dashboard gives you an overview of your running assets. Access the Dashboard now by going to the `Monitoring` tab on the left side menu.
 
-You can also dive in a bit deeper - the `Events` view is very useful for identifying the timeline of events and finding potential error messages. Hit the "View Details" button on the top right.
+You can also dive in a bit deeper - the `Events` view is very useful for identifying the timeline of events and finding potential error messages. Hit the 'View Details' button on the top right.
 
 ![](../.gitbook/assets/viewdetails.png)
 
 You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.
+
+## [Continue to Exercise 3](exercise-3/README.md)
