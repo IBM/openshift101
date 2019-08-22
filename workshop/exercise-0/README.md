@@ -4,7 +4,7 @@ You must already have an IBM account, with a cluster created or assigned to you 
 
 ## Install OpenShift CLI tools
 
-1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location. Please double check the latest release here: (OpenShift Origin Releases)[https://github.com/openshift/origin/releases/]
+1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location. Please double check the latest release here: [OpenShift Origin Releases](https://github.com/openshift/origin/releases/)
 
    a. Download tarball of the tools
 

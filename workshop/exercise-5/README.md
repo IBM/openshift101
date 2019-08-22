@@ -16,15 +16,15 @@ with a simple JSON payload.
 
 Navigate to your deployment and choose `Actions > Edit Health Checks`.
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-11.05.38-pm.png)
+![Health Checks](../.gitbook/assets/screen-shot-2019-08-13-at-11.05.38-pm.png)
 
 Add a readiness probe:
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-11.06.13-pm.png)
+![Readiness](../.gitbook/assets/screen-shot-2019-08-13-at-11.06.13-pm.png)
 
 Add a liveness probe:
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-11.16.22-pm.png)
+![Liveness](../.gitbook/assets/screen-shot-2019-08-13-at-11.16.22-pm.png)
 
 Click Save.
 
@@ -34,14 +34,14 @@ If all works, everything should be the same. Let's check that the probes are rea
 
 Let's edit the probe with a typo to see what happens when it fails. Edit the health check and change the path for the readiness probe to `/badpath`. Wait a few minutes and check your deployment - you'll notice that `0/1` containers are ready:
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-11.12.52-pm.png)
+![Badpath](../.gitbook/assets/screen-shot-2019-08-13-at-11.12.52-pm.png)
 
 Dive into your events and you'll see that the probe is failing, causing the platform to try and repeatedly restart your pod.
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-11.13.02-pm.png)
+![Deeper Dive](../.gitbook/assets/screen-shot-2019-08-13-at-11.13.02-pm.png)
 
 Using health checks gives your OpenShift service layer better reliability and helps you start with a strong foundation.
 
-## You're done! What's next?
+## You're done
 
 Congratulations on completing the lab!

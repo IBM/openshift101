@@ -10,7 +10,12 @@ Navigate to `Applications > Deployments`, then choose your deployment. Then, cho
 
 ![Add Resource Limits](../.gitbook/assets/screen-shot-2019-08-13-at-9.54.54-pm.png)
 
-Hopefully you have your running script simulating load (if not go [here](../exercise-2/README.md#simulate-load-on-the-application)), Grafana showed you that your application was consuming anywhere between ".002" to ".02" cores. This translates to 2-20 "millicores". That seems like a good range for our CPU request, but to be safe, let's bump the higher-end up to 30 millicores. In addition, Grafana showed that the app consumes about `25`-`35` MB of RAM. Set the following resource limits for your deployment now.
+Hopefully you have your running script simulating load (if not go [here](../exercise-2/README.md#simulate-load-on-the-application)),
+Grafana showed you that your application was consuming anywhere between ".002" to
+".02" cores. This translates to 2-20 "millicores". That seems like a good range for
+our CPU request, but to be safe, let's bump the higher-end up to 30 millicores. In
+addition, Grafana showed that the app consumes about `25`-`35` MB of RAM. Set the
+following resource limits for your deployment now.
 
 ![Recommended Resource Limits](../.gitbook/assets/screen-shot-2019-08-13-at-10.02.34-pm.png)
 
@@ -54,7 +59,7 @@ That's it! You now have a highly available and automatically scaled front-end No
 
 Find the Autoscaler information in the Deployment.
 
-![](../.gitbook/assets/screen-shot-2019-08-13-at-10.16.59-pm.png)
+![Autoscaler Deployment](../.gitbook/assets/screen-shot-2019-08-13-at-10.16.59-pm.png)
 
 If you're interested in setting up the CLI, [follow the steps here](exercise-1.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
 

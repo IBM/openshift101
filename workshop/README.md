@@ -11,20 +11,15 @@ In this lab we'll cover using the OpenShift platform on the IBM Cloud and the co
 * Kubernetes Basics
 * OpenShift Basics
 * Deploying an application
-  * Source-to-Image \(s2i\)
+    * Source-to-Image \(s2i\)
 * Reading logs and monitoring the application
-  * Console Logs
-  * Terminal/SSH
-  * Grafana
+    * Console Logs
+    * Terminal/SSH
+    * Grafana
 * Scaling the application
-  * Horizontal Pod Autoscaler
-  * Resource Limits
+    * Horizontal Pod Autoscaler
+    * Resource Limits
 * Health Checks
-  * Readiness and Liveness Probes
+    * Readiness and Liveness Probes
 
 ## [Get Started](GETSTARTED.md)
-
-### Lab Instructors
-
-* Sai Vennam, IBM Cloud Offering Manager
-* ...

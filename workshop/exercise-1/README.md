@@ -10,35 +10,35 @@ Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/
 
 Create a project, you can title it whatever you like, we suggest "example-health."
 
-![](../.gitbook/assets/createproject.png)
+![Create Project](../.gitbook/assets/createproject.png)
 
 Click on your new project. You should see a view that looks like this:
 
-![](../.gitbook/assets/projectview.png)
+![Project View](../.gitbook/assets/projectview.png)
 
 Click on the browse catalog button and scroll down to the `Node.js` image. Click on that catalog button.
 
-![](../.gitbook/assets/node.png)
+![Node](../.gitbook/assets/node.png)
 
 Click through to the second step for configuration, and choose `advanced options`. \( a blue hyperlink on the bottom line \)
 
 <!-- Mofi: to add a box around the image -->
 
-![](../.gitbook/assets/advanced.png)
+![Advanced](../.gitbook/assets/advanced.png)
 
 You'll see an advanced form like this:
 
-![](../.gitbook/assets/node-advanced-form.png)
+![Node Advanced Form](../.gitbook/assets/node-advanced-form.png)
 
 Enter the repository: `https://github.com/IBM/node-s2i-openshift` and `/site` for the 'Context Dir'. Click 'Create' at the bottom of the window to build and deploy the application.
 
 Scroll through to watch the build deploying:
 
-![](../.gitbook/assets/build.png)
+![Build](../.gitbook/assets/build.png)
 
 When the build has deployed, click the 'External Traffic Route', and you should see the login screen like the following:
 
-![](../.gitbook/assets/login.png)
+![Login](../.gitbook/assets/login.png)
 
 You can enter any strings for username and password, for instance `test:test` because the app is running in demo mode.
 

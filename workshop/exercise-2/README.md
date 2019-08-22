@@ -20,11 +20,11 @@ Note: Retrieve the external URL from the OpenShift console, or from the URL of y
 
 Since we only created one pod, seeing our logs will be straight forward. Navigate to `Applications > Pods` menu on the left on the console. You'll see two pods here, one for the build \(that's already :heavy_check_mark: Completed\), and one for the pod that is running your application.
 
-![](../.gitbook/assets/pods.png)
+![Pods](../.gitbook/assets/pods.png)
 
 Click into the `Running` pod and navigate to the `Logs` tab. You should see the Node.js application start-up logs, as well as periodic logs from your curl loop.
 
-![](../.gitbook/assets/logs.png)
+![Logs](../.gitbook/assets/logs.png)
 
 ## OpenShift Terminal
 
@@ -39,7 +39,7 @@ $ ls
 $ ps aux
 ```
 
-![](../.gitbook/assets/terminal.png)
+![Terminal](../.gitbook/assets/terminal.png)
 
 ## OpenShift Monitoring
 
@@ -47,7 +47,7 @@ When deploying new apps, making configuration changes, or simply inspecting the 
 
 You can also dive in a bit deeper - the `Events` view is very useful for identifying the timeline of events and finding potential error messages. Hit the 'View Details' button on the top right.
 
-![](../.gitbook/assets/viewdetails.png)
+![View Details](../.gitbook/assets/viewdetails.png)
 
 You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.
 
