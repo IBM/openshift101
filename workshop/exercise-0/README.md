@@ -1,10 +1,10 @@
 # Setup CLI Access for the Cluster
 
-You must already have an IBM account, with a cluster created or assigned to you as documented in [Get Started](../getstarted.md).
+You must already have an IBM account, with a cluster created or assigned to you as documented in [Get Started](../../GETSTARTED.md).
 
 ## Install OpenShift CLI tools
 
-1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location.
+1. Download and unpack OpenShift cli tools. The `oc` utility is your main gateway into OpenShift. We'll add them to your path in a convenient location. Please double check the latest release here: [OpenShift Origin Releases](https://github.com/openshift/origin/releases/)
 
    a. Download tarball of the tools
 
@@ -42,7 +42,7 @@ You must already have an IBM account, with a cluster created or assigned to you 
 
 ## Access the OpenShift Web UI
 
-1. Launch the OpenShift web console. 
+1. Launch the OpenShift web console.
    1. Navigate to the [IBM Cloud Clusters Dashboard](https://cloud.ibm.com/kubernetes/clusters)
    2. Find your cluster and click it
    3. Click `OpenShift Web Console` on the top right
@@ -77,3 +77,5 @@ You should see a success message.
    ```text
    oc get projects
    ```
+
+## [Continue to Exercise 1](exercise-1/README.md)
