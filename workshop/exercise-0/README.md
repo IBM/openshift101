@@ -1,4 +1,4 @@
-# Setup CLI Access for the Cluster
+# Setup CLI Access for the cluster
 
 You must already have an IBM account, with a cluster created or assigned to you as documented in [Get Started](../../GETSTARTED.md).
 
@@ -77,5 +77,3 @@ You should see a success message.
    ```text
    oc get projects
    ```
-
-## [Continue to Exercise 1](exercise-1/README.md)

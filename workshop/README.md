@@ -21,5 +21,3 @@ In this lab we'll cover using the OpenShift platform on the IBM Cloud and the co
     * Resource Limits
 * Health Checks
     * Readiness and Liveness Probes
-
-## [Get Started](GETSTARTED.md)
