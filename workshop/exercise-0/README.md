@@ -8,35 +8,35 @@ You must already have an IBM account, with a cluster created or assigned to you 
 
    a. Download tarball of the tools
 
-   ```text
+   ```bash
     wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
    ```
 
    b. Unpack
 
-   ```text
+   ```bash
     tar -xvzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
    ```
 
    c. Rename for ease of use
 
-   ```text
+   ```bash
     mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit ${HOME}/oc-cli
    ```
 
    d. Set Path. Note that if you restart your cloud shell, you may need to re-run this command.
 
-   ```text
+   ```bash
     export PATH=${PATH}:${HOME}/oc-cli
    ```
 
    e. Verify the utility is available by using `which` and the help
 
-```text
+```bash
     which oc
 ```
 
-```text
+```bash
     oc help
 ```
 
@@ -52,7 +52,7 @@ You must already have an IBM account, with a cluster created or assigned to you 
 
 1. Paste the login command you copied from the Web UI.
 
-```text
+```bash
 oc login https://c100-e.us-east.containers.cloud.ibm.com:39813 --token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -62,18 +62,18 @@ You should see a success message.
 
    a. View nodes in the cluster.
 
-   ```text
+   ```bash
    oc get node
    ```
 
    b. View services, deployments, and pods.
 
-   ```text
+   ```bash
    oc get svc,deploy,po --all-namespaces
    ```
 
    c. View all OpenShift projects
 
-   ```text
+   ```bash
    oc get projects
    ```
