@@ -1,4 +1,4 @@
-# Exercise 1: Using OpenShift
+n# Exercise 1: Using OpenShift
 
 In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
@@ -47,5 +47,3 @@ Congrats! You've deployed a `Node.js` app to Kubernetes using OpenShift Source-t
 ## Understanding What Happened
 
 [S2I](https://docs.openshift.com/container-platform/3.6/architecture/core_concepts/builds_and_image_streams.html#source-build) is a framework that creates container images from source code, then runs the assembled images as a containers. It allows developers to build reproducible images easily, letting them spend time on what matters most, developing their code!
-
-## [Continue to Exercise 2](exercise-2/README.md)

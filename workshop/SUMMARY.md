@@ -2,6 +2,7 @@
 
 * [Workshop](README.md)
     * [Create account and get cluster](GETSTARTED.md)
+    * [Setup CLI Access for the cluster](exercise-0/README.md)
     * [Accessing the cluster](exercise-1/README.md)
     * [Using OpenShift](exercise-2/README.md)
     * [Deploy Example Application](exercise-3/README.md)

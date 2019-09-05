@@ -50,5 +50,3 @@ You can also dive in a bit deeper - the `Events` view is very useful for identif
 ![View Details](../.gitbook/assets/viewdetails.png)
 
 You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.
-
-## [Continue to Exercise 3](exercise-3/README.md)
