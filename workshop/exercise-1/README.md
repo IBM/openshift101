@@ -4,8 +4,6 @@ In this exercise, you'll deploy a simple Node.js Express application - "Example 
 
 ## Deploy Example Health
 
-<!-- Mofi: Put a screen shot here showing off the Dashboard per the cluster -->
-
 Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
 
 Create a project, you can title it whatever you like, we suggest "example-health."
@@ -21,8 +19,6 @@ Click on the browse catalog button and scroll down to the `Node.js` image. Click
 ![Node](../.gitbook/assets/node.png)
 
 Click through to the second step for configuration, and choose `advanced options`. \( a blue hyperlink on the bottom line \)
-
-<!-- Mofi: to add a box around the image -->
 
 ![Advanced](../.gitbook/assets/advanced.png)
 
@@ -50,9 +46,9 @@ Congrats! You've deployed a `Node.js` app to Kubernetes using OpenShift Source-t
 
 ## Git Webhooks
 
-So far we have been doing alot of manual deployment. In cloud-native world we want to move away from manual work and move toward automation. Wouldn't it be nice if our application rebuilt on git push events? Git webhooks are the way its done and openshift comes bundled in with git webhooks. Let's set it up for our project. 
+So far we have been doing alot of manual deployment. In cloud-native world we want to move away from manual work and move toward automation. Wouldn't it be nice if our application rebuilt on git push events? Git webhooks are the way its done and openshift comes bundled in with git webhooks. Let's set it up for our project.
 
-To be able to setup git webhook we need to have elevated permission to the project. The repo we have been using so far we don't own it. But since its opensource we can easily fork it and make it our own. 
+To be able to setup git webhook we need to have elevated permission to the project. The repo we have been using so far we don't own it. But since its opensource we can easily fork it and make it our own.
 
 Fork the repo at [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
@@ -64,7 +60,7 @@ Now that I have forked the repo under my repo I have full admin priviledges. As 
 
 We will come back to this page in a moment. Lets change our git source to our repo.
 
-From our openshift dashboard for our project. Select `Builds > Builds` 
+From our openshift dashboard for our project. Select `Builds > Builds`
 
 ![Goto Build](../.gitbook/assets/goto-build.png)
 
@@ -72,7 +68,7 @@ Select the patientui build. As of now this should be the only build on screen.
 
 ![Select Build](../.gitbook/assets/select-build.png)
 
-Click on `Action` on the right and then select `Edit` 
+Click on `Action` on the right and then select `Edit`
 
 ![Edit Build](../.gitbook/assets/edit-build.png)
 
@@ -84,7 +80,7 @@ Click Save in the bottom.
 
 You will see this will not result in a new build. If you want to start a manual build you can do so by clicking `Start Build`. We will skip this for now and move on to the webhook part.
 
-Click on `Configuration` tab. 
+Click on `Configuration` tab.
 
 Copy the GitHub Webook URL.
 
@@ -113,9 +109,9 @@ Click on `Add webhook`
 
 ![add webhook](../.gitbook/assets/add-webhook.png)
 
-If the webhook is reachable by github you will see a green check mark. 
+If the webhook is reachable by github you will see a green check mark.
 
-Back in our openshift console we still would only see one build however. Because we added a webhook that sends us push events and we have no push event happening. Lets make one. The easiest way to do it is probably from the Github UI. Lets change some text in the login page. 
+Back in our openshift console we still would only see one build however. Because we added a webhook that sends us push events and we have no push event happening. Lets make one. The easiest way to do it is probably from the Github UI. Lets change some text in the login page.
 
 Path to this file is `site/public/login.html` from the root of the directory. On Github you can edit any file by clicking the Pencil icon on the top right corner.
 
@@ -126,13 +122,13 @@ Let's change the name our application to `Demo Health` (Line 21, Line 22). Feel 
 
 ![changes](../.gitbook/assets/changes.png)
 
-Once done go to the bottom and click `commit changes`. 
+Once done go to the bottom and click `commit changes`.
 
 Go to the openshift build page again. This happens quite fast so you might not see the running state. But the moment we made that commit a build was kicked off.
 
 ![running build](../.gitbook/assets/running-build.png)
 
-In a moment it will show completed. Navigate to the overview page to find the route. 
+In a moment it will show completed. Navigate to the overview page to find the route.
 
 ![route](../.gitbook/assets/route.png)
 
@@ -141,4 +137,3 @@ In a moment it will show completed. Navigate to the overview page to find the ro
 If you go to your new route you will see your change.
 
 ![UI](../.gitbook/assets/updated-ui.png)
-

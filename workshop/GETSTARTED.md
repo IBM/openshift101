@@ -26,7 +26,6 @@ In this section, you will login to your own IBM Cloud account, and then get acce
 
 9. Launch the **OpenShift web console** and have a look around! You can come back to this dashboard throughout your lab.
 
-
 <!-- put the vcpi URL here -->
 [vcpi_code]: https://cloud.ibm.com
 <!-- put the grant cluster URL here -->
