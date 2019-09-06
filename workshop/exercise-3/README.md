@@ -10,7 +10,7 @@ Red Hat OpenShift on IBM Cloud comes with [Grafana](https://grafana.com/) preins
 
 Then Navigate to `Monitoring > Dashboards` in the left-hand bar. You'll be asked to login with OpenShift and then click through some permissions.
 
-![Monitoring Dashboards](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.57-pm.png)
+![Monitoring Dashboards](../.gitbook/assets/monitoring-dashboard.png)
 
 You should then see your Grafana dashboard. Hit `Home` on the top left, and choose `K8s / Compute Resources / Namespace`.
 
@@ -29,12 +29,12 @@ Navigating back to the cluster console, you can also launch:
 * **[Prometheus](https://prometheus.io/)** - a monitoring system with an efficient time series database
 * **[Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)** - an extension of Prometheus focused on managing alerts
 
-![Metrics, Alerts and Dashboards](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.57-pm.png)
+![Metrics, Alerts and Dashboards](../.gitbook/assets/monitoring-dashboard.png)
 
 ## Prometheus
 
-![Prometheus](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.08-pm.png)
+![Prometheus](../.gitbook/assets/prometheus-time-series.png)
 
 ## Alertmanager
 
-![Alert Manager](../.gitbook/assets/screen-shot-2019-08-13-at-11.22.23-pm.png)
+![Alert Manager](../.gitbook/assets/alert-manager.png)
