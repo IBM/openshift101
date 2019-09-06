@@ -86,12 +86,11 @@ Copy the GitHub Webook URL.
 
 The webhook is in the structure
 
-```
+```text
 https://c100-e.us-east.containers.cloud.ibm.com:31305/apis/build.openshift.io/v1/namespaces/example-health/buildconfigs/patientui/webhooks/<secret>/github
 ```
 
 Make note of the secret. (Its the Alpha-Numeric string between `webhooks` and `github`) We will need it in the next step.
-
 
 ![Copy github webhook](../.gitbook/assets/copy-github-webhook.png)
 
@@ -114,7 +113,6 @@ If the webhook is reachable by github you will see a green check mark.
 Back in our openshift console we still would only see one build however. Because we added a webhook that sends us push events and we have no push event happening. Lets make one. The easiest way to do it is probably from the Github UI. Lets change some text in the login page.
 
 Path to this file is `site/public/login.html` from the root of the directory. On Github you can edit any file by clicking the Pencil icon on the top right corner.
-
 
 ![edit page](../.gitbook/assets/edit-page.png)
 
