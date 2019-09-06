@@ -124,6 +124,8 @@ Path to this file is `site/public/login.html` from the root of the directory. On
 
 Let's change the name our application to `Demo Health` (Line 21, Line 22). Feel free to make any other UI changes you feel like.
 
+![changes](../.gitbook/assets/changes.png)
+
 Once done go to the bottom and click `commit changes`. 
 
 Go to the openshift build page again. This happens quite fast so you might not see the running state. But the moment we made that commit a build was kicked off.
