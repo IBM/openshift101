@@ -2,9 +2,12 @@
 
 1. Get the source code for the Guestbook app
 
-	* Clone the repo to your localhost,
+	* Fork the repository `https://github.com/IBM/node-s2i-openshift` to your own organization, 
+
+	* Clone the forked repo in your own organization to your localhost,
+
 		```console
-		$ git clone https://github.com/IBM/node-s2i-openshift
+		$ git clone https://github.com/<username>/node-s2i-openshift
 		Cloning into 'node-s2i-openshift'...
 		remote: Enumerating objects: 94, done.
 		remote: Counting objects: 100% (94/94), done.
@@ -81,20 +84,20 @@
 	Login Succeeded
 	
 	$ docker push <username>/example-health:1.0.0
-	The push refers to repository [docker.io/remkohdev/example-health]
+	The push refers to repository [docker.io/<username>/example-health]
 	b33f2248b6f9: Pushed 
 	195f723f9ebb: Pushed 
 	0912774a40f4: Pushed 
 	3558c6f90d27: Pushed 
-	4d1d690b5181: Mounted from remkohdev/guestbook-api 
-	bc272904b2c4: Mounted from remkohdev/guestbook-api 
-	784c13bc7926: Mounted from remkohdev/guestbook-api 
-	0e0d79e2c080: Mounted from remkohdev/guestbook-api 
-	e9dc98463cd6: Mounted from remkohdev/guestbook-api 
+	4d1d690b5181: Mounted from <username>/guestbook-api 
+	bc272904b2c4: Mounted from <username>/guestbook-api 
+	784c13bc7926: Mounted from <username>/guestbook-api 
+	0e0d79e2c080: Mounted from <username>/guestbook-api 
+	e9dc98463cd6: Mounted from <username>/guestbook-api 
 	1.0.0: digest: sha256:a329778ce422e3d25ac9ff70b5131a9de26184a1e94b6d08844ea4f361519fd7 size: 2205
 	```
 
-3. Login to the Remote OpenShift Cluster
+1. Login to the Remote OpenShift Cluster
 
 	* Login to the OpenShift cluster web console,
 	* From the logged in user drop down in the top right of the web console, select `Copy Login Command`,
@@ -192,3 +195,4 @@
 	* Login with `admin:test`,
 
 		![Example Health details](../images/example-health-app.png)
+
