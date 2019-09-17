@@ -24,6 +24,6 @@ In this lab we'll cover using the OpenShift platform on the IBM Cloud and the co
     * Horizontal Pod Autoscaler
 * Exercise 5 - Health Checks
     * Readiness and Liveness Probes
-* Exercise 6 - Deploying the Guestbook App from CLI
+* Exercise 6 - Deploying the Example Health App from CLI
     * Using a Docker image
 
