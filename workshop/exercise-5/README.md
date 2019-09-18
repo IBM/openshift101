@@ -41,7 +41,3 @@ Dive into your events and you'll see that the probe is failing, causing the plat
 ![Deeper Dive](../.gitbook/assets/events.png)
 
 Using health checks gives your OpenShift service layer better reliability and helps you start with a strong foundation.
-
-## You're done
-
-Congratulations on completing the lab!

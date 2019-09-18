@@ -2,7 +2,7 @@
 
 1. Get the source code for the `Example Health` app
 
-	* Fork the repository `https://github.com/IBM/node-s2i-openshift` to your own organization, 
+	* Fork the repository `https://github.com/IBM/node-s2i-openshift` to your own organization,
 
 	* Clone the forked repo in your own organization to your localhost,
 
@@ -16,7 +16,7 @@
 		Receiving objects: 100% (509/509), 7.27 MiB | 3.12 MiB/s, done.
 		Resolving deltas: 100% (276/276), done.
 		```
-	
+
 	* Run the `Health Example` app on your localhost to make sure it's running correctly,
 
 		```console
@@ -80,20 +80,20 @@
 
 	$ docker tag example-health:latest <username>/example-health:1.0.0
 	$ docker login -u <username>
-	Password: 
+	Password:
 	Login Succeeded
-	
+
 	$ docker push <username>/example-health:1.0.0
 	The push refers to repository [docker.io/<username>/example-health]
-	b33f2248b6f9: Pushed 
-	195f723f9ebb: Pushed 
-	0912774a40f4: Pushed 
-	3558c6f90d27: Pushed 
-	4d1d690b5181: Mounted from <username>/example-health 
-	bc272904b2c4: Mounted from <username>/example-health 
-	784c13bc7926: Mounted from <username>/example-health 
-	0e0d79e2c080: Mounted from <username>/example-health 
-	e9dc98463cd6: Mounted from <username>/example-health 
+	b33f2248b6f9: Pushed
+	195f723f9ebb: Pushed
+	0912774a40f4: Pushed
+	3558c6f90d27: Pushed
+	4d1d690b5181: Mounted from <username>/example-health
+	bc272904b2c4: Mounted from <username>/example-health
+	784c13bc7926: Mounted from <username>/example-health
+	0e0d79e2c080: Mounted from <username>/example-health
+	e9dc98463cd6: Mounted from <username>/example-health
 	1.0.0: digest: sha256:a329778ce422e3d25ac9ff70b5131a9de26184a1e94b6d08844ea4f361519fd7 size: 2205
 	```
 
@@ -131,11 +131,11 @@
 		$ oc project
 		Using project "example-health-ns" on server "https://c100-e.us-south.containers.cloud.ibm.com:30403".
 		```
-   
+
 5. Deploy the `Example Health` app using the Docker image,
 
 	* Create the application, and replace <username> by the username of your Docker Hub account,
-  	
+
 		```console
 		$ oc new-app <username>/example-health:1.0.0
 		--> Found Docker image aaf90ce (8 minutes old) from Docker Hub for "<username>/example-health:1.0.0"
@@ -151,7 +151,7 @@
 			service "example-health" created
 		--> Success
 			Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
-			'oc expose svc/example-health' 
+			'oc expose svc/example-health'
 			Run 'oc status' to view your app.
 		```
 
@@ -165,7 +165,7 @@
 		$ oc expose svc/example-health
 		route.route.openshift.io/example-health exposed
 		```
-	
+
 	* View the status,
 
 		```console
@@ -173,7 +173,7 @@
 		In project example-health-ns on server https://c100-e.us-south.containers.cloud.ibm.com:30403
 
 		http://example-health-example-health-ns.cda-openshift-cluster-1c0e8bfb1c68214cf875a9ca7dd1e060-0001.us-south.containers.appdomain.cloud to pod port 3000-tcp (svc/example-health)
-		dc/example-health deploys istag/example-health:1.0.0 
+		dc/example-health deploys istag/example-health:1.0.0
 			deployment #1 deployed 5 minutes ago - 1 pod
 
 		2 infos identified, use 'oc status --suggest' to see details.
@@ -196,3 +196,6 @@
 
 		![Example Health details](../images/example-health-app.png)
 
+## You're done
+
+Congratulations on completing the lab!
