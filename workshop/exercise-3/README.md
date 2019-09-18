@@ -22,7 +22,7 @@ You should be able to see the CPU and Memory usage for your application. In prod
 
 ![Grafana also project](../.gitbook/assets/grafana2.png)
 
-## Promtheus and Alert Manager
+## Prometheus and Alert Manager
 
 Navigating back to the cluster console, you can also launch:
 
