@@ -9,36 +9,35 @@ You must already have an IBM account, with a cluster created or assigned to you 
    a. Download tarball of the tools
 
    ```bash
-    wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+   wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
    ```
 
    b. Unpack
 
    ```bash
-    tar -xvzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+   tar -xvzf openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
    ```
 
    c. Rename for ease of use
 
    ```bash
-    mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit ${HOME}/oc-cli
+   mv openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit ${HOME}/oc-cli
    ```
 
    d. Set Path. Note that if you restart your cloud shell, you may need to re-run this command.
 
    ```bash
-    export PATH=${PATH}:${HOME}/oc-cli
+   export PATH=${PATH}:${HOME}/oc-cli
    ```
 
    e. Verify the utility is available by using `which` and the help
 
-```bash
-    which oc
-```
-
-```bash
-    oc help
-```
+   ```bash
+   which oc
+   ```
+   ```bash
+   oc help
+   ```
 
 ## Access the OpenShift Web UI
 

@@ -6,7 +6,7 @@ In this exercise, we'll leverage the metrics we've observed in the previous step
 
 Before we can setup autoscaling for our pods, we first need to set resource limits on the pods running in our cluster. Limits allows you to choose the minimum and maximum CPU and memory usage for a pod.
 
-Navigate to `Applications > Deployments`, then choose your deployment. Then, choose `Actions > Edit Resource Limits`.
+Switch back to the `Application Console` view and select your project. Navigate to `Applications > Deployments`, then choose your deployment. Then, choose `Actions > Edit Resource Limits`.
 
 ![Add Resource Limits](../.gitbook/assets/edit-resource-limit-step.png)
 
@@ -27,7 +27,7 @@ Hit save. If there's an error saying that the deployment has changed, you may ne
 
 ## Enable Autoscaler
 
-Now that we have resource limits, let's enable autoscaler. Go back to the deployment, but this time choose `Actions > Edit Autoscaler`.
+Now that we have resource limits, let's enable autoscaler. Go back to the deployment, but this time choose `Actions > Add Autoscaler`.
 
 ![Edit Autoscaler](../.gitbook/assets/edit-auto-scaler%20%281%29.png)
 
@@ -45,7 +45,7 @@ Click `Save`.
 
 ## Test Autoscaler
 
-If you're not running the script from the [previous exercise](exercise-2.md#simulate-load-on-the-application), the pods should stay at 1. Check by going to the overview page.
+If you're not running the script from the [previous exercise](../exercise-2/README.md#simulate-load-on-the-application), the pods should stay at 1. Check by going to the overview page.
 
 ![Scaled to 1 pod](../.gitbook/assets/before-scale.png)
 
@@ -61,4 +61,4 @@ Find the Autoscaler information in the Deployment.
 
 ![Autoscaler Deployment](../.gitbook/assets/autoscaling.png)
 
-If you're interested in setting up the CLI, [follow the steps here](exercise-1.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
+If you're interested in setting up the CLI, [follow the steps here](../exercise-1/README.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
