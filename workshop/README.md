@@ -11,19 +11,18 @@ In this lab we'll cover using the OpenShift platform on the IBM Cloud and the co
 * Kubernetes Basics
 * Exercise 0 - OpenShift Basics
 * Exercise 1 - Deploying an application
-    * Source-to-Image \(s2i\)
+  * Source-to-Image \(s2i\)
 * Exercise 2 - Reading logs and monitoring the application
-    * Console Logs
-    * Terminal/SSH
+  * Console Logs
+  * Terminal/SSH
 * Exercise 3 - Monitoring and Alerts
-    * Grafana
-    * Prometheus
-    * Alert Manager
+  * Grafana
+  * Prometheus
+  * Alert Manager
 * Exercise 4 - Scaling the application
-    * Resource Limits
-    * Horizontal Pod Autoscaler
+  * Resource Limits
+  * Horizontal Pod Autoscaler
 * Exercise 5 - Health Checks
-    * Readiness and Liveness Probes
+  * Readiness and Liveness Probes
 * Exercise 6 - Deploying the Example Health App from CLI
-    * Using a Docker image
-
+  * Using a Docker image
