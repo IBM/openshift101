@@ -29,7 +29,7 @@ Hit save. If there's an error saying that the deployment has changed, you may ne
 
 Now that we have resource limits, let's enable autoscaler. Go back to the deployment, but this time choose `Actions > Edit Autoscaler`.
 
-![Edit Autoscaler](../.gitbook/assets/edit-auto-scaler%20%281%29.png)
+![Edit Autoscaler](../.gitbook/assets/edit-auto-scaler.png)
 
 By default, the autoscaler allows you to scale based on CPU or Memory. The UI allows
 you to do CPU only \(for now\). Pods are balanced between the minimum and maximum
@@ -39,7 +39,7 @@ target as defined. In general, you probably want to start scaling up when you ge
 `50`-`90`% of the CPU usage of a pod. In our case, let's make it `1`% to test the autoscaler
 since we are generating minimal load.
 
-![Autoscaler Recommended Values](../.gitbook/assets/autoscale-deployment-config-ui.png)
+![Autoscaler Recommended Values](../.gitbook/assets/autoscale-deploy-config-ui.png)
 
 Click `Save`.
 
