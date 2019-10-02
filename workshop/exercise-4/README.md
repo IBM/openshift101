@@ -61,4 +61,4 @@ Find the Autoscaler information in the Deployment.
 
 ![Autoscaler Deployment](../.gitbook/assets/autoscaling.png)
 
-If you're interested in setting up the CLI, [follow the steps here](../exercise-1/README.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
+If you're interested in setting up the CLI, [follow the steps here](../exercise-0/README.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
