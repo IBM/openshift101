@@ -1,10 +1,8 @@
 notifications:
   email: false
 language: node_js
-node_js: 
+node_js:
   - 10
 script:
-  - npm install
-  - gitbook install
-  - gitbook build
-  - npm test
+  - npm install markdownlint-cli
+  - markdownlint --config .markdownlint.json workshop
