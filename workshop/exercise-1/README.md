@@ -2,6 +2,8 @@
 
 In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
+For an example using the Source-to-Image (S2I) CLI with a Spring Boot application, go [here](README_s2i_cli_spring_boot.md).
+
 ## Deploy Example Health
 
 Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
@@ -28,7 +30,7 @@ You'll see an advanced form like this:
 
 Enter the repository: `https://github.com/IBM/node-s2i-openshift` and `/site` for the 'Context Dir'. Click 'Create' at the bottom of the window to build and deploy the application.
 
-Scroll through to watch the build deploying:
+Click `Continue to the project overview` to go to application details page, and unfold the `DEPLOYMENT CONFIG` to watch the build deploying:
 
 ![Build](../.gitbook/assets/build.png)
 
