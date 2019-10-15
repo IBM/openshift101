@@ -2,7 +2,7 @@
 
 In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
-For an example using the Source-to-Image (S2I) CLI with a Spring Boot application, go [here](README_s2i_cli_spring_boot.md).
+For an example using the Source-to-Image (S2I) CLI with a Spring Boot application, go [here](README_s2i_cli_spring-boot.md).
 
 ## Deploy Example Health
 
