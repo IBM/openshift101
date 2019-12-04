@@ -90,8 +90,6 @@ The webhook is in the structure
 https://c100-e.us-east.containers.cloud.ibm.com:31305/apis/build.openshift.io/v1/namespaces/example-health/buildconfigs/patientui/webhooks/<secret>/github
 ```
 
-Make note of the secret. (Its the Alpha-Numeric string between `webhooks` and `github`) We will need it in the next step.
-
 ![Copy github webhook](../.gitbook/assets/copy-github-webhook.png)
 
 > There is also the generic webhook url. This also works for github. But the github webhook captures some additional data from github and is more specific. But if we were using some other git repo like bitbucket or gitlab we would use the generic one.
@@ -100,7 +98,9 @@ In our github repo go to `Setting > Webhooks`. Then click `Add Webhook`
 
 ![webhook page](../.gitbook/assets/webhook-page.png)
 
-In the Add Webhook page fill in the `Payload URL` with the url copied earlier from the build configuration. Change the `Content type` to `application/json` and fill in the secret.
+In the Add Webhook page fill in the `Payload URL` with the url copied earlier from the build configuration. Change the `Content type` to `application/json`.
+
+> **NOTE**: The *Secret* field can remain empty.
 
 Right now just the push event is being sent which is fine for our use.
 
