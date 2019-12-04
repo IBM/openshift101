@@ -34,9 +34,12 @@ Switch to the `Terminal` tab, and run the following commands.
 
 ```bash
 # This command shows you the the project files.
-$ ls
+ls
+```
+
+```bash
 # This command shows you the running processes.
-$ ps aux
+ps aux
 ```
 
 ![Terminal](../.gitbook/assets/terminal.png)
