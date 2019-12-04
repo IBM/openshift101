@@ -7,7 +7,8 @@
     * Clone the forked repo in your own organization to your localhost,
 
         ```console
-        $ git clone https://github.com/<username>/node-s2i-openshift
+        git clone https://github.com/<username>/node-s2i-openshift
+
         Cloning into 'node-s2i-openshift'...
         remote: Enumerating objects: 94, done.
         remote: Counting objects: 100% (94/94), done.
@@ -58,10 +59,11 @@
     * Run the app with Docker,
 
         ```console
-        $ docker stop example-health
-        $ docker rm example-health
-        $ docker build --no-cache -t example-health .
-        $ docker run -d --restart always --name example-health -p 3000:3000 example-health
+        docker stop example-health
+        docker rm example-health
+        docker build --no-cache -t example-health .
+        docker run -d --restart always --name example-health -p 3000:3000 example-health
+
         da106f3b5a06a00ea8bf56c54e29f6e38405a77c6dec3e461e3062aa823d8a4f
         ```
 
@@ -70,20 +72,30 @@
     * Make sure to change the `<username>` by the username of your Docker Hub account,
 
     ```bash
-    $ docker build --no-cache -t example-health .
+    docker build --no-cache -t example-health .
+
     Sending build context to Docker daemon  8.229MB
     Step 1/10 : FROM node:10-slim
      ---> 8d33f30db9b5
     ... and more
     Successfully built aaf90ce81dd7
     Successfully tagged example-health:latest
+    ```
 
-    $ docker tag example-health:latest <username>/example-health:1.0.0
-    $ docker login -u <username>
+    ```bash
+    docker tag example-health:latest <username>/example-health:1.0.0
+    ```
+
+    ```bash
+    docker login -u <username>
+
     Password:
     Login Succeeded
+    ```
 
-    $ docker push <username>/example-health:1.0.0
+    ```bash
+    docker push <username>/example-health:1.0.0
+
     The push refers to repository [docker.io/<username>/example-health]
     b33f2248b6f9: Pushed
     195f723f9ebb: Pushed
