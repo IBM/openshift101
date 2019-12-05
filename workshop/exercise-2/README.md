@@ -1,4 +1,4 @@
-# Exercise 2: Logging and Monitoring
+# Exercise 2: Logging and monitoring
 
 In this exercise, we'll explore the out-of-the-box logging and monitoring capabilities that are offered in OpenShift.
 

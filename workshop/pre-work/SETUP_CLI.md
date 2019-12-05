@@ -1,6 +1,6 @@
 # Setup CLI Access for the cluster
 
-You must already have an IBM account, with a cluster created or assigned to you as documented in [Get Started](../../GETSTARTED.md).
+You must already have an IBM account, with a cluster created or assigned to you as documented in [Get Started](GET_STARTED.md).
 
 ## Install OpenShift CLI tools
 

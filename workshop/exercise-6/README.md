@@ -1,4 +1,4 @@
-# Exercise 6: Deploying the Example Health App from CLI
+# Exercise 6: Deploying the app using the CLI
 
 1. Get the source code for the `Example Health` app
 
@@ -195,18 +195,18 @@
 
     * Go to `My Projects` via URI `/console/projects`,
 
-        ![My Projects](../images/oc-my-projects.png)
+        ![My Projects](../.gitbook/assets/oc-my-projects.png)
 
     * Select the project `example-health-ns`, unfold the `DEPLOYMENT CONFIG` for `example-health` application details,
 
-        ![Example Health details](../images/oc-example-health-details.png)
+        ![Example Health details](../.gitbook/assets/oc-example-health-details.png)
 
     * In the `NETWORKING` section, click the `Routes - External Traffic` link, e.g. `http://example-health-example-health-ns.cda-openshift-cluster-1c0e8bfb1c68214cf875a9ca7dd1e060-0001.us-south.containers.appdomain.cloud`
 
     * This opens the Example Health app in a new tab of your browser,
     * Login with `admin:test`,
 
-        ![Example Health details](../images/example-health-app.png)
+        ![Example Health details](../.gitbook/assets/example-health-app.png)
 
 ## You're done
 
