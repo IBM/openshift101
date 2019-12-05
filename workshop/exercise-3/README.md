@@ -1,4 +1,4 @@
-# Exercise 3: Metrics and Dashboards
+# Exercise 3: Metrics and dashboards
 
 In this exercise, we'll explore the third-party monitoring and metrics dashboards that are installed for free with OpenShift!
 
