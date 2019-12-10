@@ -26,12 +26,12 @@ Back in IBM Cloud, refresh the [IBM Cloud Dashboard](https://cloud.ibm.com). If 
 
 Click on **Clusters** in the **Resource Summary** tile.
 
-![IBM Dashboard](../.gitbook/assets/dashboard.png)
+![Find the Resource Summary tile](../.gitbook/assets/dashboard.png)
 
 Under **Clusters**, click on the cluster that has been assigned to you.
 
-![IBM Dashboard](../.gitbook/assets/clusters-overview.png)
+![Choose a cluster](../.gitbook/assets/clusters-overview.png)
 
 Launch the **OpenShift web console** and have a look around! You can come back to this dashboard throughout your lab.
 
-![IBM Dashboard](../.gitbook/assets/launch-console.png)
+![Launch the OpenShift web console](../.gitbook/assets/launch-console.png)
