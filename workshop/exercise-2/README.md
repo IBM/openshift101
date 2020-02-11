@@ -34,7 +34,7 @@ Click into the `Running` pod and navigate to the `Logs` tab. You should see the 
 
 ## OpenShift Terminal
 
-One of the great things about Kuberentes is the ability to quickly debug your application pods with SSH terminals. This is great for development, but generally is not recommended in production environments. OpenShift makes it even easier by allowing you to launch a terminal directly in the dashboard.
+One of the great things about Kubernetes is the ability to quickly debug your application pods with SSH terminals. This is great for development, but generally is not recommended in production environments. OpenShift makes it even easier by allowing you to launch a terminal directly in the dashboard.
 
 Switch to the `Terminal` tab, and run the following commands.
 
