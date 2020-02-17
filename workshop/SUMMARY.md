@@ -7,15 +7,19 @@
 
 ### Workshop
 
-* [Exercise 1: Deploying an application](exercise-1/README.md)
-* [Exercise 2: Logging and monitoring](exercise-2/README.md)
-* [Exercise 3: Metrics and dashboards](exercise-3/README.md)
-* [Exercise 4: Scaling the application](exercise-4/README.md)
-* [Exercise 5: Health checks](exercise-5/README.md)
-* [Exercise 6: Deploying the app using the CLI](exercise-6/README.md)
+* [Exercise 1: Deploying an application](exercise-01/README.md)
+* [Exercise 2: Logging and monitoring](exercise-02/README.md)
+* [Exercise 3: Metrics and dashboards](exercise-03/README.md)
+* [Exercise 4: Scaling the application](exercise-04/README.md)
+* [Exercise 5: Health checks](exercise-05/README.md)
+* [Exercise 6: Deploying the app using the CLI](exercise-06/README.md)
+* [Exercise 7: Starting with a Docker Image](exercise-07/README.md)
+* [Exercise 8: Using an existing image](exercise-08/README.md)
+* [Exercise 9: Deploying a Project](exercise-09/README.md)
 
 ### Resources
 
 * [Certification on CognitiveClass.ai](https://cognitiveclass.ai/courses/beyond-the-basics-istio-and-ibm-cloud-kubernetes-service/)
 * [IBM Developer](https://developer.ibm.com)
 * [Docs: Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift)
+* [FAQ](99-faq/README.md)
