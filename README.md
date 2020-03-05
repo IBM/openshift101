@@ -1,3 +1,5 @@
+> This is the canonical source of truth for the **OpenShift 3.11 Workshop**. The master branch is being updated to have instructions for **OpenShift 4.x**. If you are running a workshop using OpenShift 3.11 create a new branch from this one.
+
 # Hands on with OpenShift on IBM Cloud
 
 This is the repository for the OpenShift 101 workshop presented by IBM
