@@ -10,7 +10,7 @@ Red Hat OpenShift on IBM Cloud comes with [Grafana](https://grafana.com/) preins
 
 Then Navigate to `Monitoring > Dashboards` in the left-hand bar. You'll be asked to login with OpenShift and then click through some permissions.
 
-![Monitoring Dashboards](../.gitbook/assets/dashboard-menu)
+![Monitoring Dashboards](../.gitbook/assets/dashboard-menu.png)
 
 This will open up another proxy page, click `Log in with OpenShift`.
 
@@ -18,7 +18,7 @@ Next, it will ask you for `Authorize Access`, take the default which is both che
 
 You should then see your Grafana dashboard. Hit `Home` on the top left, and choose `K8s / Compute Resources / Namespace (Pods)`.
 
-![Grafana](../.gitbook/assets/grafana-namespace)
+![Grafana](../.gitbook/assets/grafana-namespace.png)
 
 Choose the name of the project you created in [Step 1](exercise-2.md#deploy-example-health) - the same one that your application is running inside.
 
