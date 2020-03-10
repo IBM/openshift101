@@ -1,11 +1,6 @@
 # Docker
-This Lab will help you understand basics of Docker technology, you will build, ship, and run a container image.
 
-This workshop is an introduction to Docker, which is a runtime for containers. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
-
-## Docker
-
-For this Lab you will use Docker.
+This tutorial will help you understand basics of Docker technology, you will build, ship, and run Docker. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
 
 ![The Docker architecture - containers are separated from the OS](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
 
@@ -63,7 +58,7 @@ git clone https://github.com/lidderupk/nodejs-docker.git
 
 Change into the directory you just cloned and build the docker image
 
-```
+```bash
 cd nodejs-docker
 docker build -t <docker-username>/node-container .
 ```
@@ -82,29 +77,41 @@ docker build -t <docker-username>/node-container https://github.com/lidderupk/no
 
 This command uses the Dockerfile to download a Node.js 10 base image and then install our Express.js application on top. Let's explore the contents of this docker file ...
 
+```
 FROM node:10
+```
 
 ... builds our image on top of the Node.js 10 image.
 
+```
 WORKDIR /usr/src/app
+```
 
 ... creates a working directory for our application to live in.
 
+```
 COPY package*.json ./
+```
 
 ... copies the package.json file to our working directory. RUN npm install ... install our dependencies. We just have two dependencies in this application: express and ibm-watson.
 
+```
 COPY . .
+```
 
-... copy the rest of our source code into the docker image
+... copy the rest of our source code into the docker image *Note*: In the real world, you should NOT be using `COPY` like this, you need to be explicit on what you want
 
+```
 EXPOSE 8080
+```
 
 ... expose port 8080. We will still have to forward our local port to this docker container port later.
 
+```
 CMD [ "node", "server.js" ]
+```
 
-... starts the application by running node server.js.
+... starts the application by running `node server.js`.
 
 ### Step 5 - Run the docker image
 
@@ -181,6 +188,7 @@ in Polish
 ```bash
 curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+dying+ecosystems+are+collapsing.+We+are+in+the+beginning+of+a+mass+extinction%2C+and+all+you+can+talk+about+is+the+money+and+fairy+tales+of+eternal+economic+growth&lang=en-pl"
 ```
+
 ```json
 {
   "translations": [
