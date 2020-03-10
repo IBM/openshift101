@@ -98,9 +98,6 @@ Change line `21` to `Git Repository URL` to our forked repository, and click `Sa
 
 ![Save Build Config](../.gitbook/assets/nodejs-build-save.png)
 
-
-![Update Build](../.gitbook/assets/update-build-src.png)
-
 You will see this will not result in a new build. If you want to start a manual build you can do so by clicking `Start Build`. We will skip this for now and move on to the webhook part.
 
 Click on the main `Overview` tab.
@@ -113,13 +110,13 @@ The webhook is in the structure
 https://c100-e.us-east.containers.cloud.ibm.com:31305/apis/build.openshift.io/v1/namespaces/example-health/buildconfigs/patientui/webhooks/<secret>/github
 ```
 
-![Copy github webhook](../.gitbook/assets/github-url-secret.png)
+![Copy GitHub Webhook](../.gitbook/assets/github-url-secret.png)
 
 > There is also the generic webhook url. This also works for github. But the github webhook captures some additional data from github and is more specific. But if we were using some other git repo like bitbucket or gitlab we would use the generic one.
 
 In our github repo go to `Setting > Webhooks`. Then click `Add Webhook`
 
-![webhook page](../.gitbook/assets/webhook-page.png)
+![Webhook Page](../.gitbook/assets/webhook-page.png)
 
 In the Add Webhook page fill in the `Payload URL` with the url copied earlier from the build configuration. Change the `Content type` to `application/json`.
 
@@ -129,7 +126,7 @@ Right now just the push event is being sent which is fine for our use.
 
 Click on `Add webhook`
 
-![add webhook](../.gitbook/assets/add-webhook.png)
+![Add Webhook](../.gitbook/assets/add-webhook.png)
 
 If the webhook is reachable by github you will see a green check mark.
 
@@ -137,21 +134,21 @@ Back in our openshift console we still would only see one build however. Because
 
 Path to this file is `site/public/login.html` from the root of the directory. On Github you can edit any file by clicking the Pencil icon on the top right corner.
 
-![edit page](../.gitbook/assets/edit-page.png)
+![Edit Page](../.gitbook/assets/edit-page.png)
 
 Let's change the name our application to `Demo Health` (Line 21, Line 22). Feel free to make any other UI changes you feel like.
 
-![changes](../.gitbook/assets/changes.png)
+![Changes](../.gitbook/assets/changes.png)
 
 Once done go to the bottom and click `commit changes`.
 
 Go to the openshift build page again. This happens quite fast so you might not see the running state. But the moment we made that commit a build was kicked off.
 
-![running build](../.gitbook/assets/nodejs-rebuild-webhook.png)
+![Running Build](../.gitbook/assets/nodejs-rebuild-webhook.png)
 
 In a moment it will show completed. Navigate to the main overview page to find the route.
 
-![route](../.gitbook/assets/nodejs-rebuild-overview.png)
+![Routes](../.gitbook/assets/nodejs-rebuild-overview.png)
 
 > You could also go to `Applications > Routes` to find the route for the application.
 
