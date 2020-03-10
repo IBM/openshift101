@@ -6,35 +6,57 @@ In this exercise, you'll deploy a simple Node.js Express application - "Example 
 
 Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
 
-Create a project, you can title it whatever you like, we suggest "example-health."
+Here is the main dashboard you should see.
 
-![Create Project](../.gitbook/assets/createproject.png)
+![Main Dashboard](../.gitbook/assets/main-dashboard.png)
 
-Click on your new project. You should see a view that looks like this:
+Create a project, on the left hand side, you can title it whatever you like, we suggest "example-health."
 
-![Project View](../.gitbook/assets/projectview.png)
+![Create Project](../gitbook/assets/create-project.png)
 
-Click on the browse catalog button and scroll down to the `Node.js` image. Click on that catalog button.
+And fill it out something like this.
 
-![Node](../.gitbook/assets/node.png)
+![Example Health](../gitbook/assets/example-health-create-project.png)
 
-Click through to the second step for configuration, and choose `advanced options`. \( a blue hyperlink on the bottom line \)
+You should see a view that looks like this.
 
-![Advanced](../.gitbook/assets/advanced.png)
+![New Project View](../.gitbook/assets/example-health-new-project.png)
 
-You'll see an advanced form like this:
+Now click on "Administrator" and select "Developer.
 
-![Node Advanced Form](../.gitbook/assets/node-advanced-form.png)
+![Developer](../.gitbook/assets/change-to-developer.png)
 
-Enter the repository: `https://github.com/IBM/node-s2i-openshift` and `/site` for the 'Context Dir'. Click 'Create' at the bottom of the window to build and deploy the application.
+Click on the browse catalog button.
 
-Scroll through to watch the build deploying:
+![Catalog](../.gitbook/assets/developer-catalog.png)
 
-![Build](../.gitbook/assets/build.png)
+Scroll down to the `Node.js` image. Click on that catalog button.
 
-When the build has deployed, click the 'External Traffic Route', and you should see the login screen like the following:
+![NodeJS](../.gitbook/assets/developer-nodejs.png)
 
-![Login](../.gitbook/assets/login.png)
+Click `Create Application`.
+
+You'll see an form like this:
+
+![Create Source-to-Image Application](../.gitbook/assets/nodejs-gitrepo.png)
+
+Enter the repository: `https://github.com/IBM/node-s2i-openshift`.
+
+Then click the `Show Advanced Git Options`. and `/site` for the 'Context Dir'. Click 'Create' at the bottom of the window to build and deploy the application.
+
+![Context Dir](../.gitbook/assets/nodejs-context.png)
+
+Click on the center circle, then click "Start Build." You should see #1 Build start. You can click on the "View logs" to get more details.
+
+![Build](../.gitbook/assets/nodejs-build.png)
+
+When the build has deployed, find the "Routes." Click on that link:
+
+![Successful Build](../gitbook/assets/nodejs-success.png)
+
+And you should see the login screen like the following:
+
+![Login](../.gitbook/assets/nodejs-login.png)
 
 You can enter any strings for username and password, for instance `test:test` because the app is running in demo mode.
 
