@@ -52,7 +52,7 @@ Click on the center circle, then click "Start Build." You should see #1 Build st
 
 When the build has deployed, find the "Routes." Click on that link:
 
-![Successful Build](../gitbook/assets/nodejs-success.png)
+![Successful Build](../.gitbook/assets/nodejs-success.png)
 
 And you should see the login screen like the following:
 
