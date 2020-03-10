@@ -12,11 +12,11 @@ Here is the main dashboard you should see.
 
 Create a project, on the left hand side, you can title it whatever you like, we suggest "example-health."
 
-![Create Project](../gitbook/assets/create-project.png)
+![Create Project](../.gitbook/assets/create-project.png)
 
 And fill it out something like this.
 
-![Example Health](../gitbook/assets/example-health-create-project.png)
+![Example Health](../.gitbook/assets/example-health-create-project.png)
 
 You should see a view that looks like this.
 
