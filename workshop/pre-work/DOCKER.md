@@ -235,14 +235,14 @@ docker container rm 419104eff9be
 You can now delete the image. You again need the image id.
 
 ```bash
-$ docker images | grep node-container
+docker images | grep node-container
 upkar/node-container                       latest                         8baa6ca9cdac        5 minutes ago       958MB
 ```
 
 Now, delete the image as follows.
 
 ```bash
-$ docker image rm 8baa6ca9cdac
+docker image rm 8baa6ca9cdac
 Untagged: upkar/node-container:latest
 Deleted: sha256:8baa6ca9cdac8868d8e17642e90b433c7aa588a615b59ac9b528fb8635698a6e
 Deleted: sha256:8c279f530b3ff260279f9cb8d22d167d748e53df4f6eab91b089b6c90b4da9f2
