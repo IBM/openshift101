@@ -82,29 +82,30 @@ Now that I have forked the repo under my repo I have full admin priviledges. As 
 
 We will come back to this page in a moment. Lets change our git source to our repo.
 
-From our openshift dashboard for our project. Select `Builds > Builds`
+From our openshift dashboard for our project. Select `Builds`
 
-![Goto Build](../.gitbook/assets/goto-build.png)
+![Build](../.gitbook/assets/nodejs-build-config.png)
 
-Select the patientui build. As of now this should be the only build on screen.
+Select the `node-s-2-i-openshift` build. As of now this should be the only build on screen.
 
-![Select Build](../.gitbook/assets/select-build.png)
+![Select Build](../.gitbook/assets/nodejs-build-select.png)
 
-Click on `Action` on the right and then select `Edit`
+Click on `Action` on the right and then select `Edit Build Config`
 
-![Edit Build](../.gitbook/assets/edit-build.png)
+![Edit Build](../.gitbook/assets/nodejs-build-edit.png)
 
-Change the `Git Repository URL` to our forked repository.
+Change line `21` to `Git Repository URL` to our forked repository, and click `Save`.
 
-Click Save in the bottom.
+![Save Build Config](../.gitbook/assets/nodejs-build-save.png)
+
 
 ![Update Build](../.gitbook/assets/update-build-src.png)
 
 You will see this will not result in a new build. If you want to start a manual build you can do so by clicking `Start Build`. We will skip this for now and move on to the webhook part.
 
-Click on `Configuration` tab.
+Click on the main `Overview` tab.
 
-Copy the GitHub Webook URL.
+Scroll down and click `Copy URL with Secret` for the GitHub Webook URL.
 
 The webhook is in the structure
 
@@ -112,7 +113,7 @@ The webhook is in the structure
 https://c100-e.us-east.containers.cloud.ibm.com:31305/apis/build.openshift.io/v1/namespaces/example-health/buildconfigs/patientui/webhooks/<secret>/github
 ```
 
-![Copy github webhook](../.gitbook/assets/copy-github-webhook.png)
+![Copy github webhook](../.gitbook/assets/github-url-secret.png)
 
 > There is also the generic webhook url. This also works for github. But the github webhook captures some additional data from github and is more specific. But if we were using some other git repo like bitbucket or gitlab we would use the generic one.
 
@@ -146,14 +147,14 @@ Once done go to the bottom and click `commit changes`.
 
 Go to the openshift build page again. This happens quite fast so you might not see the running state. But the moment we made that commit a build was kicked off.
 
-![running build](../.gitbook/assets/running-build.png)
+![running build](../.gitbook/assets/nodejs-rebuild-webhook.png)
 
-In a moment it will show completed. Navigate to the overview page to find the route.
+In a moment it will show completed. Navigate to the main overview page to find the route.
 
-![route](../.gitbook/assets/route.png)
+![route](../.gitbook/assets/nodejs-rebuild-overview.png)
 
 > You could also go to `Applications > Routes` to find the route for the application.
 
 If you go to your new route you will see your change.
 
-![UI](../.gitbook/assets/updated-ui.png)
+![UI](../.gitbook/assets/nodejs-rebuild-updated.png)
