@@ -14,8 +14,7 @@
 * [Exercise 4: Scaling the application](exercise-04/README.md)
 * [Exercise 5: Health checks](exercise-05/README.md)
 * [Exercise 6: Deploying the app using the CLI](exercise-06/README.md)
-* [Exercise 7: Using an existing image](exercise-07/README.md)
-* [Exercise 8: Deploying a Project](exercise-08/README.md)
+* [Exercise 7: Deploying a Full Project](exercise-07/README.md)
 
 ### Resources
 
