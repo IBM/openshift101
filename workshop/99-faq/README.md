@@ -2,15 +2,25 @@
 
 This page would list all know questions and potential problems, with possible answers or remedies.
 
-### Log in to IBM Cloud
+## So what is OpenShift?
+
+To quote Wikipedia:
+
+> OpenShift is a family of containerization software developed by Red Hat. Its flagship product is the OpenShift Container Platform—an on-premises platform as a service built around Docker containers orchestrated and managed by Kubernetes on a foundation of Red Hat Enterprise Linux. The family's other products provide this platform through different environments: OKD serves as the community-driven upstream (akin to Fedora), OpenShift Online is the platform offered as software as a service, and Openshift Dedicated is the platform offered as a managed service.
+
+> The Openshift UI has various functionalities, allowing one to monitor the container resources, container health, the nodes the containers reside on, IP addresses of the nodes, etc. The key store can be accessed via the Secrets in Openshift. The OC CLI command line tool also offers similar functionalities.
+
+But the stort of it? It's a abstraction layer **ON TOP** of Kubernetes. It's a way to empower Developers to deploy code and not worry about a lot of the underlying ecosystem. This workshop should show you the happy path to take advantage of most of the best parts of OpenShift and what it can offer.
+
+## Log in to IBM Cloud
 
 If you have created an IBM Cloud account before as Pay-as-You-Go account you might be needing to create a new account.
 
-### I can't create a new account
+## I can't create a new account
 
 Ask for whitelisting, or use your own smart phone with data plan (do not use local WiFi).
 
-### I don't see the Web Console of OpenShift.
+## I don't see the Web Console of OpenShift.
 
 Try restarting the VPN pod with the following command (log in to the environement using CLI token):
 
@@ -18,7 +28,7 @@ Try restarting the VPN pod with the following command (log in to the environemen
 $ kubectl delete pod -l app=vpn -n kube-system --wait=false
 ```
 
-### I see an error while deploying my image to an internal container registry
+## I see an error while deploying my image to an internal container registry
 
 Try restarting the VPN with the following command:
 
@@ -29,13 +39,6 @@ $ kubectl delete pod -l app=vpn -n kube-system --wait=false
 If that doesn't work please rebuild a cluster, or ask to get a new cluster.
 
 In this section you will discover where you can find materials to learn more about Red Hat OpenShift, and use free of charge environment on your local machine with Minishift labs.
-
-## The 4 workshops
-
-* ​https://github.com/IBM/minishift101 - basic workshop - shown below
-* https://github.com/IBM/node-red-workshop-starter - adding Node-Red
-* https://github.com/IBM/machine-learning-with-minishift - adding machine learning
-* https://github.com/IBM/openshift-on-ibm-cloud-workshops - the full lab from today
 
 ## Minishift setup and Minishift 101 lab
 
@@ -66,9 +69,11 @@ To [download Minishift](https://docs.okd.io/latest/minishift/getting-started/ins
 ## Start the OpenShift Server
 
 Providing you have completed the previous steps successfully, you will now be ready to start the OpenShift server. To do so, you should be able to run:
+
 ```bash
 $ minishift start --vm-driver <driver>
 ```
+
 Make sure to replace `<driver>` with the driver that you have used e.g. 'hyperkit' or 'virtualbox'. Once successfully started, you should be given the credentials to login to the cluster and the UI address as shown below:
 
 ```bash
