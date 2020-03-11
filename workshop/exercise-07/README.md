@@ -1,6 +1,6 @@
 # Exercise 7: Deploying a Full Project
 
-Exercise 7 consits of two parts:
+Exercise 7 consists of two parts:
 
 - Setting up the environment
 - Creating a Red Hat OpenShift project
@@ -9,7 +9,7 @@ Below please find the architecture of the project.
 
 ![](../.gitbook/assets/-Lti9WcAPYU97e8yFB7v-image.png)
 
-##Setting up
+## Setting up
 
 During this Lab you will use recently created project and deploy it to your cluster.
 
@@ -62,7 +62,8 @@ now run the following instructions:
 
 ```bash
 cd
-git clone https://github.com/IBM/openshift-on-ibm-cloud-workshops.git$ cd openshift-on-ibm-cloud-workshops
+git clone https://github.com/IBM/openshift-on-ibm-cloud-workshops.git$
+cd openshift-on-ibm-cloud-workshops
 ROOT_FOLDER=$(pwd)
 ```
 *Note:* If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
