@@ -14,7 +14,7 @@ But the stort of it? It's a abstraction layer **ON TOP** of Kubernetes. It's a w
 
 ## Log in to IBM Cloud
 
-If you have created an IBM Cloud account before as Pay-as-You-Go account you might be needing to create a new account.
+If you have created an IBM Cloud account before as Pay-as-You-Go account you might be needing to create a new account. Creating account using Gmail, Yahoo, or Outlook will work. If you have a corporate account with IBM already, it's safer to use a personal due to the IAM rules we'll use with our **Grant Cluster** application.
 
 ## I can't create a new account
 

@@ -13,15 +13,11 @@ Below please find the architecture of the project.
 
 During this Lab you will use recently created project and deploy it to your cluster.
 
-### Tools
-
-Find the option for the tools most suitable for you
-
-#### Prebuilding an Image with local Code
+### Prebuilding an Image with local Code
 
 There is an image on DockerHub with all required tools. In order to use local IDEs and editors to modify code and configuraton files a Docker volume is used. This option works only for Mac and Linux.
 
-#### Step 1: Run these commands in a terminal
+### Step 1: Run these commands in a terminal
 
 ```bash
 git clone https://github.com/IBM/openshift-on-ibm-cloud-workshops.git
@@ -30,7 +26,7 @@ ROOT_FOLDER=$(pwd)
 docker run -v $ROOT_FOLDER/:/cloud-native-starter -it --rm nheidloff/openshift-workshop-tools:v1
 ```
 
-#### Step 2: Inside your running Docker image you can access your the local project
+### Step 2: Inside your running Docker image you can access your the local project
 
 You should see the prompt like this `root@3f46c41f7303:/usr/local/bin#`, now run the following instructions:
 
@@ -42,78 +38,21 @@ ROOT_FOLDER=$(pwd)
 
 Note: With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
 
-#### Step 3: Move on with Verify Access to OpenShift on the IBM Cloud
+### Login to your OpenShift Cluster
 
-##### Option 1
+To launch the OpenShift web console, navigate to the [IBM Cloud Clusters Dashboard](https://cloud.ibm.com/kubernetes/clusters), find your cluster, and click on it.
 
-(Windows): Prebuilt Image with Code in Container There is an image on DockerHub with all required tools. This option works for Mac, Linux and Windows. To get started as quickly as possible, use this image.
+![Clusters Dashboard](../.gitbook/assets/clusters-dashboard.png)
 
-Step 1: Run this command in a terminal
+Click on `OpenShift web console` on the top right to launch the web console.
 
-```bash
-docker run -ti nheidloff/openshift-workshop-tools:v1
-```
-Step 2: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop: You should see the prompt like this
+![Launch the OpenShift web console](../.gitbook/assets/launch-console.png)
 
-```bash
-root@3f46c41f7303:/usr/local/bin#
-```
-now run the following instructions:
+Once in the OpenShift web console, click on the email/ID in the upper right. Choose the *Copy Login Command* option.
 
-```bash
-cd
-git clone https://github.com/IBM/openshift-on-ibm-cloud-workshops.git$
-cd openshift-on-ibm-cloud-workshops
-ROOT_FOLDER=$(pwd)
-```
-*Note:* If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
+![Copy the login credentials](../.gitbook/assets/copy-login-command.png)
 
-Step 3: Move on with Verify Access to OpenShift on the IBM Cloud
-
-#### Option 2
-
-Install Tools locally on your desktop computer This approach works only for Mac and Linux.
-
-Step 1: Install the following tools: oc kubectl git curl Optional: IBM Cloud CLI Optional: Editor, for example Visual Studio Code
-
-Step 2: Get the code:
-
-```bash
-git clone https://github.com/IBM/openshift-on-ibm-cloud-workshops.git
-cd openshift-on-ibm-cloud-workshops
-ROOT_FOLDER=$(pwd)
-```
-
-Step 3: Move on with Verify Access to OpenShift on the IBM Cloud
-
-## Verify Access to OpenShift on the IBM Cloud
-
-### Step 1: After you've created a new cluster, open the OpenShift console.
-
-- Logon to the IBM Cloud web console - and choose the IBM organization
-- Select OpenShift in the menu
-- Chose Clusters and click on your OpenShift cluster
-- Open the OpenShift web console
-
-![From a left menu icon (🍔) choose OpenShift](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Lti3mCtmtRafh0nR9de_-Lti7niQUUzz0zFGXCR7_image.png)
-
-![Choose your pre-provisioned cluster](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Lti3mCtmtRafh0nR9de_-Lti82UvtvkHGBO1S8hX_image.png)
-
-![Open OpenShift Web Console](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Lti3mCtmtRafh0nR9de_-Lti8EKcrm5FB-OaYbdN_image.png)
-
-###  Step 2: Get our access token for the 'oc' CLI.
-
-- From the dropdown menu in the upper right of the page, click 'Copy Login Command'. Paste the copied command into your terminal.
-
-![Copying Login Command](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Lti3mCtmtRafh0nR9de_-Lti8SzU-pNv1DiipAjZ_image.png)
-
-- Verify 'oc' CLI
-
-```bash
-oc login https://c1-e.us-east.containers.cloud.ibm.com:23967 --token=xxxxxx'
-oc get istag
-```
-- Verify 'kubectl' CLI
+Verify 'kubectl' CLI
 
 ```bash
 kubectl get pods
@@ -123,9 +62,9 @@ kubectl get pods
 
 ### Overview
 
-In this lab we will work in the OpenShift Web Console and with the OpenShift CLI. The following image is a simplified overview of the topics of that lab. Have in mind that OpenShift is a Kubernetes platform.
+In this part of the exercise we will work in the OpenShift Web Console and with the OpenShift CLI. The following image is a simplified overview of the topics of that lab.
 
-This lab has two parts:
+This has two parts:
 
 1. Build and save the container image to OpenShift internal Container Repository
 
@@ -135,7 +74,7 @@ This lab has two parts:
 
 2. Deploy the application to the cluster and expose the service
 
-- You will define and apply a deployment configuration (yaml) to create a Pod with your microservice
+- You will define and apply a deployment configuration (`yaml`) to create a Pod with your microservice
 - You will define a service which routes requests to the Pod with your microservice
 - You will expose the service
 
@@ -143,28 +82,25 @@ The following gif is an animation of the simplified steps above in a sequence.
 
 ![Building the project in two steps](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiBT_4lwRVfgHGh0I2_lab-4-overview.gif)
 
-### Steps
-
-#### Step 1 - creating and pushing image to the internal registry
-
-##### Create an Open Shift project
+#### Step 1: Creating and Pushing Image to the Internal Registry
 
 We need an OpenShift project, this is simply put equivalent to a Kubernetes namespace plus OpenShift security. Let us create one.
+
+Make sure you are logged on to your OpenShift cluster.
 
 *Note:* A project allows a community of users to organize and manage their content in isolation from other communities.
 
 ```bash
 cd ${ROOT_FOLDER}/2-deploying-to-openshift
+oc project # This maybe 'default' or something else. Verify step here.
 oc new-project cloud-native-starter
 ```
 
-Make sure you are logged on to your OpenShift cluster. See here.
-
-##### Build and save the container image in the Open Shift Container Registry
+#### Step 2: Build and Save the Container Image in the OpenShift Container Registry
 
 Now we want to build and save a container image in the OpenShift Container Registry. We use these commands to do that:
 
-Defining a new build using 'binary build' and the Docker strategy (more details and oc new-build documentation)
+Defining a new build using 'binary build' and the Docker strategy.
 
 ```bash
 oc new-build --name authors --binary --strategy docker
