@@ -1,13 +1,13 @@
 # Summary
 
-### Getting Started
+## Getting Started
 
 * [FAQ](99-faq/README.md)
 * [Create account and get cluster](pre-work/GET_STARTED.md)
 * [Setup CLI Access for the cluster](pre-work/SETUP_CLI.md)
 * [A General Docker Tutoral](pre-work/DOCKER.md)
 
-### Workshop
+## Workshop
 
 * [Exercise 1: Deploying an application](exercise-01/README.md)
 * [Exercise 2: Logging and monitoring](exercise-02/README.md)
@@ -17,8 +17,8 @@
 * [Exercise 6: Deploying the app using the CLI](exercise-06/README.md)
 * [Exercise 7: Deploying a Full Project](exercise-07/README.md)
 
-### Resources
+## Resources
 
 * [Certification on CognitiveClass.ai](https://cognitiveclass.ai/courses/beyond-the-basics-istio-and-ibm-cloud-kubernetes-service/)
 * [IBM Developer](https://developer.ibm.com)
-* [Docs: Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift)
+* [Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift)
