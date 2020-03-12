@@ -91,7 +91,7 @@ Make sure you are logged on to your OpenShift cluster.
 *Note:* A project allows a community of users to organize and manage their content in isolation from other communities.
 
 ```bash
-cd ${ROOT_FOLDER}/2-deploying-to-openshift
+cd ${ROOT_FOLDER}/deploying-to-openshift
 oc project # This maybe 'default' or something else. Verify step here.
 oc new-project cloud-native-starter
 ```
@@ -120,29 +120,13 @@ Verify the build in the OpenShift web console
 - Open 'Logs'
 - Inspect the logs
 
-![cloud native starter](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiCi9lWg2Emd84XwF9_image.png)
-
-![select Builds / Builds](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiCze0e6mxiGltxi3X_image.png)
-
-![Select the latest build #1](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiD54skrcT7stvvA7y_image.png)
-
-![Open Logs](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDBQ7HZhOqwf1zTe5_image.png)
-
-![Inspect logs](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDHhaBnhuxHg5vjCy_image.png)
-
 Verify the container image in the Open Shift Container Registry UI
 
 - Select the 'default' project
 - Expand DEPLOYMENT 'registry-console' in 'Overview' and click on the URL in 'Routes - External Traffic'
 - In the container registry you will find the 'authors' image and you can click on the latest label.
 
-![Check the internal container registry in the Default project](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDOBeT7AvemDJ82Wz_image.png)
-
-![You should find the project you just pushed](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDXsgrfeJba1zTpo5_image.png)
-
-#### 2. Creating deployment and a service
-
-##### Apply the deployment.yaml
+##### Step 3: Apply the deployment.yaml
 
 This deployment will deploy a container to a Pod in Kubernetes. For more details we use the Kubernetes documentation for Pods.
 
@@ -152,9 +136,9 @@ Here is a simplified image for that topic. The deployment.yaml file points to th
 
 ![The pod is created from the internal container repository](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDjyDd9SpDsBUKfBI_image.png)
 
-Let's start with the deployment yaml. For more details see the Kubernetes documentation for deployments.
+Let's start with the deployment yaml. For more details see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for deployments.
 
-Definition of `kind` defines this as a `Deployment` configuration.
+The definition of `kind` defines this as a `Deployment` configuration.
 
 ```yaml
 kind: Deployment
@@ -177,9 +161,7 @@ spec:
 
 Then we define a name for the container and we provide the container image location, e.g. where the container can be found in the Container Registry.
 
-The containerPort depends on the port definition inside our Dockerfile and in our server.xml.
-
-We have previously talked about the usage of the HealthEndpoint class for our Authors service and here we see it the livenessProbe definition.
+The `containerPort` depends on the port definition inside our `Dockerfile` and in our `server.xml`.
 
 ```yaml
 spec:
@@ -191,7 +173,7 @@ spec:
         livenessProbe:
 ```
 
-This is the full deployment.yaml file.
+Here is a complete `deployment.yaml` that you'll be deploying.
 
 ```yaml
 kind: Deployment
@@ -208,7 +190,7 @@ spec:
     spec:
       containers:
       - name: authors
-        image: docker-registry.default.svc:5000/cloud-native-starter/authors:latest
+        image: image-registry.openshift-image-registry.svc:5000/cloud-native-starter/authors:latest
         ports:
         - containerPort: 3000
         livenessProbe:
@@ -222,15 +204,23 @@ spec:
       restartPolicy: Always
 ```
 
-#### Step 1: Apply the deployment
+##### Step 4: Apply the deployment
 
-1. Ensure you are in the {ROOT_FOLDER}/2-deploying-to-openshift/deployment
+1. Ensure you are in the `${ROOT_FOLDER}/2-deploying-to-openshift/deployment`
 
 ```bash
 cd ${ROOT_FOLDER}/2-deploying-to-openshift/deployment
 ```
 
-2. Apply the deployment to OpenShift
+2. Copy the `template.deployment.yaml` to `deployment.yaml`.
+
+3. Open the file with `nano` and edit the `<projectname>` with `cloud-native-starter`. Also change the `image:` line to reflect
+
+```yaml
+        image: docker-registry.default.svc:5000/cloud-native-starter/authors:latest
+```
+
+4. Apply the deployment to OpenShift
 
 ```bash
 oc apply -f deployment.yaml
@@ -242,10 +232,6 @@ oc apply -f deployment.yaml
 - Select the Cloud-Native-Starter project and examine the deployment
 - Click on #1 to open the details of the deployment
 - In the details you find the 'health check' we defined before
-
-![Open your project](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEG7I-m7t8VrEXjXx_image.png)
-![Choose the latest version](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiELx8WnlhhpbkITBt_image.png)
-![Verify the health check](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEQpLZ-qJ2RRszJTl_image.png)
 
 #### Apply the service.yaml
 
@@ -273,10 +259,9 @@ spec:
     - port: 3000
       name: http
   type: NodePort
----
 ```
 
-#### Step 1: Apply the service deployment
+#### Step 3: Apply the service and expose it to the real world
 
 - Apply the service to OpenShift
 
@@ -287,46 +272,29 @@ oc apply -f service.yaml
 Using oc expose we create a Route to our service in the OpenShift cluster. (oc expose documentation)
 
 ```bash
-oc expose svc/authors
+oc expose svc/authors-bin
 ```
 
-#### Step 2: Test the microservice
+#### Step 4: Test the microservice
 
 Execute this command, copy the URL to open the Swagger UI in browser
 
 ```bash
-echo http://$(oc get route authors -o jsonpath={.spec.host})/openapi/ui/
-http://authors-cloud-native-starter.openshift-devadv-eu-wor-160678-0001.us-south.containers.appdomain.cloud/openapi/ui/
+echo http://$(oc get route authors-bin -o jsonpath={.spec.host})/openapi/ui/
 ```
-
-This is the Swagger UI in your browser:
 
 ![Swagger in a browser](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEitfev7y0iBe0AoE_image.png)
 
 2. Execute this command to verify the output:
 
 ```bash
-curl -X GET "http://$(oc get route authors -o jsonpath={.spec.host})/api/v1/getauthor?name=Niklas%20Heidloff" -H "accept: application/json"
+curl -X GET "http://$(oc get route authors-bin -o jsonpath={.spec.host})/api/v1/getauthor?name=Niklas%20Heidloff" -H "accept: application/json"
 ```
 
-3. Output
+3. The output should look something the following:
 
 ```bash
 {"name":"Niklas Heidloff","twitter":"https://twitter.com/nheidloff","blog":"http://heidloff.net"}
 ```
-
-Step 3: Inspect the service in OpenShift
-
-- Open your OpenShift Web Console
-- Select the Cloud-Native-Starter project
-- Chose 'Applications' and then 'Services'
-- Click on 'authors'
-- Examine the traffic and remember the simplified overview picture.
-
-![choose your project again](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEu7TA_LrFvnmSIHE_image.png)
-
-![Select Applications, then Services](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEzvwDXh0uzGC5CZ8_image.png)
-
-![See the simplified overview picture](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiF3V42uh8oL_8v0VJ_image.png)
 
 Thanks so much for running this full workshop, we hope you've learned something. If you can reach out to the TA or Workshop Presenter and say you've completed with any feedback you may have.
