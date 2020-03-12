@@ -1,3 +1,4 @@
 {
-  "MD013": { "line_length": 500 }
+  "MD013": { "line_length": 500 },
+  "MD029": false,
 }

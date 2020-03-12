@@ -14,13 +14,14 @@ Starting such an image is much faster omitting start of an OS. In addition the i
 
 ## Steps
 
-The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service. As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
+The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service.
+As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
 
 ![The Docker is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 ### Step 1 - Create a language translation service
 
-‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: https://cloud.ibm.com
+‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: [https://cloud.ibm.com](https://cloud.ibm.com)
 
 ![Click on the Catalog tab.](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
 
@@ -77,37 +78,37 @@ docker build -t <docker-username>/node-container https://github.com/lidderupk/no
 
 This command uses the Dockerfile to download a Node.js 10 base image and then install our Express.js application on top. Let's explore the contents of this docker file ...
 
-```
+```console
 FROM node:10
 ```
 
 ... builds our image on top of the Node.js 10 image.
 
-```
+```console
 WORKDIR /usr/src/app
 ```
 
 ... creates a working directory for our application to live in.
 
-```
+```console
 COPY package*.json ./
 ```
 
 ... copies the package.json file to our working directory. RUN npm install ... install our dependencies. We just have two dependencies in this application: express and ibm-watson.
 
-```
+```console
 COPY . .
 ```
 
 ... copy the rest of our source code into the docker image *Note*: In the real world, you should NOT be using `COPY` like this, you need to be explicit on what you want
 
-```
+```console
 EXPOSE 8080
 ```
 
 ... expose port 8080. We will still have to forward our local port to this docker container port later.
 
-```
+```console
 CMD [ "node", "server.js" ]
 ```
 
@@ -204,7 +205,6 @@ curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+d
 You can see the supported languages (both from and to) in the Language Translator documentation.
 
 **Congratulations!** You just containerized a Node.js application that provides transation services.
-
 
 ### Step 7 - Cleaning up
 

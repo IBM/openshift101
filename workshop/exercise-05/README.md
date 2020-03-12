@@ -1,7 +1,5 @@
 # Exercise 5: Health checks
 
-# This needs to be updated....
-
 In Kubernetes, liveness and readiness probes are essential for smoothly running applications.
 A probe is generally a REST `GET` call, but there are other types of probes available.
 Liveness probes are used to determine when to restart a container. For example, an
