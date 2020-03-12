@@ -233,11 +233,11 @@ After the definition of the Pod we need to define how to access the Pod. For thi
 
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
-In the service we map the NodePort of the cluster to the port 3000 of the Authors microservice running in the authors Pod, as we can see in the following picture.
+In the service we map the `NodePort` of the cluster to the port `3000` of the Authors microservice running in the authors Pod, as we can see in the following picture.
 
 ![Exposing the pod with the service](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiE_wmpm63DSTJBa3Q_image.png)
 
-In the service.yaml we see a selector of the pod using the label 'app: authors'.
+In the `service.yaml` we see a selector of the pod using the label 'app: authors'.
 
 ```yaml
 kind: Service
@@ -263,7 +263,7 @@ spec:
 oc apply -f service.yaml
 ```
 
-Using oc expose we create a Route to our service in the OpenShift cluster. (oc expose documentation)
+Using `oc expose` we create a Route to our service in the OpenShift cluster. (oc expose documentation)
 
 ```bash
 oc expose svc/authors-bin
