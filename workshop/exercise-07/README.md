@@ -3,9 +3,7 @@
 Exercise 7 is a full happy path deployment of a full project. You'll be deploying an Open Liberty application
 that outputs some data. You'll be setting up your environment then deploying it directly to OpenShift.
 
-Below please find the architecture of the project.
-
-![](../.gitbook/assets/-Lti9WcAPYU97e8yFB7v-image.png)
+![Architecture of the Project](../.gitbook/assets/-Lti9WcAPYU97e8yFB7v-image.png)
 
 ## Prebuilding an Image with local Code
 

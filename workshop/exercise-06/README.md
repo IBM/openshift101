@@ -160,7 +160,7 @@ Using project "example-health-ns" on server "https://c106-e.us-south.containers.
 3. Deploy the `Example Health` app using the Docker image,
   * Create the application, and replace `<username>` by the username of your Docker Hub account,
 
-```
+```bash
 oc new-app <username>/example-health:1.0.0
 --> Found Docker image 621fd6a (About an hour old) from Docker Hub for "<username>/example-health:1.0.0"
 
