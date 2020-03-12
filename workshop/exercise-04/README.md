@@ -10,11 +10,11 @@ Hopefully you have your running script simulating load \(if not go [here](exerci
 
 1. Switch to the **Administrator** view and then navigate to **Workloads > Deployments** in the left-hand bar. Choose the `patient-ui` Deployment, then choose **Actions > Edit Deployment**.
 
-    ![](../.gitbook/assets/ocp-deployments.png)
+![Deployments](../.gitbook/assets/ocp-deployments.png)
 
 2. In the YAML editor, go to line 44. In the section **template > spec > containers**, add the following resource limits into the empty resources. Replace the `resources {}`, and ensure the spacing is correct -- YAML uses strict indentation.
 
-    ![](../.gitbook/assets/ocp-limits-yaml.png)
+![Limits YAML](../.gitbook/assets/ocp-limits-yaml.png)
 
   ```yaml
              resources:
@@ -30,7 +30,7 @@ Hopefully you have your running script simulating load \(if not go [here](exerci
 
 4. Verify that the replication controller has been changed by navigating to **Events**
 
-    ![Resource Limits](../.gitbook/assets/ocp-dc-events.png)
+![Resource Limits](../.gitbook/assets/ocp-dc-events.png)
 
 ## Enable Autoscaler
 
@@ -40,7 +40,7 @@ By default, the autoscaler allows you to scale based on CPU or Memory. The UI al
 
 1. Navigate to **Workloads > Horizontal Pod Autoscalers**, then hit **Create Horizontal Pod Autoscaler**.
 
-    ![HPA](../.gitbook/assets/ocp-hpa.png)
+![HPA](../.gitbook/assets/ocp-hpa.png)
 
     ```yaml
     apiVersion: autoscaling/v2beta1
@@ -70,11 +70,11 @@ If you're not running the script from the [previous exercise](exercise-2.md#simu
 
 1. Check by going to the **Overview** page of **Deployments**.
 
-    ![Scaled to 1 pod](../.gitbook/assets/ocp-hpa-before.png)
+![Scaled to 1 pod](../.gitbook/assets/ocp-hpa-before.png)
 
 2. Start simulating load by hitting the page several times, or running the script. You'll see that it starts to scale up:
 
-   ![Scaled to 4/10 pods](../.gitbook/assets/ocp-hpa-after.png)
+![Scaled to 4/10 pods](../.gitbook/assets/ocp-hpa-after.png)
 
 That's it! You now have a highly available and automatically scaled front-end Node.js application. OpenShift is automatically scaling your application pods since the CPU usage of the pods greatly exceeded `1`% of the resource limit, `30` millicores.
 
