@@ -1,19 +1,13 @@
 # Exercise 7: Deploying a Full Project
 
-Exercise 7 consists of two parts:
-
-- Setting up the environment
-- Creating a Red Hat OpenShift project
+Exercise 7 is a full happy path deployment of a full project. You'll be deploying an Open Liberty application
+that outputs some data. You'll be setting up your environment then deploying it directly to OpenShift.
 
 Below please find the architecture of the project.
 
 ![](../.gitbook/assets/-Lti9WcAPYU97e8yFB7v-image.png)
 
-## Setting up
-
-During this Lab you will use recently created project and deploy it to your cluster.
-
-### Prebuilding an Image with local Code
+## Prebuilding an Image with local Code
 
 There is an image on DockerHub with all required tools. In order to use local IDEs and editors to modify code and configuraton files a Docker volume is used. This option works only for Mac and Linux.
 
@@ -38,7 +32,7 @@ ROOT_FOLDER=$(pwd)
 
 Note: With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
 
-### Login to your OpenShift Cluster
+### Step 3: Login to your OpenShift Cluster
 
 To launch the OpenShift web console, navigate to the [IBM Cloud Clusters Dashboard](https://cloud.ibm.com/kubernetes/clusters), find your cluster, and click on it.
 
@@ -126,7 +120,7 @@ Verify the container image in the Open Shift Container Registry UI
 - Expand DEPLOYMENT 'registry-console' in 'Overview' and click on the URL in 'Routes - External Traffic'
 - In the container registry you will find the 'authors' image and you can click on the latest label.
 
-##### Step 3: Apply the deployment.yaml
+#### Step 3: Apply the deployment.yaml
 
 This deployment will deploy a container to a Pod in Kubernetes. For more details we use the Kubernetes documentation for Pods.
 
@@ -204,7 +198,7 @@ spec:
       restartPolicy: Always
 ```
 
-##### Step 4: Apply the deployment
+#### Step 4: Apply the deployment
 
 1. Ensure you are in the `${ROOT_FOLDER}/2-deploying-to-openshift/deployment`
 
@@ -226,14 +220,14 @@ cd ${ROOT_FOLDER}/2-deploying-to-openshift/deployment
 oc apply -f deployment.yaml
 ```
 
-#### Step 2: Verify the deployment in OpenShift
+#### Step 5: Verify the deployment in OpenShift
 
 - Open your OpenShift Web Console
 - Select the Cloud-Native-Starter project and examine the deployment
 - Click on #1 to open the details of the deployment
 - In the details you find the 'health check' we defined before
 
-#### Apply the service.yaml
+#### Step 6: Apply the `service.yaml`
 
 After the definition of the Pod we need to define how to access the Pod. For this we use a service in Kubernetes. For more details see the Kubernetes documentation for service.
 
@@ -261,7 +255,7 @@ spec:
   type: NodePort
 ```
 
-#### Step 3: Apply the service and expose it to the real world
+#### Step 7: Apply the service and expose it to the real world
 
 - Apply the service to OpenShift
 
@@ -275,7 +269,7 @@ Using oc expose we create a Route to our service in the OpenShift cluster. (oc e
 oc expose svc/authors-bin
 ```
 
-#### Step 4: Test the microservice
+#### Step 8: Test the microservice
 
 Execute this command, copy the URL to open the Swagger UI in browser
 
