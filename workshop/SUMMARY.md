@@ -5,6 +5,7 @@
 * [FAQ](99-faq/README.md)
 * [Create account and get cluster](pre-work/GET_STARTED.md)
 * [Setup CLI Access for the cluster](pre-work/SETUP_CLI.md)
+* [General Docker Tutoral](pre-work/DOCKER.md)
 
 ### Workshop
 
@@ -14,9 +15,8 @@
 * [Exercise 4: Scaling the application](exercise-04/README.md)
 * [Exercise 5: Health checks](exercise-05/README.md)
 * [Exercise 6: Deploying the app using the CLI](exercise-06/README.md)
-* [Exercise 7: Starting with a Docker Image](exercise-07/README.md)
-* [Exercise 8: Using an existing image](exercise-08/README.md)
-* [Exercise 9: Deploying a Project](exercise-09/README.md)
+* [Exercise 7: Using an existing image](exercise-07/README.md)
+* [Exercise 8: Deploying a Project](exercise-08/README.md)
 
 ### Resources
 
