@@ -2,6 +2,7 @@
 
 ### Getting Started
 
+* [FAQ](99-faq/README.md)
 * [Create account and get cluster](pre-work/GET_STARTED.md)
 * [Setup CLI Access for the cluster](pre-work/SETUP_CLI.md)
 
@@ -22,4 +23,3 @@
 * [Certification on CognitiveClass.ai](https://cognitiveclass.ai/courses/beyond-the-basics-istio-and-ibm-cloud-kubernetes-service/)
 * [IBM Developer](https://developer.ibm.com)
 * [Docs: Red Hat OpenShift on IBM Cloud](https://cloud.ibm.com/docs/openshift)
-* [FAQ](99-faq/README.md)
