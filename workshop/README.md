@@ -2,7 +2,14 @@
 
 A recent [study](https://github.com/svennam92/openshift101/tree/ab7f1406831de9aa1a60da349dd5bff8d11f7e13/workshop/study/README.md) by McKinsey & Company reveals that only 20 percent of enterprise applications have moved to the cloud. We believe that a hybrid cloud approach, built on open source and a vibrant open ecosystem, is the best way to move the remaining 80 percent.
 
-Red Hat OpenShift represents a common platform, based on the industry-standard Kubernetes, that allows you to build on premises, on the IBM Cloud, or on any other leading cloud platform. You want freedom of choice; Red Hat OpenShift offers exactly that.
+## So what is OpenShift
+
+To quote Wikipedia:
+
+> OpenShift is a family of containerization software developed by Red Hat. Its flagship product is the OpenShift Container Platform-an on-premises platform as a service built around Docker containers orchestrated and managed by Kubernetes on a foundation of Red Hat Enterprise Linux.
+> The Openshift UI has various functionalities, allowing one to monitor the container resources, container health, the nodes the containers reside on, IP addresses of the nodes, etc. The key store can be accessed via the Secrets in Openshift. The OC CLI command line tool also offers similar functionalities.
+
+But the stort of it? It's a abstraction layer **ON TOP** of Kubernetes. It's a way to empower Developers to deploy code and not worry about a lot of the underlying ecosystem. This workshop should show you the happy path to take advantage of most of the best parts of OpenShift and what it can offer.
 
 The goals of this workshop are:
 
