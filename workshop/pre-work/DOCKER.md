@@ -1,6 +1,6 @@
 # Docker
 
-This tutorial will help you understand basics of Docker technology, you will build, ship, and run Docker. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
+To help you understand the basics of Docker technology we have created a tutorial where you will build and run a Node.js application with Docker. The application will translate phrases from one language to another by using Watson's [Language Translator](https://cloud.ibm.com/catalog/services/language-translator) service.‌
 
 ![The Docker architecture - containers are separated from the OS](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
 
@@ -8,131 +8,129 @@ This tutorial will help you understand basics of Docker technology, you will bui
 Docker container technology separates applications from the underlying Operating System and infrastructure, which is an analog to VM technology that is separating an operating systems from the bare metal - server hardware.
 {% endhint %}
 
-Docker technology virtualizes the Operating System (OS), and thanks to it only the application, and specific dependencies like libraries and binaries are being packaged in the image.
+Docker technology emulates the Operating System (OS), making it possible to containerize only the application and dependencies, like libraries and binaries, by being packaged in an image. Running an image is much faster as now the OS is emulated. In addition, the image is now portable and can be shared between services.
 
-Starting such an image is much faster omitting start of an OS. In addition the image now is very portable among various host servers running the Docker engine. And since ther is no OS, there isn't its surface for security vulnerabilities connected to it.
+## Creating your first containerized application with Docker
 
-## Steps
+In our tutorial, you'll be given the source code for the sample application, but to make it useful we'll need to provde an API key for the Language Translator service. Once we have have the API key we'll update the source code, containerize the application, run it, and test a few phrases.
 
-The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service.
-As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
+![A Docker pipeline is about building, shipping, and running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
-![A Docker pipeline is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
+Let's get started!
 
-### Step 1 - Create a language translation service
+### 1. Create a Language Translator service
 
-‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: [https://cloud.ibm.com](https://cloud.ibm.com)
+Navigate to the [IBM Cloud dashboard](https://cloud.ibm.com) and click on "Catalog".
 
-![Click on the Catalog tab](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
+![Access the IBM Cloud Catalog](../.gitbook/assets/cloud-catalog.png)
 
-Search translator to find the service. You can also find the service by navigating to the AI section on the left bar.
+Search for the "Language Translator" service, and click the corresponding tile.
 
-![Search for the "Language Translator" service](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-LthyE7dkUqWr8YzuWKh_image.png)
+![The "Language Translator" tile](../.gitbook/assets/lt-service-tile.png)
 
-Click on the service to create a new instance. Pick the Lite **free of charge** plan on the next page and click Create to finish creating the service.
+Choose to region and select the "Lite" (free of charge) plan, click the "Create" button.
 
-![Pick free of charge Lite plan and hit Create button](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-LthyWbVChchkF_BAAAO_image.png)
+![Choose the "Lite" plan](../.gitbook/assets/lt-lite-plan.png)
 
-You will be redirected to the service landing page.
+You will be redirected to the service's overview page.
 
-### Step 2 - Copy the credentials to be used later
+### 2. Copy the Language Translator API key
 
-Click on Service Credentials on the left bar.
+From the service's overview page, choose the "Service Credentials" option on the lefthand navigation bar.
 
-![Copy the API key for future reference](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-Lthypg9fN1FbyPE_G4X_image.png)
+A credential containing an API key should be automatically create but if you do not see one, you can create a new credential. Save the API key somewhere for the next section in this workshop.
 
-If you do not see a credential provided for you, you can create a new set of credentials. Save your apikey somewhere for the next section in this workshop.
+![Save the API key for future reference](../.gitbook/assets/lt-api-key.png)
 
-**Congratulations!** You created your first Language Translator service. The next steps will show you how to build a Docker container for a Node.js application that provides an end point to translate text!
+The next steps will demonstrate on how to build a Dockerized Node.js application that provides an endpoint to translate phrases.
 
-### Step 3 - Clone a demo repository
+### 3. Clone the source code
 
-Open your local terminal or the web terminal provided in the workshop and change to the /data directory.
+Open your local terminal and create a temporary directory to host the source code.
 
 ```bash
-mkdir data
-cd data
+cd ~
+mkdir openshiftworkshop
+cd openshiftworkshop
 git clone https://github.com/lidderupk/nodejs-docker.git
-```
-
-### Step 4 - Build a docker image
-
-Change into the directory you just cloned and build the docker image
-
-```bash
 cd nodejs-docker
-docker build -t <docker-username>/node-container .
 ```
 
-The `docker-username` is required if you want to publish your image to Dockerhub. Replace `<docker-username>` in the above command with your docker account name.
+### 4. Build the application with Docker
 
-{% hint style="info" %}
-If you do not have a Docker account - you would need to create one directly on hub.docker.com - choose sign up button.
-{% endhint %}
-
-Alternatively, you can also build directly from github using the following command without cloning the repository:
+To build the application with Docker run the following:
 
 ```bash
-docker build -t <docker-username>/node-container https://github.com/lidderupk/nodejs-docker.git
+docker build . -t translator:v1
 ```
 
-This command uses the Dockerfile to download a Node.js 10 base image and then install our Express.js application on top. Let's explore the contents of this docker file ...
+This command uses the `Dockerfile` in the base directory to download a Node.js 10 base image and install our application on top.
 
-```console
+**Let's explore the contents of the Dockerfile ...**
+
+```Dockerfile
 FROM node:10
 ```
 
-... builds our image on top of the Node.js 10 image.
+... builds our image on top of the official Node.js 10 image.
 
-```console
+```Dockerfile
 WORKDIR /usr/src/app
 ```
 
 ... creates a working directory for our application to live in.
 
-```console
+```Dockerfile
 COPY package*.json ./
 ```
 
-... copies the package.json file to our working directory. RUN npm install ... install our dependencies. We just have two dependencies in this application: express and ibm-watson.
+... copies the source's package.json file to our working directory.
 
-```console
+```Dockerfile
+RUN npm install
+```
+
+... installs our dependencies as defined in our `package.json`.
+
+```Dockerfile
 COPY . .
 ```
 
-... copy the rest of our source code into the docker image *Note*: In the real world, you should NOT be using `COPY` like this, you need to be explicit on what you want
+... copies the rest of our source code into the working directory.
 
-```console
+```Dockerfile
 EXPOSE 8080
 ```
 
-... expose port 8080. We will still have to forward our local port to this docker container port later.
+... exposes port 8080.
 
-```console
+```Dockerfile
 CMD [ "node", "server.js" ]
 ```
 
-... starts the application by running `node server.js`.
+... starts the application.
 
-### Step 5 - Run the docker image
+### 5. Run the Docker image
 
-```bash
-docker run -p 8080:8080 -e "nlp_key=<api_key>" -d <docker-username>/node-container
-```
-
-In my case, I would run
+To run our application as a container, issue the following command with your Language Translator API key:
 
 ```bash
-docker run -p 8080:8080 -e "nlp_key=T1ReDZISYE4cpqQnQHKTWe1F9iUy6hhxkRu0aWqzmxQ3" -d upkar/node-container
+docker run -p 8080:8080 -e "nlp_key=<api_key>" translator:v1
 ```
 
-### Step 6 - Test the application
+For example, here's what I used:
 
 ```bash
-curl "localhost:8080/translate?text=how%20are%20you"
+docker run -p 8080:8080 -e "nlp_key=T1ReDZISYE4cpqQnQHKTWe1F9iUy6hhxkRu0aWqzmxQ3" translator:v1
 ```
 
-You should see output as follows:
+### 6. Test the application
+
+```bash
+curl "localhost:8080/translate?text=how+are+you"
+```
+
+You should the following output:
 
 ```json
 {
@@ -146,13 +144,13 @@ You should see output as follows:
 }%
 ```
 
-The text is translated to Spanish (en-sp) by default. You can specify the langauge by passing in the lang flag as follows:
+The text is translated to Spanish by default. You can specify the langauge by passing in other language flags, for example:
 
 ```bash
-curl "localhost:8080/translate?text=how%20are%20you?&lang=en-de"
+curl "localhost:8080/translate?text=how+are+you?&lang=en-de"
 ```
 
-You should now see the same text translated to German:
+You should the following output:
 
 ```json
 {
@@ -166,99 +164,84 @@ You should now see the same text translated to German:
 }
 ```
 
-Another example...
-
-```bash
-curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+dying+ecosystems+are+collapsing.+We+are+in+the+beginning+of+a+mass+extinction%2C+and+all+you+can+talk+about+is+the+money+and+fairy+tales+of+eternal+economic+growth"
-```
-
-```json
-{
-  "translations": [
-    {
-      "translation": "La gente está sufriendo. La gente está muriendo y los ecosistemas moribundos se están derrumbando. Estamos en el principio de una extinción masiva, y todo lo que se puede hablar es el dinero y los cuentos de hadas del crecimiento económico eterno"
-    }
-  ],
-  "word_count": 39,
-  "character_count": 204
-}
-```
-
 in Polish
 
 ```bash
-curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+dying+ecosystems+are+collapsing.+We+are+in+the+beginning+of+a+mass+extinction%2C+and+all+you+can+talk+about+is+the+money+and+fairy+tales+of+eternal+economic+growth&lang=en-pl"
+curl "localhost:8080/translate?text=Let+us+learn+about+open+technology&lang=en-pl"
 ```
 
 ```json
 {
   "translations": [
     {
-      "translation": "Ludzie cierpią. Ludzie umierają, a umierające ekosystemy się zapadają. Jesteśmy na początku masowego wyginięcia, a wszystko, o czym można rozmawiać, to pieniądze i bajki o wiecznym wzroście gospodarczym"
+      "translation": "Dowiedz się więcej o otwartej technologii"
     }
   ],
-  "word_count": 39,
-  "character_count": 204
+  "word_count": 6,
+  "character_count": 34
 }
 ```
 
-You can see the supported languages (both from and to) in the Language Translator documentation.
+You can see the supported languages (both from and to) in the [Language Translator documentation](https://cloud.ibm.com/docs/services/language-translator?topic=language-translator-translation-models#english).
 
 **Congratulations!** You just containerized a Node.js application that provides transation services.
 
-### Step 7 - Cleaning up
+### 7. Cleaning up
 
-You can first stop the container. You need the container tag or the id to stop it. Let's look it up first
-
-```bash
-docker ps | grep node-container
-
-419104eff9be        upkar/node-container                           "docker-entrypoint.s…"   3 minutes ago       Up 3 minutes                       0.0.0.0:8080->8080/tcp                            cranky_davinci
-```
-
-In my case, the container is called cranky_davinci and has an id of 419104eff9be.
-
-Stop the image with the following command. You can replace the id with your container id.
+To stop the container you need to first find the container ID, run the following command to find it:
 
 ```bash
-docker container stop 419104eff9be
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d426e0fac2eb        translator:v1       "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        0.0.0.0:8080->8080/tcp   strange_northcutt
 ```
 
-Run the following command to remove the container. Replace the id with your container id identified in the step above.
+In the example above, the container ID is `d426e0fac2eb`.
+
+Stop the image with the following command, replacing the ID with your own.
 
 ```bash
-docker container rm 419104eff9be
+docker container stop d426e0fac2eb
 ```
 
-### Step 8 - Removing the image
-
-You can now delete the image. You again need the image id.
+Run the following command to remove the container, replacing the ID with your own.
 
 ```bash
-docker images | grep node-container
-upkar/node-container                       latest                         8baa6ca9cdac        5 minutes ago       958MB
+docker container rm d426e0fac2eb
 ```
 
-Now, delete the image as follows.
+### 8. Removing the image
+
+You can now remove the image by running the following:
 
 ```bash
-docker image rm 8baa6ca9cdac
-Untagged: upkar/node-container:latest
-Deleted: sha256:8baa6ca9cdac8868d8e17642e90b433c7aa588a615b59ac9b528fb8635698a6e
-Deleted: sha256:8c279f530b3ff260279f9cb8d22d167d748e53df4f6eab91b089b6c90b4da9f2
-Deleted: sha256:9845fb86e05aa69c677dc999b6bbdeceafc460e70604092e0247e0f8880ec93e
-Deleted: sha256:84ea0148452752e2aba0a1e1ef963355781a3fb87e485e9a440e8e8fc002d045
-Deleted: sha256:f4f99031ae0d1cf0079d9981ef6e8dff2231eff670ac7ea4a4f27472282d7ad2
-Deleted: sha256:bf579e37b35bb7b20ed0cb3140220118cbbd1d0564a512f21868568b3683a392
-Deleted: sha256:07b958722eb2513e88186b2f6eddadcec0b8772001a598244352073ac5caf176
-Deleted: sha256:361c46840912a7b9539b6ddf00164492fc594701085f0e2c9d2c1544bca8498c
+docker image rm translator:v1
 ```
+
+You should output similar to what is seen below:
+
+```bash
+docker image rm translator:v1
+
+Untagged: translator:v1
+Deleted: sha256:96afe0ca495e050f1cdabe79969675b3be49f6047525bd0f55061e761b176fed
+Deleted: sha256:f9e94a5182f73c90d1ef85d6516e012d5c08bfc5cb2f720862c0a35519aac9b6
+Deleted: sha256:e2e85574bc230465e32e61375ec378a2e525042390766f747bf81b2b88e90a99
+Deleted: sha256:fcf8c21a74d01e5f40e2ef8cef30237ac806e0f00d0d703499b2d073f3552d16
+Deleted: sha256:610798de09748a80456726a693f3ddb019c322b30e144512a15a594a4744d995
+Deleted: sha256:896aab822576a1fd8090e7c2586ec4e4d1c1ec680bf370bcfe9390f2c7eebead
+Deleted: sha256:0e45a616772f2b2703d6127f27b77d73bec69fdfa1e3cac543d1a17f52e23da8
+Deleted: sha256:9b19cb8e4886f8f3c735a549309936de7283b09171ec36ecc6caa498fea2330c
+Deleted: sha256:0f00eb5804174d4b42cc70e5e7c412ba52b913d25fd39d66a4b1286486da86d6
+Deleted: sha256:2c610224d2f2aeed545ab8dd1377d6cbec5767da84d196e365c21171b380d212
+```
+
+**Congratulations** on creating your first containerized application!
 
 ## Troubleshooting
 
-Check container logs
-
-You can check the logs for your container using
+You can check your container's logs by running:
 
 ```bash
 docker logs <container_id>
@@ -267,7 +250,7 @@ docker logs <container_id>
 For example...
 
 ```bash
-root@terminal-5-846448d675-bk75j:/data# docker logs 4450279a9f50
+$ docker logs 4450279a9f50
 
 Running on http://0.0.0.0:8080
 No language passed to translate to. Converting to Spanish by default.
@@ -281,5 +264,3 @@ No language passed to translate to. Converting to Spanish by default.
   "character_count": 5
 }
 ```
-
-**Congratulations** again on creating your first docker container that hosts a Natural Language Translation service!
