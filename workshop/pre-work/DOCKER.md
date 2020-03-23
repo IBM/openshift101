@@ -1,12 +1,6 @@
-# Exercise 7 - Using Docker Images
+# Docker
 
-This Lab will help you understand basics of Docker technology, you will build, ship, and run a container image.
-
-This workshop is an introduction to Docker, which is a runtime for containers. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
-
-## Docker
-
-For this Lab you will use Docker.
+This tutorial will help you understand basics of Docker technology, you will build, ship, and run Docker. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
 
 ![The Docker architecture - containers are separated from the OS](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
 
@@ -21,16 +15,15 @@ Starting such an image is much faster omitting start of an OS. In addition the i
 ## Steps
 
 The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service.
-
 As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
 
-![The Docker is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
+![A Docker pipeline is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 ### Step 1 - Create a language translation service
 
-‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: <https://cloud.ibm.com>
+‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: [https://cloud.ibm.com](https://cloud.ibm.com)
 
-![Click on the Catalog tab.](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
+![Click on the Catalog tab](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
 
 Search translator to find the service. You can also find the service by navigating to the AI section on the left bar.
 
@@ -46,7 +39,7 @@ You will be redirected to the service landing page.
 
 Click on Service Credentials on the left bar.
 
-![Copy the apikey for future reference](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-Lthypg9fN1FbyPE_G4X_image.png)
+![Copy the API key for future reference](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-Lthypg9fN1FbyPE_G4X_image.png)
 
 If you do not see a credential provided for you, you can create a new set of credentials. Save your apikey somewhere for the next section in this workshop.
 
@@ -85,29 +78,41 @@ docker build -t <docker-username>/node-container https://github.com/lidderupk/no
 
 This command uses the Dockerfile to download a Node.js 10 base image and then install our Express.js application on top. Let's explore the contents of this docker file ...
 
+```console
 FROM node:10
+```
 
 ... builds our image on top of the Node.js 10 image.
 
+```console
 WORKDIR /usr/src/app
+```
 
 ... creates a working directory for our application to live in.
 
+```console
 COPY package*.json ./
+```
 
 ... copies the package.json file to our working directory. RUN npm install ... install our dependencies. We just have two dependencies in this application: express and ibm-watson.
 
+```console
 COPY . .
+```
 
-... copy the rest of our source code into the docker image
+... copy the rest of our source code into the docker image *Note*: In the real world, you should NOT be using `COPY` like this, you need to be explicit on what you want
 
+```console
 EXPOSE 8080
+```
 
 ... expose port 8080. We will still have to forward our local port to this docker container port later.
 
+```console
 CMD [ "node", "server.js" ]
+```
 
-... starts the application by running node server.js.
+... starts the application by running `node server.js`.
 
 ### Step 5 - Run the docker image
 
@@ -230,14 +235,14 @@ docker container rm 419104eff9be
 You can now delete the image. You again need the image id.
 
 ```bash
-$ docker images | grep node-container
+docker images | grep node-container
 upkar/node-container                       latest                         8baa6ca9cdac        5 minutes ago       958MB
 ```
 
 Now, delete the image as follows.
 
 ```bash
-$ docker image rm 8baa6ca9cdac
+docker image rm 8baa6ca9cdac
 Untagged: upkar/node-container:latest
 Deleted: sha256:8baa6ca9cdac8868d8e17642e90b433c7aa588a615b59ac9b528fb8635698a6e
 Deleted: sha256:8c279f530b3ff260279f9cb8d22d167d748e53df4f6eab91b089b6c90b4da9f2
