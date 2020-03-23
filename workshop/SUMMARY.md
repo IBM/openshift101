@@ -5,7 +5,7 @@
 * [FAQ](99-faq/README.md)
 * [Create account and get cluster](pre-work/GET_STARTED.md)
 * [Setup CLI Access for the cluster](pre-work/SETUP_CLI.md)
-* [A General Docker Tutoral](pre-work/DOCKER.md)
+* [A General Docker Tutorial](pre-work/DOCKER.md)
 
 ## Workshop
 
