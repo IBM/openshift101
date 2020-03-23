@@ -1,4 +1,5 @@
 # Exercise 7 - Using Docker Images
+
 This Lab will help you understand basics of Docker technology, you will build, ship, and run a container image.
 
 This workshop is an introduction to Docker, which is a runtime for containers. You will create a containerized Node.js application that provides a service to translate phrases from one language to another. The application uses the IBM Watson in IBM Language Translation service.‌
@@ -19,13 +20,15 @@ Starting such an image is much faster omitting start of an OS. In addition the i
 
 ## Steps
 
-The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service. As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
+The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service.
+
+As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
 
 ![The Docker is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 ### Step 1 - Create a language translation service
 
-‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: https://cloud.ibm.com
+‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: <https://cloud.ibm.com>
 
 ![Click on the Catalog tab.](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
 
@@ -63,7 +66,7 @@ git clone https://github.com/lidderupk/nodejs-docker.git
 
 Change into the directory you just cloned and build the docker image
 
-```
+```bash
 cd nodejs-docker
 docker build -t <docker-username>/node-container .
 ```
@@ -181,6 +184,7 @@ in Polish
 ```bash
 curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+dying+ecosystems+are+collapsing.+We+are+in+the+beginning+of+a+mass+extinction%2C+and+all+you+can+talk+about+is+the+money+and+fairy+tales+of+eternal+economic+growth&lang=en-pl"
 ```
+
 ```json
 {
   "translations": [
@@ -196,7 +200,6 @@ curl "localhost:8080/translate?text=People+are+suffering.+People+are+dying+and+d
 You can see the supported languages (both from and to) in the Language Translator documentation.
 
 **Congratulations!** You just containerized a Node.js application that provides transation services.
-
 
 ### Step 7 - Cleaning up
 

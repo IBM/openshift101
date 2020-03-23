@@ -7,11 +7,13 @@ In this exercise, we'll explore the out-of-the-box logging and monitoring capabi
 First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
 
 > With Linux/MacOS
+
 ```bash
 while sleep 1; do curl -s <your_app_route>/info; done
 ```
 
 > With Windows
+
 ```bash
 while($true){curl <your_app_route>/info}
 ```
