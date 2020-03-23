@@ -17,13 +17,13 @@ Starting such an image is much faster omitting start of an OS. In addition the i
 The following steps would allow you to create the Watson translation service in the cloud. You will record the API Key to access your service later. You will create a node.js based microservice. This microservice will respond to requests with results of the translations coming from IBM Watson service.
 As soon as you are ready with the microservice you will be able to start Build - Ship - Run containerization process. You will build an image, and push it to a public repository - Docker Hub, and run the containerized microservice.
 
-![The Docker is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
+![A Docker pipeline is about Building-Shipping-Running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 ### Step 1 - Create a language translation service
 
 ‌Open your IBM Cloud dashboard using your IBM Cloud account with this URL: [https://cloud.ibm.com](https://cloud.ibm.com)
 
-![Click on the Catalog tab.](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
+![Click on the Catalog tab](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthwpghMpbyDOP2ihex_-LthxWLaGzjKdFOIbJSH_image.png)
 
 Search translator to find the service. You can also find the service by navigating to the AI section on the left bar.
 
@@ -39,7 +39,7 @@ You will be redirected to the service landing page.
 
 Click on Service Credentials on the left bar.
 
-![Copy the apikey for future reference](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-Lthypg9fN1FbyPE_G4X_image.png)
+![Copy the API key for future reference](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LthxikOFuFRB2luUf2R_-Lthypg9fN1FbyPE_G4X_image.png)
 
 If you do not see a credential provided for you, you can create a new set of credentials. Save your apikey somewhere for the next section in this workshop.
 
