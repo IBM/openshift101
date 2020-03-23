@@ -4,6 +4,7 @@
 
 * [FAQ](99-faq/README.md)
 * [Create account and get cluster](pre-work/GET_STARTED.md)
+* [Accessing the IBM Cloud Shell](pre-work/CLOUD_SHELL.md)
 * [A General Docker Tutorial](pre-work/DOCKER.md)
 
 ### Workshop

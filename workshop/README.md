@@ -14,20 +14,8 @@ The goals of this workshop are:
 
 The introductory page of the workshop is broken down into the following sections:
 
-* [Agenda](#agenda)
 * [Compatability](#compatability)
 * [Credits](#credits)
-
-## Agenda
-
-|   |   |
-| - | - |
-| [Exercise 1: Deploying an application](exercise-1/README.md) | Use Source-to-Image (s2i) to deploy a Node.js application |
-| [Exercise 2: Logging and monitoring](exercise-2/README.md) | Explore the deployed application with OpenShift's console logs |
-| [Exercise 3: Metrics and dashboards](exercise-3/README.md) | View application metrics with Grafana, Prometheus, and Alert Manager |
-| [Exercise 4: Scaling the application](exercise-4/README.md) | Set resource limits and scale the application with the Horizontal Pod Autoscaler |
-| [Exercise 5: Health checks](exercise-5/README.md) | Explore Readiness and Liveness Probes |
-| [Exercise 6: Deploying the app using the CLI](exercise-6/README.md) | Get familiar with the `oc` CLI to deploy another sample application |
 
 ## Compatability
 
