@@ -235,7 +235,6 @@ Deleted: sha256:0e45a616772f2b2703d6127f27b77d73bec69fdfa1e3cac543d1a17f52e23da8
 Deleted: sha256:9b19cb8e4886f8f3c735a549309936de7283b09171ec36ecc6caa498fea2330c
 Deleted: sha256:0f00eb5804174d4b42cc70e5e7c412ba52b913d25fd39d66a4b1286486da86d6
 Deleted: sha256:2c610224d2f2aeed545ab8dd1377d6cbec5767da84d196e365c21171b380d212
-
 ```
 
 **Congratulations** on creating your first containerized application!
