@@ -1,93 +1,41 @@
-# Lab 2 - Using an existing image to create a project
+# Exercise 1: Deploy a Java application with a Docker Image
 
-In this lab you will create and run a project from an existing container image.
+In this exercise, you'll deploy a simple Java microservice - "Authors" from a public image registry to OpenShift. You can find the image on Docker Hub here: [https://hub.docker.com/r/nheidloff/authors](https://hub.docker.com/r/nheidloff/authors)
 
-## Overview
+## Deploy Authors application
 
-This is a quick lab that demonstrates how to deploy a public image from Docker Hub on OpenShift. As example image the 'authors' microservice from this workshop is used.
+Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
 
-{% hint style="info" %}
-Note: Not all images from Docker Hub can be installed. For example OpenShift doesn't allow to deploy images which run under 'root'. See the OpenShift documentation for details.
-{% endhint %}
+Create a project, you can title it whatever you like, we suggest "example-authors."
 
-### Step 1
+![Create Project](../.gitbook/assets/createproject.png)
 
-Open the OpenShift Console from the IBM Cloud OpenShift dashboard.
+Click on your new project. You should see a view that looks like the image below. Click on the *Deploy Image* button on the main screen, or click on the *Add to Project* button and choose *Deploy Image* from there.
 
-![Launch Console](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiG3Xhqxy_f92J_NC6_image.png)
+![Click 'Deploy Image'](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGF9_KJN2mKkBlNku_image.png)
 
-### Step 2
-
-Create a new project 'workshop'.
-
-![Create new project](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiG6sKX1GLkNnwsKGD_image.png)
-
-### Step 3
-
-Open the new project.
-
-![Open the new project](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGArv8XAobekyajGc_image.png)
-
-### Step 4
-
-Click 'Add to Project', followed by 'Deploy Image' in the pop up menu and then 'Deploy Image' in the dialog.
-
-![Click 'Add to Project'](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGF9_KJN2mKkBlNku_image.png)
-
-### Step 5
-
-Enter 'nheidloff/authors:v1' as the image name, click the search icon and then the 'Deploy' button.
+At the pop up, choose the *Image Name* option. Enter `nheidloff/authors:v1` as the image name and click the search icon. Once the image metadata loads click the *Deploy* button.
 
 ![Add image name](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGIGDIs2-4z0I2z0H_image.png)
 
-### Step 6
-
-Navigate back to the overview page.
-
-![back to the overview page](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGMj6Saqb-9Gm7uy__image.png)
-
-### Step 7
-
-Click 'Create Route'.
+At the application overview page, click the *Create Route* option. This will give our application an external URL.
 
 ![Create a route](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGPdbdT1F2RjVG_eK_image.png)
 
-### Step 8
-
-Click the 'Create' button (not shown in the screenshot).
+The default options are sufficient, scroll down to the bottom and click the *Create* button.
 
 ![Click Create](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGSVIhmj0Kn3iuPoC_image.png)
 
-### Step 9
-
-Copy the URL and append '/openapi/ui'.
+Try to launch the application by copying the route's URL and appending `/openapi/ui`.
 
 ![Copy the URL](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGVIO2z7C4sIM2eDq_image.png)
 
 {% hint style="info" %}
-add /openapi/ui to the end of the URL
+Add `/openapi/ui` to the URL!
 {% endhint %}
 
-### Step 10
-
-Open the Open API user interface to try the REST API.
+The Open API user interface for our *Authors* service will load. We can test the application by clicking the **GET /v1/getauthor** API. Choose the *Try it out* button and entering "Niklas Heidloff" as the query.
 
 ![Open the Open API UI](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGZZBOVOQDdQ5b-96_image.png)
 
-### Stretch Goal: Use your own Image
-
-You can deploy your image from the next Lab 3.
-
-If you want you can make changes to the Java code and/or image and push these changes to your own Docker Hub account. In order to do this, you need a Docker Hub account and invoke these commands:
-
-```bash
-cd ${ROOT_FOLDER}/2-deploying-to-openshift
-DOCKER_ACCOUNT=<your-docker-account>
-docker login
-docker build -t $DOCKER_ACCOUNT/authors:v1 .
-docker push $DOCKER_ACCOUNT/authors:v1
-```
-
-## Success
-
-Congratulations! You finished Lab 2, and deployed an image from a public registry aviable from Docker Hub.
+**Congratulations!** You just deployed an image from a public registry aviable from Docker Hub.
