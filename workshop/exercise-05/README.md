@@ -38,6 +38,17 @@ Now, next step is to add a readiness probe. Luckly it's on the same page, imedia
 
 This will make sure when a new deployment happens that it won't start until the `/info` path is available.
 
+If you want to verify it, you can run the following command to check the status, you should see something like this in the output:
+
+```bash
+oc describe deployment node-s-2-i-openshift
+```
+
+```console
+Liveness:     http-get http://:8080/info delay=5s timeout=1s period=2s #success=1 #failure=3
+    Readiness:    http-get http://:8080/info delay=5s timeout=2s period=10s #success=1 #failure=3
+```
+
 If all works, everything should be the same. Let's check that the probes are really working though.
 
 ## Inject Failure
