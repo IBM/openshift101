@@ -14,19 +14,29 @@ The `/info` endpoint on the Example Health application is a great way to check
 whether the application is running and responding to API calls -- it responds
 with a simple JSON payload.
 
-Navigate to your deployment and choose `Actions > Edit Health Checks`.
+Go ahead and click on the deployment view. You should see something like `node-s-2-i-openshift`. Click `Actions > Edit Deployment`. Find the `containers` line probably line _38_. Under the `resources` line, so line **46** past the following `yaml`. This will add a liveness probe to your deployment!
 
-![Health Checks](../.gitbook/assets/edit-health-checks.png)
+```yaml
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 2
+      httpGet:
+        path: /info
+        port: 8080
+```
 
-Add a readiness probe:
+Now, next step is to add a readiness probe. Luckly it's on the same page, imediatly under the `livenessProbe` stanza you entered, paste the following:
 
-![Readiness](../.gitbook/assets/health-checks-ui.png)
+```yaml
+    readinessProbe:
+    httpGet:
+      path: /info
+      port: 8080
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
+```
 
-Add a liveness probe:
-
-![Liveness](../.gitbook/assets/liveness-probe.png)
-
-Click Save.
+This will make sure when a new deployment happens that it won't start until the `/info` path is available.
 
 If all works, everything should be the same. Let's check that the probes are really working though.
 
