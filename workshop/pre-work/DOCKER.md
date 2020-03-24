@@ -50,9 +50,9 @@ Open your local terminal and create a temporary directory to host the source cod
 
 ```bash
 cd ~
-mkdir openshiftworkshop
-cd openshiftworkshop
-git clone https://github.com/lidderupk/nodejs-docker.git
+mkdir openshift-workshop
+cd openshift-workshop
+git clone https://github.com/IBM/node-docker-language-translation
 cd nodejs-docker
 ```
 
