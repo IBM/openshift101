@@ -40,8 +40,6 @@ CMD [ "npm", "start" ]
 
 From the OpenShift console click the user name in the top right corner and select *Copy Login Command*.
 
-![Copy Login Command](../.gitbook/assets/copy-login-command.png)
-
 The login command will be copied to the clipboard, in the IBM Cloud Shell, paste that command. For example:
 
 ```bash
