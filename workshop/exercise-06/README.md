@@ -1,213 +1,159 @@
-# Exercise 6: Deploying the app using the CLI
+# Exercise 6: Deploy a Node application with Source-to-Image (CLI version)
 
-1. Get the source code for the `Example Health` app
+In this exercise we'll revisit the application from exercise 1, except we'll use equivalent CLI commands to deploy our "Example Health" application.
 
-    * Fork the repository `https://github.com/IBM/node-s2i-openshift` to your own organization,
+From the IBM Cloud console launch the IBM Cloud Shell. Refer to our [Getting Starting](../pre-work/CLOUD_SHELL.md) material to learn how to access the IBM Cloud Shell.
 
-    * Clone the forked repo in your own organization to your localhost,
+## Deploy Example Health (CLI version)
 
-        ```console
-        git clone https://github.com/<username>/node-s2i-openshift
+First, clone the *Example Health* source code and change to that directory.
 
-        Cloning into 'node-s2i-openshift'...
-        remote: Enumerating objects: 94, done.
-        remote: Counting objects: 100% (94/94), done.
-        remote: Compressing objects: 100% (82/82), done.
-        remote: Total 509 (delta 27), reused 54 (delta 12), pack-reused 415
-        Receiving objects: 100% (509/509), 7.27 MiB | 3.12 MiB/s, done.
-        Resolving deltas: 100% (276/276), done.
-        ```
+```bash
+git clone https://github.com/IBM/node-build-config-openshift
+cd node-build-config-openshift
+```
 
-    * Run the `Health Example` app on your localhost to make sure it's running correctly,
+Take note of the new `Dockerfile` in the application's root directory. We've pre-written it for you. But we've copied it here too, go through each line and read the corresponding comment.
 
-        ```console
-        cd node-s2i-openshift
-        cd site
-        npm install
-        npm start
-        open http://localhost:8080/
-        ```
+```Dockerfile
+# Use the official Node 10 image
+FROM node:10
 
-1. Run the Example Health app with Docker,
+# Change directory to /usr/src/app
+WORKDIR /usr/src/app
 
-    * In the directory `./site` create a new file `Dockerfile`,
+# Copy the application source code
+COPY . .
 
-        ```console
-        touch Dockerfile
-        ```
+# Change directory to site/
+WORKDIR site/
 
-    * Edit the `Dockerfile` and add the following commands,
+# Install dependencies
+RUN npm install
 
-        ```text
-        FROM node:10-slim
+# Allow traffic on port 8080
+EXPOSE 8080
 
-        USER node
+# Start the application
+CMD [ "npm", "start" ]
+```
 
-        RUN mkdir -p /home/node/app
-        WORKDIR /home/node/app
+From the OpenShift console click the user name in the top right corner and select *Copy Login Command*.
 
-        COPY --chown=node package*.json ./
-        RUN npm install
-        COPY --chown=node . .
+![Copy Login Command](../.gitbook/assets/copy-login-command.png)
 
-        ENV HOST=0.0.0.0 PORT=3000
+The login command will be copied to the clipboard, in the IBM Cloud Shell, paste that command. For example:
 
-        EXPOSE ${PORT}
-        CMD [ "node", "app.js" ]
-        ```
+```bash
+oc login https://c100-e.us-south.containers.cloud.ibm.com:30403 --token=jWX7a04tRgpdhW_iofWuHqb_Ygp8fFsUkRjOK7_QyFQ
+```
 
-    * Run the app with Docker,
+Create a new OpenShift project to deploy our application, call it `example-health-ns`.
 
-        ```console
-        docker stop example-health
-        docker rm example-health
-        docker build --no-cache -t example-health .
-        docker run -d --restart always --name example-health -p 3000:3000 example-health
+```bash
+oc new-project example-health-ns
+```
 
-        da106f3b5a06a00ea8bf56c54e29f6e38405a77c6dec3e461e3062aa823d8a4f
-        ```
+Build your application's image by running the `oc new-build` command from your source code root directory. This will create a Build and an ImageStream of the app.
 
-1. Build and Push the Image to your public Docker Hub Registry.
+```bash
+oc new-build --strategy docker --binary --docker-image node:10 --name example-health
+```
 
-    * Make sure to change the `<username>` by the username of your Docker Hub account,
+The output should look like below:
 
-    ```bash
-    docker build --no-cache -t example-health .
+```bash
+oc new-build --strategy docker --binary --docker-image node:10 --name example-health
+--> Found Docker image aa64327 (3 weeks old) from Docker Hub for "node:10"
 
-    Sending build context to Docker daemon  8.229MB
-    Step 1/10 : FROM node:10-slim
-     ---> 8d33f30db9b5
-    ... and more
-    Successfully built aaf90ce81dd7
-    Successfully tagged example-health:latest
-    ```
+    * An image stream tag will be created as "node:10" that will track the source image
+    * A Docker build using binary input will be created
+      * The resulting image will be pushed to image stream tag "example-health:latest"
+      * A binary build was created, use 'start-build --from-dir' to trigger a new build
 
-    ```bash
-    docker tag example-health:latest <username>/example-health:1.0.0
-    ```
+--> Creating resources with label build=example-health ...
+    imagestream.image.openshift.io "node" created
+    imagestream.image.openshift.io "example-health" created
+    buildconfig.build.openshift.io "example-health" created
+--> Success
+```
 
-    ```bash
-    docker login -u <username>
+Start a new build using the `oc start-build` command.
 
-    Password:
-    Login Succeeded
-    ```
+```bash
+oc start-build example-health --from-dir . --follow
+```
 
-    ```bash
-    docker push <username>/example-health:1.0.0
+The output should look like below:
 
-    The push refers to repository [docker.io/<username>/example-health]
-    b33f2248b6f9: Pushed
-    195f723f9ebb: Pushed
-    0912774a40f4: Pushed
-    3558c6f90d27: Pushed
-    4d1d690b5181: Mounted from <username>/example-health
-    bc272904b2c4: Mounted from <username>/example-health
-    784c13bc7926: Mounted from <username>/example-health
-    0e0d79e2c080: Mounted from <username>/example-health
-    e9dc98463cd6: Mounted from <username>/example-health
-    1.0.0: digest: sha256:a329778ce422e3d25ac9ff70b5131a9de26184a1e94b6d08844ea4f361519fd7 size: 2205
-    ```
+```bash
+oc start-build example-health --from-dir . --follow
+Uploading directory "." as binary input for the build ...
+.
+Uploading finished
+build.build.openshift.io/example-health-1 started
+Receiving source from STDIN as archive ...
+Replaced Dockerfile FROM image node:10
+...
+Successfully built 11bff161eb8e
 
-1. Login to the Remote OpenShift Cluster
+Pushing image docker-registry.default.svc:5000/example-health-ns/example-health:latest ...
+Pushed 0/12 layers, 17% complete
+Pushed 1/12 layers, 42% complete
+...
+Pushed 11/12 layers, 100% complete
+Pushed 12/12 layers, 100% complete
+```
 
-    * Login to the OpenShift cluster web console,
-    * From the logged in user drop down in the top right of the web console, select `Copy Login Command`,
-    * The login command will be copied to the clipboard,
-    * In your terminal, paste the login command, e.g.
+Finally, deploy the application by running `oc new-app`.
 
-        ```console
-        oc login https://c100-e.us-south.containers.cloud.ibm.com:30403 --token=jWX7a04tRgpdhW_iofWuHqb_Ygp8fFsUkRjOK7_QyFQ
-        ```
+```bash
+oc new-app -i example-health
+```
 
-1. Create a new Project
+The output should look like below:
 
-    * Create a new project `example-health-ns`,
+```bash
+oc new-app -i example-health
+--> Found image 11bff16 (8 minutes old) in image stream "example-health-ns/example-health" under tag "latest" for "example-health"
 
-        ```console
-        $ oc new-project example-health-ns
-        Now using project "example-health-ns" on server "https://c100-e.us-south.containers.cloud.ibm.com:30403".
+    * This image will be deployed in deployment config "example-health"
+    * Port 8080/tcp will be load balanced by service "example-health"
+      * Other containers can access this service through the hostname "example-health"
+    * WARNING: Image "example-health-ns/example-health:latest" runs as the 'root' user which may not be permitted by your cluster administrator
 
-        You can add applications to this project with the 'new-app' command. For example, try:
+--> Creating resources ...
+    deploymentconfig.apps.openshift.io "example-health" created
+    service "example-health" created
+--> Success
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose svc/example-health'
+    Run 'oc status' to view your app.
+```
 
-            oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
+Expose the service using `oc expose`, a route will be created.
 
-        to build a new example application in Ruby.
-        ```
+```bash
+oc expose svc/example-health
+```
 
-    * Use the `example-health-ns` project,
+Find the application's route by running `oc get routes`.
 
-        ```console
-        $ oc project example-health-ns
-        Already on project "example-health-ns" on server "https://c100-e.us-south.containers.cloud.ibm.com:30403".
-        $ oc project
-        Using project "example-health-ns" on server "https://c100-e.us-south.containers.cloud.ibm.com:30403".
-        ```
+```bash
+oc get routes
+```
 
-1. Deploy the `Example Health` app using the Docker image,
+The output should look like below:
 
-    * Create the application, and replace `<username>` by the username of your Docker Hub account,
+```bash
+oc get routes
 
-        ```console
-        $ oc new-app <username>/example-health:1.0.0
-        --> Found Docker image aaf90ce (8 minutes old) from Docker Hub for "<username>/example-health:1.0.0"
+NAME             HOST/PORT                                                                                                                        PATH      SERVICES         PORT       TERMINATION   WILDCARD
+example-health   example-health-example-health-ns.aida-dev-apps-10-30-f2c6cdc6801be85fd188b09d006f13e3-0001.us-south.containers.appdomain.cloud             example-health   8080-tcp                 None
+```
 
-            * An image stream tag will be created as "example-health:1.0.0" that will track this image
-            * This image will be deployed in deployment config "example-health"
-            * Port 3000/tcp will be load balanced by service "example-health"
-            * Other containers can access this service through the hostname "example-health"
+Copy the URL into a browser and log into the site with `admin`:`test`.
 
-        --> Creating resources ...
-            imagestream.image.openshift.io "example-health" created
-            deploymentconfig.apps.openshift.io "example-health" created
-            service "example-health" created
-        --> Success
-            Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
-            'oc expose svc/example-health'
-            Run 'oc status' to view your app.
-        ```
+![Example Health details](../.gitbook/assets/example-health-app.png)
 
-    * This will create an ImageStream, Deployment, a Pod, and a Service resource for the `Example-Health` app,
-
-1. Expose the `Example-Health` service,
-
-    * The last thing to do is to create a route. By default, services on OpenShift are not publically available. A route will expose the service publically to external traffic.
-
-        ```console
-        $ oc expose svc/example-health
-        route.route.openshift.io/example-health exposed
-        ```
-
-    * View the status,
-
-        ```console
-        $ oc status
-        In project example-health-ns on server https://c100-e.us-south.containers.cloud.ibm.com:30403
-
-        http://example-health-example-health-ns.cda-openshift-cluster-1c0e8bfb1c68214cf875a9ca7dd1e060-0001.us-south.containers.appdomain.cloud to pod port 3000-tcp (svc/example-health)
-        dc/example-health deploys istag/example-health:1.0.0
-            deployment #1 deployed 5 minutes ago - 1 pod
-
-        2 infos identified, use 'oc status --suggest' to see details.
-        ```
-
-1. Review the `Example-Health` app in the web console,
-
-    * Go to `My Projects` via URI `/console/projects`,
-
-        ![My Projects](../.gitbook/assets/oc-my-projects.png)
-
-    * Select the project `example-health-ns`, unfold the `DEPLOYMENT CONFIG` for `example-health` application details,
-
-        ![Example Health details](../.gitbook/assets/oc-example-health-details.png)
-
-    * In the `NETWORKING` section, click the `Routes - External Traffic` link, e.g. `http://example-health-example-health-ns.cda-openshift-cluster-1c0e8bfb1c68214cf875a9ca7dd1e060-0001.us-south.containers.appdomain.cloud`
-
-    * This opens the Example Health app in a new tab of your browser,
-    * Login with `admin:test`,
-
-        ![Example Health details](../.gitbook/assets/example-health-app.png)
-
-## You're done
-
-Congratulations on completing the lab!
+**Congratulations** on completing this exercise!
