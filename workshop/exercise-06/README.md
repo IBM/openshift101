@@ -1,4 +1,4 @@
-# Exercise 6: Deploy a Node application with Source-to-Image (CLI version)
+# Exercise 6: Deploy a Node application with Build Config (CLI version)
 
 In this exercise we'll revisit the application from exercise 1, except we'll use equivalent CLI commands to deploy our "Example Health" application.
 
@@ -114,7 +114,7 @@ oc new-app -i example-health
 The output should look like below:
 
 ```bash
-oc new-app -i example-health
+$ oc new-app -i example-health
 --> Found image 11bff16 (8 minutes old) in image stream "example-health-ns/example-health" under tag "latest" for "example-health"
 
     * This image will be deployed in deployment config "example-health"
@@ -146,7 +146,7 @@ oc get routes
 The output should look like below:
 
 ```bash
-oc get routes
+$ oc get routes
 
 NAME             HOST/PORT                                                                                                                        PATH      SERVICES         PORT       TERMINATION   WILDCARD
 example-health   example-health-example-health-ns.aida-dev-apps-10-30-f2c6cdc6801be85fd188b09d006f13e3-0001.us-south.containers.appdomain.cloud             example-health   8080-tcp                 None
