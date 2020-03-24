@@ -50,9 +50,9 @@ Open your local terminal and create a temporary directory to host the source cod
 
 ```bash
 cd ~
-mkdir openshiftworkshop
-cd openshiftworkshop
-git clone https://github.com/lidderupk/nodejs-docker.git
+mkdir openshift-workshop
+cd openshift-workshop
+git clone https://github.com/IBM/node-docker-language-translation
 cd nodejs-docker
 ```
 
@@ -115,13 +115,13 @@ CMD [ "node", "server.js" ]
 To run our application as a container, issue the following command with your Language Translator API key:
 
 ```bash
-docker run -p 8080:8080 -e "nlp_key=<api_key>" translator:v1
+docker run -p 8080:8080 -e "lt_key=<api_key>" translator:v1
 ```
 
 For example, here's what I used:
 
 ```bash
-docker run -p 8080:8080 -e "nlp_key=T1ReDZISYE4cpqQnQHKTWe1F9iUy6hhxkRu0aWqzmxQ3" translator:v1
+docker run -p 8080:8080 -e "lt_key=T1ReDZISYE4cpqQnQHKTWe1F9iUy6hhxkRu0aWqzmxQ3" translator:v1
 ```
 
 ### 6. Test the application
