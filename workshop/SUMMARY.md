@@ -13,12 +13,12 @@
 * [Exercise 3: Metrics and dashboards](exercise-03/README.md)
 * [Exercise 4: Scaling the application](exercise-04/README.md)
 * [Exercise 5: Health checks](exercise-05/README.md)
-* [Exercise 6: Deploy a Node application using the CLI](exercise-06/README.md)
-* [Exercise 7: Deploying a Full Project](exercise-07/README.md)
+* [Exercise 6: Deploy a Node application with Build Config (CLI version)](exercise-06/README.md)
 
 ### Alternates
 
 * [Exercise 1: Deploy a Java application with a Docker Image](exercise-01b/README.md)
+* [Exercise 6: Deploy a Java application with Build Config (CLI version)](exercise-06b/README.md)
 
 ### Resources
 
