@@ -29,11 +29,11 @@ Now, next step is to add a readiness probe. Luckly it's on the same page, imedia
 
 ```yaml
     readinessProbe:
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
     httpGet:
       path: /info
       port: 8080
-    initialDelaySeconds: 5
-    timeoutSeconds: 2
 ```
 
 This will make sure when a new deployment happens that it won't start until the `/info` path is available.
@@ -46,7 +46,7 @@ oc describe deployment node-s-2-i-openshift
 
 ```console
 Liveness:     http-get http://:8080/info delay=5s timeout=1s period=2s #success=1 #failure=3
-    Readiness:    http-get http://:8080/info delay=5s timeout=2s period=10s #success=1 #failure=3
+Readiness:    http-get http://:8080/info delay=5s timeout=2s period=10s #success=1 #failure=3
 ```
 
 If all works, everything should be the same. Let's check that the probes are really working though.
