@@ -4,7 +4,6 @@
 
 * [Create an IBM Cloud account / Access an OpenShift cluster](pre-work/GET_STARTED.md)
 * [Accessing the IBM Cloud Shell](pre-work/CLOUD_SHELL.md)
-* [A General Docker Tutorial](pre-work/DOCKER.md)
 
 ### Workshop
 
@@ -23,6 +22,7 @@
 ### Resources
 
 * [FAQ](99-faq/README.md)
+* [A General Docker Tutorial](pre-work/DOCKER.md)
 * [Setup CLI Access for the cluster](pre-work/SETUP_CLI.md)
 * [Certification on CognitiveClass.ai](https://cognitiveclass.ai/courses/beyond-the-basics-istio-and-ibm-cloud-kubernetes-service/)
 * [IBM Developer](https://developer.ibm.com)
