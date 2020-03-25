@@ -1,4 +1,4 @@
-# Scaling the application
+# Exercise 4: Scaling the application
 
 In this exercise, we'll leverage the metrics we've observed in the previous step to automatically scale our UI application in response to load.
 
@@ -9,11 +9,11 @@ Before we can setup autoscaling for our pods, we first need to set resource limi
 Hopefully you have your running script simulating load \(if not go [here](exercise-2.md#simulate-load-on-the-application)\), Grafana showed you that your application was consuming anywhere between ".002" to ".02" cores. This translates to 2-20 "millicores".
 That seems like a good range for our CPU request, but to be safe, let's bump the higher-end up to 30 millicores. In addition, Grafana showed that the app consumes about `25`-`35` MB of RAM. Set the following resource limits for your deployment now.
 
-1. Switch to the **Administrator** view and then navigate to **Workloads > Deployments** in the left-hand bar. Choose the `patient-ui` Deployment, then choose **Actions > Edit Deployment**.
+Switch to the **Administrator** view and then navigate to **Workloads > Deployments** in the left-hand bar. Choose the `patient-ui` Deployment, then choose **Actions > Edit Deployment**.
 
 ![Deployments](../.gitbook/assets/ocp-deployments.png)
 
-2. In the YAML editor, go to line 44. In the section **template > spec > containers**, add the following resource limits into the empty resources. Replace the `resources {}`, and ensure the spacing is correct -- YAML uses strict indentation.
+In the YAML editor, go to line 44. In the section **template > spec > containers**, add the following resource limits into the empty resources. Replace the `resources {}`, and ensure the spacing is correct -- YAML uses strict indentation.
 
 ![Limits YAML](../.gitbook/assets/ocp-limits-yaml.png)
 
@@ -27,9 +27,9 @@ That seems like a good range for our CPU request, but to be safe, let's bump the
                  memory: 40Mi
   ```
 
-3. **Save** and **Reload** to see the new version.
+**Save** and **Reload** to see the new version.
 
-4. Verify that the replication controller has been changed by navigating to **Events**
+Verify that the replication controller has been changed by navigating to **Events**
 
 ![Resource Limits](../.gitbook/assets/ocp-dc-events.png)
 
@@ -64,17 +64,17 @@ spec:
         targetAverageUtilization: 1
 ```
 
-2. Hit **Create**.
+Hit **Create**.
 
 ## Test Autoscaler
 
 If you're not running the script from the [previous exercise](exercise-2.md#simulate-load-on-the-application), the number of pods should stay at 1.
 
-1. Check by going to the **Overview** page of **Deployments**.
+Check by going to the **Overview** page of **Deployments**.
 
 ![Scaled to 1 pod](../.gitbook/assets/ocp-hpa-before.png)
 
-2. Start simulating load by hitting the page several times, or running the script. You'll see that it starts to scale up:
+Start simulating load by hitting the page several times, or running the script. You'll see that it starts to scale up:
 
 ![Scaled to 4/10 pods](../.gitbook/assets/ocp-hpa-after.png)
 
