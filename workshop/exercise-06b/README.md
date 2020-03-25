@@ -124,6 +124,25 @@ View the build logs by running the `oc logs` command.
 oc logs bc/authors
 ```
 
+Verify the image exists in OpenShift's internal registry by accessing the registry console. Run the following command to get the URL of the registry console.
+
+```bash
+oc get route registry-console --namespace default
+```
+
+The output should look like the following:
+
+```bash
+$ oc get route registry-console --namespace default
+
+NAME               HOST/PORT                                                                                                                PATH      SERVICES           PORT               TERMINATION   WILDCARD
+registry-console   registry-console-default.aida-dev-apps-10-30-f2c6cdc6801be85fd188b09d006f13e3-0001.us-south.containers.appdomain.cloud             registry-console   registry-console   passthrough   None
+```
+
+Launch a browser and go to the URL in the `HOST/PORT` column. You should see the newly pushed image.
+
+![You should find the project you just pushed](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDXsgrfeJba1zTpo5_image.png)
+
 Finally, deploy the application by running `oc new-app`.
 
 ```bash

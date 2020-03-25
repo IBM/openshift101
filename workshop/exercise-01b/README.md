@@ -38,4 +38,23 @@ The Open API user interface for our *Authors* service will load. We can test the
 
 ![Open the Open API UI](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiGZZBOVOQDdQ5b-96_image.png)
 
+Verify the image exists in OpenShift's internal registry by accessing the registry console. Run the following command to get the URL of the registry console.
+
+```bash
+oc get route registry-console --namespace default
+```
+
+The output should look like the following:
+
+```bash
+$ oc get route registry-console --namespace default
+
+NAME               HOST/PORT                                                                                                                PATH      SERVICES           PORT               TERMINATION   WILDCARD
+registry-console   registry-console-default.aida-dev-apps-10-30-f2c6cdc6801be85fd188b09d006f13e3-0001.us-south.containers.appdomain.cloud             registry-console   registry-console   passthrough   None
+```
+
+Launch a browser and go to the URL in the `HOST/PORT` column. You should see the newly pushed image.
+
+![You should find the project you just pushed](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiDXsgrfeJba1zTpo5_image.png)
+
 **Congratulations!** You just deployed an image from a public registry aviable from Docker Hub.
