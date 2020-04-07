@@ -24,19 +24,9 @@ In this exercise, you'll deploy a simple Node.js Express application - "Example 
 
 ## Deploy Example Health
 
-Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
-
-Here is the main dashboard you should see.
+Access your cluster's web console by clicking the `OpenShift Console` button on the top-right. Here is the main dashboard you should see.
 
 ![Main Dashboard](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/main-dashboard.png)
-
-Create a project, on the left hand side, you can title it whatever you like, we suggest "example-health."
-
-![Create Project](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/create-project.png)
-
-And fill it out something like this.
-
-![Example Health](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/example-health-create-project.png)
 
 You should see a view that looks like this.
 
@@ -182,18 +172,10 @@ In this exercise, we'll explore the out-of-the-box logging and monitoring capabi
 
 ## Simulate Load on the Application
 
-First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
-
-> With Linux/MacOS
+First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests. Open a new terminal and enter the following:
 
 ```bash
 while sleep 1; do curl -s <your_app_route>/info; done
-```
-
-> With Windows
-
-```bash
-while($true){curl <your_app_route>/info}
 ```
 
 {% hint style="info" %}
@@ -367,12 +349,6 @@ Start simulating load by hitting the page several times, or running the script. 
 
 That's it! You now have a highly available and automatically scaled front-end Node.js application. OpenShift is automatically scaling your application pods since the CPU usage of the pods greatly exceeded `1`% of the resource limit, `30` millicores.
 
-### Optional
-
-If you're interested in setting up the CLI, [follow the steps here](../getting-started/setup_cli.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
-
-You could have created the autoscaler with the command `oc autoscale deployment/patient-ui --min 1 --max 10 --cpu-percent=1`.
-
 # Exercise 5: Health checks
 
 In Kubernetes, liveness and readiness probes are essential for smoothly running applications.
@@ -478,20 +454,6 @@ EXPOSE 8080
 CMD [ "npm", "start" ]
 ```
 
-From the OpenShift console click the user name in the top right corner and select *Copy Login Command*.
-
-The login command will be copied to the clipboard, in the IBM Cloud Shell, paste that command. For example:
-
-```bash
-oc login https://c100-e.us-south.containers.cloud.ibm.com:30403 --token=jWX7a04tRgpdhW_iofWuHqb_Ygp8fFsUkRjOK7_QyFQ
-```
-
-Create a new OpenShift project to deploy our application, call it `example-health-ns`.
-
-```bash
-oc new-project example-health-ns
-```
-
 Build your application's image by running the `oc new-build` command from your source code root directory. This will create a Build and an ImageStream of the app.
 
 ```bash
@@ -594,4 +556,4 @@ Copy the URL into a browser and log into the site with `admin`:`test`.
 
 ![Example Health details](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/example-health-app.png)
 
-**Congratulations** on completing this exercise!
+**Congratulations** on completing this workshop!
