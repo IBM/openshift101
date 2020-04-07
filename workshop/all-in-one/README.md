@@ -1,11 +1,12 @@
 # OpenShift 101
 
-## So what is OpenShift
+Welcome to our OpenShift 101 digital workshop!
+
+**So what is OpenShift?**
 
 To quote Wikipedia:
 
 > OpenShift is a family of containerization software developed by Red Hat. Its flagship product is the OpenShift Container Platform-an on-premises platform as a service built around Docker containers orchestrated and managed by Kubernetes on a foundation of Red Hat Enterprise Linux.
-> The Openshift UI has various functionalities, allowing one to monitor the container resources, container health, the nodes the containers reside on, IP addresses of the nodes, etc. The key store can be accessed via the Secrets in Openshift. The OC CLI command line tool also offers similar functionalities.
 
 But the short of it? It's a abstraction layer **ON TOP** of Kubernetes. It's a way to empower Developers to deploy code and not worry about a lot of the underlying ecosystem. This workshop should show you the happy path to take advantage of most of the best parts of OpenShift and what it can offer.
 
@@ -19,7 +20,7 @@ The goals of this workshop are:
 
 In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
-## Deploy Example Health
+### Deploy Example Health
 
 Access your cluster on the [IBM Cloud clusters dashboard](https://cloud.ibm.com/kubernetes/clusters). Click the `OpenShift web console` button on the top-right. (This is a pop-up so you'll need to white list this site.)
 
@@ -79,11 +80,11 @@ You can enter any strings for username and password, for instance `test:test` be
 
 Congrats! You've deployed a `Node.js` app to Kubernetes using OpenShift Source-to-Image (S2I).
 
-## Understanding What Happened
+### Understanding What Happened
 
 [S2I](https://docs.openshift.com/container-platform/3.6/architecture/core_concepts/builds_and_image_streams.html#source-build) is a framework that creates container images from source code, then runs the assembled images as containers. It allows developers to build reproducible images easily, letting them spend time on what matters most, developing their code!
 
-## Git Webhooks
+### Git Webhooks
 
 So far we have been doing alot of manual deployment. In cloud-native world we want to move away from manual work and move toward automation. Wouldn't it be nice if our application rebuilt on git push events? Git webhooks are the way its done and openshift comes bundled in with git webhooks. Let's set it up for our project.
 
@@ -173,11 +174,11 @@ If you go to your new route you will see your change.
 
 ![UI](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/nodejs-rebuild-updated.png)
 
-# Exercise 2: Logging and monitoring
+## Exercise 2: Logging and monitoring
 
 In this exercise, we'll explore the out-of-the-box logging and monitoring capabilities that are offered in OpenShift.
 
-## Simulate Load on the Application
+### Simulate Load on the Application
 
 First, let's simulate some load on our application. Run the following script which will endlessly spam our app with requests:
 
@@ -199,7 +200,7 @@ Note: Retrieve the external URL from the OpenShift console, or from the URL of y
 [`http://patientui-health-example.myopenshift-xxx.us-east.containers.appdomain.cloud/info`](http://patientui-health-example.myopenshift-341665-66631af3eb2bd8030c5bb56d415b8851-0001.us-east.containers.appdomain.cloud/jee.html)
 {% endhint %}
 
-## OpenShift Logging
+### OpenShift Logging
 
 Since we only created one pod, seeing our logs will be straight forward. Navigate to `View Logs` on the left on the main dashboard.
 
@@ -209,7 +210,7 @@ You should be taken to something like the following. Scroll up and you should se
 
 ![Logs](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/view-logs-details.png)
 
-## OpenShift Terminal
+### OpenShift Terminal
 
 One of the great things about Kubernetes is the ability to quickly debug your application pods with SSH terminals. This is great for development, but generally is not recommended in production environments. OpenShift makes it even easier by allowing you to launch a terminal directly in the dashboard.
 
@@ -227,7 +228,7 @@ ps aux
 
 ![Terminal](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/terminal-output.png)
 
-## OpenShift Monitoring
+### OpenShift Monitoring
 
 When deploying new apps, making configuration changes, or simply inspecting the state of your cluster, the OpenShift monitoring dashboard gives you an overview of your running assets.
 
@@ -237,11 +238,11 @@ You can also dive in a bit deeper - the `Events` tab is very useful for identify
 
 You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.
 
-# Exercise 3: Metrics and dashboards
+## Exercise 3: Metrics and dashboards
 
 In this exercise, we'll explore the third-party monitoring and metrics dashboards that are installed for free with OpenShift!
 
-## Grafana
+### Grafana
 
 Red Hat OpenShift on IBM Cloud comes with [Grafana](https://grafana.com/) preinstalled. Get started by switching to the Administrator view:
 
@@ -265,7 +266,7 @@ You should be able to see the CPU and Memory usage for your application. In prod
 
 ![Grafana also project](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/grafana-example-health.png)
 
-## Prometheus and Alert Manager
+### Prometheus and Alert Manager
 
 Navigating back to the cluster console, you can also launch:
 
@@ -274,19 +275,19 @@ Navigating back to the cluster console, you can also launch:
 
 ![Metrics, Alerts and Dashboards](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/monitoring-dashboard4.png)
 
-## Prometheus
+### Prometheus
 
 ![Prometheus](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/prometheus-time-series4.png)
 
-## Alertmanager
+### Alertmanager
 
 ![Alert Manager](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/alert-manager4.png)
 
-# Exercise 4: Scaling the application
+## Exercise 4: Scaling the application
 
 In this exercise, we'll leverage the metrics we've observed in the previous step to automatically scale our UI application in response to load.
 
-## Enable Resource Limits
+### Enable Resource Limits
 
 Before we can setup autoscaling for our pods, we first need to set resource limits on the pods running in our cluster. Limits allows you to choose the minimum and maximum CPU and memory usage for a pod.
 
@@ -317,7 +318,7 @@ Verify that the replication controller has been changed by navigating to **Event
 
 ![Resource Limits](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/ocp-dc-events.png)
 
-## Enable Autoscaler
+### Enable Autoscaler
 
 Now that we have resource limits, let's enable autoscaler.
 
@@ -350,7 +351,7 @@ spec:
 
 Hit **Create**.
 
-## Test Autoscaler
+### Test Autoscaler
 
 If you're not running the script from the [previous exercise](exercise-2.md#simulate-load-on-the-application), the number of pods should stay at 1.
 
@@ -370,7 +371,7 @@ If you're interested in setting up the CLI, [follow the steps here](../getting-s
 
 You could have created the autoscaler with the command `oc autoscale deployment/patient-ui --min 1 --max 10 --cpu-percent=1`.
 
-# Exercise 5: Health checks
+## Exercise 5: Health checks
 
 In Kubernetes, liveness and readiness probes are essential for smoothly running applications.
 A probe is generally a REST `GET` call, but there are other types of probes available.
@@ -380,7 +381,7 @@ restarted by OpenShift. Readiness probes determine when a container is ready to
 start receiving traffic. If a readiness probe fails, then the load balancer
 would deregister that service.
 
-## Create Readiness and Liveness Probes
+### Create Readiness and Liveness Probes
 
 The `/info` endpoint on the Example Health application is a great way to check
 whether the application is running and responding to API calls -- it responds
@@ -423,7 +424,7 @@ Readiness:    http-get http://:8080/info delay=5s timeout=2s period=10s #success
 
 If all works, everything should be the same. Let's check that the probes are really working though.
 
-## Inject Failure
+### Inject Failure
 
 Let's edit the probe with a typo to see what happens when it fails. Edit the health check and change the path for the readiness probe to `/badpath`. Wait a few minutes and check your deployment - you'll notice that `0/1` containers are ready:
 
@@ -435,13 +436,13 @@ Dive into your events and you'll see that the probe is failing, causing the plat
 
 Using health checks gives your OpenShift service layer better reliability and helps you start with a strong foundation.
 
-# Exercise 6: Deploy a Node application with Build Config (CLI version)
+## Exercise 6: Deploy a Node application with Build Config (CLI version)
 
 In this exercise we'll revisit the application from exercise 1, except we'll use equivalent CLI commands to deploy our "Example Health" application.
 
 From the IBM Cloud console launch the IBM Cloud Shell. Refer to our [Getting Starting](../pre-work/CLOUD_SHELL.md) material to learn how to access the IBM Cloud Shell.
 
-## Deploy Example Health (CLI version)
+### Deploy Example Health (CLI version)
 
 First, clone the *Example Health* source code and change to that directory.
 
