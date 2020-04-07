@@ -250,23 +250,6 @@ You should be able to see the CPU and Memory usage for your application. In prod
 
 ![Grafana also project](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/grafana-example-health.png)
 
-## Prometheus and Alert Manager
-
-Navigating back to the cluster console, you can also launch:
-
-* **[Prometheus](https://prometheus.io/)** - a monitoring system with an efficient time series database
-* **[Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)** - an extension of Prometheus focused on managing alerts
-
-![Metrics, Alerts and Dashboards](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/monitoring-dashboard4.png)
-
-### Prometheus
-
-![Prometheus](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/prometheus-time-series4.png)
-
-### Alertmanager
-
-![Alert Manager](https://raw.githubusercontent.com/IBM/openshift101/skills-network/workshop/.gitbook/assets/alert-manager4.png)
-
 # Exercise 4: Scaling the application
 
 In this exercise, we'll leverage the metrics we've observed in the previous step to automatically scale our UI application in response to load.
