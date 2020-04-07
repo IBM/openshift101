@@ -1,4 +1,6 @@
-# So what is OpenShift
+# OpenShift 101
+
+## So what is OpenShift
 
 To quote Wikipedia:
 
@@ -13,7 +15,7 @@ The goals of this workshop are:
 * Deploy a Node.js application to OpenShift
 * Use OpenShift's features to monitor, scale the application
 
-# Exercise 1: Deploy a Node application with Source-to-Image
+## Exercise 1: Deploy a Node application with Source-to-Image
 
 In this exercise, you'll deploy a simple Node.js Express application - "Example Health". Example Health is a simple UI for a patient health records system. We'll use this example to demonstrate key OpenShift features throughout this workshop. You can find the sample application GitHub repository here: [https://github.com/IBM/node-s2i-openshift](https://github.com/IBM/node-s2i-openshift)
 
