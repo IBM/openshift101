@@ -1,6 +1,6 @@
 # Docker
 
-To help you understand the basics of Docker technology we have created a tutorial where you will build and run a Node.js application with Docker. The application will translate phrases from one language to another by using Watson's [Language Translator](https://cloud.ibm.com/catalog/services/language-translator) service.‌
+To help you understand the basics of Docker technology we have created a tutorial where you will build and run a Node.js application with Docker. The application will translate phrases from one language to another by using Watson's [Language Translator](https://cloud.ibm.com/catalog/services/language-translator) service.
 
 ![The Docker architecture - containers are separated from the OS](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
 
@@ -17,6 +17,10 @@ In our tutorial, you'll be given the source code for the sample application, but
 ![A Docker pipeline is about building, shipping, and running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 Let's get started!
+
+### 0. Install Docker Locally
+
+Navigate to [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) to download and install the lastest version of Docker for your OS of choice. 
 
 ### 1. Create a Language Translator service
 
@@ -53,7 +57,7 @@ cd ~
 mkdir openshift-workshop
 cd openshift-workshop
 git clone https://github.com/IBM/node-docker-language-translation
-cd nodejs-docker
+cd node-docker-language-translation
 ```
 
 ### 4. Build the application with Docker
