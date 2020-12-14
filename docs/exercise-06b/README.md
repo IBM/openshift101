@@ -39,7 +39,7 @@ EXPOSE 3000
 
 From the OpenShift console click the user name in the top right corner and select *Copy Login Command*.
 
-![Copy Login Command](../.gitbook/assets/copy-login-command.png)
+![Copy Login Command](../assets/copy-login-command.png)
 
 The login command will be copied to the clipboard, in the IBM Cloud Shell, paste that command. For example:
 
@@ -192,7 +192,7 @@ authors   authors-cloud-native-starter.aida-dev-apps-10-30-f2c6cdc6801be85fd188b
 
 Copy the URL into a browser and append `/openapi/ui`.
 
-![Swagger in a browser](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEitfev7y0iBe0AoE_image.png)
+![Swagger in a browser](../assets/assets_-LtBxDkdPh1ZKmLAzW5v_-LtiA8xoR9evM5RpWqWE_-LtiEitfev7y0iBe0AoE_image.png)
 
 Also verify this works with `curl` by running
 

@@ -152,6 +152,6 @@ example-health   example-health-example-health-ns.aida-dev-apps-10-30-f2c6cdc680
 
 Copy the URL into a browser and log into the site with `admin`:`test`.
 
-![Example Health details](../.gitbook/assets/example-health-app.png)
+![Example Health details](../assets/example-health-app.png)
 
 **Congratulations** on completing this exercise!

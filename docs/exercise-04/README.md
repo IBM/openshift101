@@ -11,11 +11,11 @@ That seems like a good range for our CPU request, but to be safe, let's bump the
 
 Switch to the **Administrator** view and then navigate to **Workloads > Deployments** in the left-hand bar. Choose the `patient-ui` Deployment, then choose **Actions > Edit Deployment**.
 
-![Deployments](../.gitbook/assets/ocp-deployments.png)
+![Deployments](../assets/ocp-deployments.png)
 
 In the YAML editor, go to line 44. In the section **template > spec > containers**, add the following resource limits into the empty resources. Replace the `resources {}`, and ensure the spacing is correct -- YAML uses strict indentation.
 
-![Limits YAML](../.gitbook/assets/ocp-limits-yaml.png)
+![Limits YAML](../assets/ocp-limits-yaml.png)
 
   ```yaml
              resources:
@@ -31,7 +31,7 @@ In the YAML editor, go to line 44. In the section **template > spec > containers
 
 Verify that the replication controller has been changed by navigating to **Events**
 
-![Resource Limits](../.gitbook/assets/ocp-dc-events.png)
+![Resource Limits](../assets/ocp-dc-events.png)
 
 ## Enable Autoscaler
 
@@ -42,7 +42,7 @@ In general, you probably want to start scaling up when you get near `50`-`90`% o
 
 1. Navigate to **Workloads > Horizontal Pod Autoscalers**, then hit **Create Horizontal Pod Autoscaler**.
 
-![HPA](../.gitbook/assets/ocp-hpa.png)
+![HPA](../assets/ocp-hpa.png)
 
 ```yaml
 apiVersion: autoscaling/v2beta1
@@ -68,20 +68,20 @@ Hit **Create**.
 
 ## Test Autoscaler
 
-If you're not running the script from the [previous exercise](exercise-2.md#simulate-load-on-the-application), the number of pods should stay at 1.
+If you're not running the script from the [previous exercise](../exercise-02/README.md#simulate-load-on-the-application), the number of pods should stay at 1.
 
 Check by going to the **Overview** page of **Deployments**.
 
-![Scaled to 1 pod](../.gitbook/assets/ocp-hpa-before.png)
+![Scaled to 1 pod](../assets/ocp-hpa-before.png)
 
 Start simulating load by hitting the page several times, or running the script. You'll see that it starts to scale up:
 
-![Scaled to 4/10 pods](../.gitbook/assets/ocp-hpa-after.png)
+![Scaled to 4/10 pods](../assets/ocp-hpa-after.png)
 
 That's it! You now have a highly available and automatically scaled front-end Node.js application. OpenShift is automatically scaling your application pods since the CPU usage of the pods greatly exceeded `1`% of the resource limit, `30` millicores.
 
 ### Optional
 
-If you're interested in setting up the CLI, [follow the steps here](../getting-started/setup_cli.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
+If you're interested in setting up the CLI, [follow the steps here](../pre-work/SETUP_CLI.md). Then, run the following command in your CLI `oc get hpa` to get information about your horizontal pod autoscaler. Remember to switch to your project first with `oc project <project-name>`.
 
 You could have created the autoscaler with the command `oc autoscale deployment/patient-ui --min 1 --max 10 --cpu-percent=1`.

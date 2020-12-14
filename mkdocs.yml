@@ -1,0 +1,108 @@
+# Project information
+site_name: OpenShift 101 Workshop
+site_url: https://ibm.github.io/openshift101
+site_author: IBM Developer
+
+# Repository
+repo_name: openshift101
+repo_url: https://github.com/ibm/openshift101
+edit_uri: edit/master/docs
+
+# Navigation
+nav:
+  - Welcome:
+    - About the workshop: README.md
+    - Create an IBM Cloud Account: pre-work/GET_STARTED.md
+    - Access the IBM Cloud Shell: pre-work/CLOUD_SHELL.md
+  - Workshop:
+    - Lab 1. Deploy a Node app with Source-to-Image: exercise-01/README.md
+    - Lab 2. Logging and monitoring: exercise-02/README.md
+    - Lab 3. Metrics and dashboards: exercise-03/README.md
+    - Lab 4. Scaling the application: exercise-04/README.md
+    - Lab 5. Health checks: exercise-05/README.md
+    - Lab 6. Deploy a Node app with Build Config (CLI): exercise-06/README.md
+    - Lab 1b. Deploy a Java app with a Docker Image: exercise-01b/README.md
+    - Lab 6b. Deploy a Java app with Build Config (CLI): exercise-06b/README.md
+  - Extra Material:
+    - General Docker Tutorial: pre-work/DOCKER.md
+    - Kubernetes Overview: pre-work/KUBERNETES.md
+    - Setup OC CLI: pre-work/SETUP_CLI.md
+  - References:
+    - Additional resources: resources/README.md
+    - FAQ: 99-faq/README.md
+
+## DO NOT CHANGE BELOW THIS LINE
+
+# Copyright
+copyright: Copyright &copy; 2020 IBM Developer
+
+# Theme
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  icon:
+    logo: material/library
+  features:
+    - navigation.tabs
+    #- navigation.instant
+  palette:
+    scheme: default
+    primary: blue
+    accent: blue
+
+# Plugins
+plugins:
+  - search
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ibm
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/ibmdeveloper
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/ibm/
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/user/developerworks
+    - icon: fontawesome/brands/dev
+      link: https://dev.to/ibmdeveloper
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

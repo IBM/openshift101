@@ -28,11 +28,11 @@ Note: Retrieve the external URL from the OpenShift console, or from the URL of y
 
 Since we only created one pod, seeing our logs will be straight forward. Navigate to `View Logs` on the left on the main dashboard.
 
-![Pods](../.gitbook/assets/view-logs.png)
+![Pods](../assets/view-logs.png)
 
 You should be taken to something like the following. Scroll up and you should see the `DEBUG` like in the image. Scroll back down, and you should see a new line every second per the `curl` above.
 
-![Logs](../.gitbook/assets/view-logs-details.png)
+![Logs](../assets/view-logs-details.png)
 
 ## OpenShift Terminal
 
@@ -50,7 +50,7 @@ ls
 ps aux
 ```
 
-![Terminal](../.gitbook/assets/terminal-output.png)
+![Terminal](../assets/terminal-output.png)
 
 ## OpenShift Monitoring
 
@@ -58,6 +58,6 @@ When deploying new apps, making configuration changes, or simply inspecting the 
 
 You can also dive in a bit deeper - the `Events` tab is very useful for identifying the timeline of events and finding potential error messages.
 
-![View Details](../.gitbook/assets/event-details.png)
+![View Details](../assets/event-details.png)
 
 You'll want to refer to this view throughout the lab. Almost all actions we take in in OpenShift will result in an event being fired in this view. As it is updated real-time, it's a great way to track changes to state.

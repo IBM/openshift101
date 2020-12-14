@@ -1,4 +1,4 @@
-## OpenShift 101: Learn the Basics of Red Hat OpenShift on IBM Cloud
+# OpenShift 101: Learn the Basics of Red Hat OpenShift on IBM Cloud
 
 A recent [study](https://github.com/svennam92/openshift101/tree/ab7f1406831de9aa1a60da349dd5bff8d11f7e13/workshop/study/README.md) by McKinsey & Company reveals that only 20 percent of enterprise applications have moved to the cloud. We believe that a hybrid cloud approach, built on open source and a vibrant open ecosystem, is the best way to move the remaining 80 percent.
 
@@ -44,4 +44,3 @@ Many folks have contributed to help shape, test, and contribute the workshop.
 * [Remko De Knikker](https://github.com/remkohdev)
 * [Alex Parker](https://github.com/ajp-io)
 * [Dewan Ahmed](https://github.com/dewan-ahmed)
-
