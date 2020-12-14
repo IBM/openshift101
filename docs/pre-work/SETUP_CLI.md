@@ -48,15 +48,15 @@ oc help
 
 To launch the OpenShift web console, navigate to the [IBM Cloud Clusters Dashboard](https://cloud.ibm.com/kubernetes/clusters), find your cluster, and click on it.
 
-![Clusters Dashboard](../.gitbook/assets/clusters-dashboard.png)
+![Clusters Dashboard](../assets/clusters-dashboard.png)
 
 Click on `OpenShift web console` on the top right to launch the web console.
 
-![Launch the OpenShift web console](../.gitbook/assets/launch-console.png)
+![Launch the OpenShift web console](../assets/launch-console.png)
 
 Once in the OpenShift web console, click on the email/ID in the upper right. Choose the *Copy Login Command* option.
 
-![Copy the login credentials](../.gitbook/assets/copy-login-command.png)
+![Copy the login credentials](../assets/copy-login-command.png)
 
 ## Access your cluster using the `oc` CLI
 

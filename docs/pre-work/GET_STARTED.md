@@ -14,24 +14,24 @@ OR
 
 Instructors will provide a URL to a web app. Enter your IBMid (the email you used to sign up) and the lab key (also provided by the instructor).
 
-![Get clusters app](../.gitbook/assets/get-clusters.png)
+![Get clusters app](../assets/get-clusters.png)
 
 Follow the instructions on the next page. You will be added to the IBM Workshop account and granted access to a cluster. Note the name of your cluster. In the example below, it's `TorontoMulticlientWorkshop31`.
 
-![Instructions to access cluster](../.gitbook/assets/access-clusters.png)
+![Instructions to access cluster](../assets/access-clusters.png)
 
 Back in IBM Cloud, refresh the [IBM Cloud Dashboard](https://cloud.ibm.com). If required, switch to the **1840867-IBM** account by clicking on the account selection drop down in the top nav bar.
 
-![IBM Account](../.gitbook/assets/ibmaccount.png)
+![IBM Account](../assets/ibmaccount.png)
 
 Click on **Clusters** in the **Resource Summary** tile.
 
-![Find the Resource Summary tile](../.gitbook/assets/dashboard.png)
+![Find the Resource Summary tile](../assets/dashboard.png)
 
 Under **Clusters**, click on the cluster that has been assigned to you.
 
-![Choose a cluster](../.gitbook/assets/clusters-overview.png)
+![Choose a cluster](../assets/clusters-overview.png)
 
 Launch the **OpenShift web console** and have a look around! You can come back to this dashboard throughout your lab.
 
-![Launch the OpenShift web console](../.gitbook/assets/launch-console.png)
+![Launch the OpenShift web console](../assets/launch-console.png)

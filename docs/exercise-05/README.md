@@ -55,10 +55,10 @@ If all works, everything should be the same. Let's check that the probes are rea
 
 Let's edit the probe with a typo to see what happens when it fails. Edit the health check and change the path for the readiness probe to `/badpath`. Wait a few minutes and check your deployment - you'll notice that `0/1` containers are ready:
 
-![Badpath](../.gitbook/assets/badpath.png)
+![Badpath](../assets/badpath.png)
 
 Dive into your events and you'll see that the probe is failing, causing the platform to try and repeatedly restart your pod.
 
-![Deeper Dive](../.gitbook/assets/events.png)
+![Deeper Dive](../assets/events.png)
 
 Using health checks gives your OpenShift service layer better reliability and helps you start with a strong foundation.

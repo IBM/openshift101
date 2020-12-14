@@ -2,7 +2,7 @@
 
 To help you understand the basics of Docker technology we have created a tutorial where you will build and run a Node.js application with Docker. The application will translate phrases from one language to another by using Watson's [Language Translator](https://cloud.ibm.com/catalog/services/language-translator) service.
 
-![The Docker architecture - containers are separated from the OS](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
+![The Docker architecture - containers are separated from the OS](../assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-LthwLP_WM_81c65yfLd_image.png)
 
 {% hint style="info" %}
 Docker container technology separates applications from the underlying Operating System and infrastructure, which is an analog to VM technology that is separating an operating systems from the bare metal - server hardware.
@@ -14,27 +14,27 @@ Docker technology emulates the Operating System (OS), making it possible to cont
 
 In our tutorial, you'll be given the source code for the sample application, but to make it useful we'll need to provde an API key for the Language Translator service. Once we have have the API key we'll update the source code, containerize the application, run it, and test a few phrases.
 
-![A Docker pipeline is about building, shipping, and running containers](../.gitbook/assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
+![A Docker pipeline is about building, shipping, and running containers](../assets/assets_-LtBxDkdPh1ZKmLAzW5v_-Ltht0_vGCm5brrUQOK2_-Lthvuq8uvz3mrYS5g_n_image.png)
 
 Let's get started!
 
 ### 0. Install Docker Locally
 
-Navigate to [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) to download and install the lastest version of Docker for your OS of choice. 
+Navigate to [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) to download and install the lastest version of Docker for your OS of choice.
 
 ### 1. Create a Language Translator service
 
 Navigate to the [IBM Cloud dashboard](https://cloud.ibm.com) and click on "Catalog".
 
-![Access the IBM Cloud Catalog](../.gitbook/assets/cloud-catalog.png)
+![Access the IBM Cloud Catalog](../assets/cloud-catalog.png)
 
 Search for the "Language Translator" service, and click the corresponding tile.
 
-![The "Language Translator" tile](../.gitbook/assets/lt-service-tile.png)
+![The "Language Translator" tile](../assets/lt-service-tile.png)
 
 Choose to region and select the "Lite" (free of charge) plan, click the "Create" button.
 
-![Choose the "Lite" plan](../.gitbook/assets/lt-lite-plan.png)
+![Choose the "Lite" plan](../assets/lt-lite-plan.png)
 
 You will be redirected to the service's overview page.
 
@@ -44,7 +44,7 @@ From the service's overview page, choose the "Service Credentials" option on the
 
 A credential containing an API key should be automatically create but if you do not see one, you can create a new credential. Save the API key somewhere for the next section in this workshop.
 
-![Save the API key for future reference](../.gitbook/assets/lt-api-key.png)
+![Save the API key for future reference](../assets/lt-api-key.png)
 
 The next steps will demonstrate on how to build a Dockerized Node.js application that provides an endpoint to translate phrases.
 

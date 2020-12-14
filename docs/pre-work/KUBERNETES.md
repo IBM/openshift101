@@ -4,7 +4,7 @@ A Kubernetes cluster consists of a set of worker machines, called nodes, that ru
 
 The `kube-api-server`, or API Server in short, is the brain of the Kubernetes cluster. In this lab, we'll be executing various Kubernetes commands/operations by using the powerful **`kubectl`** CLI which will talk to the API Server. It is possible to access the API Server via REST calls or officially supported client libraries but **`kubectl`** CLI is the most common and preferred way.
 
-![Kubernetes Architecture](../.gitbook/assets/components-of-kubernetes.png)
+![Kubernetes Architecture](../assets/components-of-kubernetes.png)
 
 Reference: [Kubernetes Docs](https://kubernetes.io/docs/concepts/overview)
 
