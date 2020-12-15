@@ -22,15 +22,15 @@ You should see a view that looks like this.
 
 ![New Project View](../assets/example-health-new-project.png)
 
-Now click on "Administrator" and select "Developer.
+Now click on `Administrator` and select `Developer`.
 
 ![Developer](../assets/change-to-developer.png)
 
-Click on the browse catalog button.
+Click on the `From Catalog` button.
 
 ![Catalog](../assets/developer-catalog.png)
 
-Scroll down to the `Node.js` image. Click on that catalog button.
+Scroll down and select `Node.js` Builder Image. If you don't see it, check `Builder Image` under `Type`.
 
 ![NodeJS](../assets/developer-nodejs.png)
 
@@ -42,7 +42,7 @@ You'll see an form like this:
 
 Enter the repository: `https://github.com/IBM/node-s2i-openshift`.
 
-Then click the `Show Advanced Git Options`. and `/site` for the 'Context Dir'. Click 'Create' at the bottom of the window to build and deploy the application.
+Then click the `Show Advanced Git Options` and enter `/site` under `Context Dir`. Click 'Create' at the bottom of the window to build and deploy the application.
 
 ![Context Dir](../assets/nodejs-context.png)
 
@@ -68,7 +68,7 @@ Congrats! You've deployed a `Node.js` app to Kubernetes using OpenShift Source-t
 
 ## Git Webhooks
 
-So far we have been doing alot of manual deployment. In cloud-native world we want to move away from manual work and move toward automation. Wouldn't it be nice if our application rebuilt on git push events? Git webhooks are the way its done and openshift comes bundled in with git webhooks. Let's set it up for our project.
+So far we have been doing a lot of manual deployment. In cloud-native world we want to move away from manual work and move toward automation. Wouldn't it be nice if our application rebuilt on git push events? Git webhooks are the way its done and openshift comes bundled in with git webhooks. Let's set it up for our project.
 
 To be able to setup git webhooks, we need to have elevated permission to the project. We don't own the repo we have been using so far. But since its opensource we can easily fork it and make it our own.
 
@@ -100,7 +100,7 @@ Change line `21` to `Git Repository URL` to our forked repository, and click `Sa
 
 You will see this will not result in a new build. If you want to start a manual build you can do so by clicking `Start Build`. We will skip this for now and move on to the webhook part.
 
-Click on the main `Overview` tab.
+Click on the `Details` tab.
 
 Scroll down and click `Copy URL with Secret` for the GitHub Webook URL.
 
@@ -130,7 +130,7 @@ Click on `Add webhook`
 
 If the webhook is reachable by github you will see a green check mark.
 
-Back in our openshift console we still would only see one build however. Because we added a webhook that sends us push events and we have no push event happening. Lets make one. The easiest way to do it is probably from the Github UI. Lets change some text in the login page.
+Back in our Openshift Console we still would only see one build however. Because we added a webhook that sends us push events and we have no push event happening. Lets make one. The easiest way to do it is probably from the Github UI. Lets change some text in the login page.
 
 Path to this file is `site/public/login.html` from the root of the directory. On Github you can edit any file by clicking the Pencil icon on the top right corner.
 
@@ -142,11 +142,11 @@ Let's change the name our application to `Demo Health` (Line 21, Line 22). Feel 
 
 Once done go to the bottom and click `commit changes`.
 
-Go to the openshift build page again. This happens quite fast so you might not see the running state. But the moment we made that commit a build was kicked off.
+Go to the Openshift Console and click on the `Builds` tab. This happens quite fast so you might not see the running state. But the moment we made that commit a new build was kicked off.
 
 ![Running Build](../assets/nodejs-rebuild-webhook.png)
 
-In a moment it will show completed. Navigate to the main overview page to find the route.
+In a moment it will show completed. Navigate to the `Topology -> Application` to find the route.
 
 ![Routes](../assets/nodejs-rebuild-overview.png)
 
