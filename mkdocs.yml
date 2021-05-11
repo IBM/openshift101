@@ -55,7 +55,6 @@ theme:
 # Plugins
 plugins:
   - search
-  - mkpdfs
 
 # Customization
 extra:
